@@ -210,7 +210,7 @@
 <body>
 <header>
   <div>
-    <h1>JEAN-JACQUES' <span class="gold">SKYHAWK SCHOOL</span> <span class="ver">v1.45.0</span></h1>
+    <h1>JEAN-JACQUES' <span class="gold">SKYHAWK SCHOOL</span> <span class="ver">v1.46.0</span></h1>
     <div class="spec">N4975F &nbsp;·&nbsp; 1979 172N &nbsp;·&nbsp; 180 hp O-360 [carb] &nbsp;·&nbsp; G5s &nbsp;·&nbsp; GNS 430W &nbsp;·&nbsp; Montgomery-Gibbs Executive (KMYF) · San Diego</div>
   </div>
   <div class="badge">N4975F &nbsp;·&nbsp; 172N &nbsp;<b>180 hp</b></div>
@@ -570,8 +570,12 @@ function terrainH(x,z){
   if(x<shore){ var t=Math.min(1,(shore-x)/2600); h=h*(1-t)+(-150)*t; }
   if(x<-14500) h=-150;
   // field plateau + runway corridor flatten (Montgomery-Gibbs KMYF — keep the airfield dead flat)
+  // The plateau MUST be wide: the terrain mesh samples this function on a
+  // ~207 m grid, and with the old 800 m plateau the interpolated triangles
+  // bulged ~0.25 m over the pavement right at the 28L start point (795 m
+  // out), burying the strip under grass even once its rotation was fixed.
   var d=Math.sqrt(x*x+z*z);
-  var flat=0; if(d<800)flat=0; else if(d<2100)flat=(d-800)/1300; else flat=1;
+  var flat=0; if(d<1700)flat=0; else if(d<3400)flat=(d-1700)/1700; else flat=1;
   var rl=rwyLocal(x,z);
   if(Math.abs(rl.along)<1150 && Math.abs(rl.perp)<70) flat=0;
   if(Math.abs(rl.along)<1500 && Math.abs(rl.perp)<260) flat=Math.min(flat,0.12);
@@ -693,17 +697,24 @@ function runwayTex(num1,num2){
   // aiming points (1000-ft markers)
   g.fillRect(118,300,52,150); g.fillRect(342,300,52,150); g.fillRect(118,1598,52,150); g.fillRect(342,1598,52,150);
   g.font='bold 118px Arial'; g.textAlign='center'; g.fillStyle='#f2f2ec';
-  g.save(); g.translate(256,520); g.fillText(num1,0,0); g.restore();
-  g.save(); g.translate(256,1665); g.rotate(Math.PI); g.fillText(num2,0,0); g.restore();
+  // Canvas top maps to the far (+length) end of the strip. num1 is the runway
+  // flown in the +length direction, so ITS threshold is at the canvas BOTTOM:
+  // draw it upright there, and num2 rotated at the top for the opposite end.
+  g.save(); g.translate(256,1665); g.fillText(num1,0,0); g.restore();
+  g.save(); g.translate(256,520); g.rotate(Math.PI); g.fillText(num2,0,0); g.restore();
   var t=new THREE.CanvasTexture(cv); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=8; return t;
 }
 function addRunway(cx,cz,hdgDeg,len,wid,n1,n2){
   var m=new THREE.Mesh(new THREE.PlaneGeometry(wid,len),new THREE.MeshStandardMaterial({map:runwayTex(n1,n2),roughness:0.92}));
-  m.rotation.x=-Math.PI/2; m.rotation.z=(hdgDeg)*Math.PI/180;
-  var y=terrainH(cx,cz); m.position.set(cx,y+0.07,cz); m.receiveShadow=true; scene.add(m); return m;
+  // NOTE: for a plane laid flat with rotation.x=-90°, the length axis maps to
+  // (sin·hdg, -cos·hdg) only when rotation.z is NEGATED. Using +hdg here put
+  // the painted strip ~20° off the RWY_DIR centreline the sim flies from —
+  // at the 28L start point that left the aircraft ~270 m away on the grass.
+  m.rotation.x=-Math.PI/2; m.rotation.z=-(hdgDeg)*Math.PI/180;
+  var y=terrainH(cx,cz); m.position.set(cx,y+0.12,cz); m.receiveShadow=true; scene.add(m); return m;
 }
 addRunway(0,0,RWY_HDG,1700,46,'28','10');            // KMYF 28L/10R along 280
-addRunway(APT.KNKX.x,APT.KNKX.z,135,2400,52,'32','14'); // Miramar (visual)
+addRunway(APT.KNKX.x,APT.KNKX.z,135,2400,52,'14','32'); // Miramar (visual)
 addRunway(APT.KSAN.x,APT.KSAN.z,270,2900,60,'27','09'); // Lindbergh
 addRunway(APT.KSEE.x,APT.KSEE.z,175,1650,40,'17','35'); // Gillespie
 addRunway(APT.KNZY.x,APT.KNZY.z,290,2400,52,'29','11'); // North Island
@@ -717,11 +728,11 @@ addRunway(APT.KNZY.x,APT.KNZY.z,290,2400,52,'29','11'); // North Island
   var px=-RWY_DIR.z, pz=RWY_DIR.x;
   function flatPlane(cx,cz,w,l,hdgDeg,col,yOff,rough){
     var m=new THREE.Mesh(new THREE.PlaneGeometry(w,l),new THREE.MeshStandardMaterial({color:col,roughness:rough||0.94}));
-    m.rotation.x=-Math.PI/2; m.rotation.z=hdgDeg*Math.PI/180; m.position.set(cx,(yOff||0.05),cz); m.receiveShadow=true; scene.add(m); return m; }
+    m.rotation.x=-Math.PI/2; m.rotation.z=-hdgDeg*Math.PI/180; m.position.set(cx,(yOff||0.05),cz); m.receiveShadow=true; scene.add(m); return m; }
   // Parallel taxiway + connectors + ramp at KMYF (south side, Gibbs Drive side)
   flatPlane(px*72, pz*72, 14, 1500, RWY_HDG, 0x4a4f55, 0.06);
   flatPlane(px*118+RWY_DIR.x*180, pz*118+RWY_DIR.z*180, 210, 300, RWY_HDG, 0x555a60, 0.055);
-  [-520,60,560].forEach(function(a){ flatPlane(RWY_DIR.x*a+px*40, RWY_DIR.z*a+pz*40, 76, 13, RWY_HDG+90, 0x4a4f55, 0.06); });
+  [-520,60,560].forEach(function(a){ flatPlane(RWY_DIR.x*a+px*40, RWY_DIR.z*a+pz*40, 13, 76, RWY_HDG+90, 0x4a4f55, 0.06); });
   // taxiway centreline (thin yellow strip on the parallel)
   flatPlane(px*72, pz*72, 0.7, 1480, RWY_HDG, 0xd8b93a, 0.09, 0.7);
   // hangar row + FBO / terminal on the ramp
@@ -803,6 +814,241 @@ Object.keys(APT).forEach(function(k){ if(k==='MZB'||k==='KMYF')return; var a=APT
   }
   trunk.count=crown.count=placed; if(crown.instanceColor) crown.instanceColor.needsUpdate=true; scene.add(trunk); scene.add(crown);
 })();
+
+/* ================= SCENERY EXPANSION — greater San Diego =================
+   Neighbourhoods, freeways with traffic, marinas, landmarks and a much
+   busier KMYF — all instanced or low-count meshes so the frame rate holds.
+   Built in a deferred task so first paint (and the flight model) start at
+   full speed; the scenery pops in a fraction of a second after load. */
+setTimeout(function(){
+  var dummy=new THREE.Object3D(), tmpC=new THREE.Color();
+  function clearOfField(x,z){
+    var rl=rwyLocal(x,z);
+    if(Math.abs(rl.along)<3400 && Math.abs(rl.perp)<230) return false; // runway + approach corridor
+    if(Math.sqrt(x*x+z*z)<1150) return false;                          // airfield plateau
+    return true;
+  }
+  function groundOK(x,z,lo,hi){ var h=terrainH(x,z); return h>lo && h<hi; }
+
+  /* ---- residential neighbourhoods: instanced houses + pyramid roofs ---- */
+  (function(){
+    var MAX=1700;
+    var body=new THREE.InstancedMesh(new THREE.BoxGeometry(11,5.2,9),new THREE.MeshStandardMaterial({roughness:0.9}),MAX);
+    var roof=new THREE.InstancedMesh(new THREE.ConeGeometry(8.2,3.4,4),new THREE.MeshStandardMaterial({roughness:0.95}),MAX);
+    body.castShadow=false; body.receiveShadow=true;
+    var hoods=[ // [cx, cz, radius, grid angle] — Clairemont, Kearny Mesa S, Tierrasanta, Scripps Ranch, Mira Mesa, University City, La Jolla, Pacific Beach, Mission Valley, El Cajon, Santee, Allied Gardens
+      [-4200,1500,1500,0.3],[600,2900,1700,0.05],[4300,2700,1500,-0.2],[4600,-3900,1600,0.5],[1200,-5400,1700,0.1],
+      [-4600,-2700,1400,0.7],[-9000,-500,1100,0.9],[-9300,2100,900,0.2],[-3600,5300,1300,0.0],[13800,2500,1700,0.4],
+      [15200,-1400,1400,0.15],[7600,2900,1200,-0.3]];
+    var bodyCols=[0xe8ded0,0xd9c9a8,0xc7d0d4,0xe2cfc0,0xcfd8c2,0xd8bfae,0xbfc5ce];
+    var roofCols=[0x8a4a32,0x6e4a3a,0x59504a,0x7a3f2d,0x4c4c50];
+    var placed=0, guard=0;
+    while(placed<MAX && guard++<26000){
+      var hd=hoods[Math.floor(Math.random()*hoods.length)];
+      var ang=Math.random()*Math.PI*2, rad=Math.sqrt(Math.random())*hd[2];
+      var rx=hd[0]+Math.cos(ang)*rad, rz=hd[1]+Math.sin(ang)*rad;
+      // snap to a street grid so rows of houses read as suburbs, not confetti
+      var ca=Math.cos(hd[3]), sa=Math.sin(hd[3]);
+      var gx=Math.round((rx*ca+rz*sa)/62)*62, gz=Math.round((-rx*sa+rz*ca)/58)*58;
+      var x=gx*ca-gz*sa, z=gx*sa+gz*ca;
+      if(!clearOfField(x,z) || !groundOK(x,z,-40,175)) continue;
+      var h=terrainH(x,z), rot=hd[3]+(Math.random()<0.5?0:Math.PI/2), s=0.8+Math.random()*0.45;
+      dummy.rotation.set(0,rot,0); dummy.scale.set(s,s,s);
+      dummy.position.set(x,h+2.6*s,z); dummy.updateMatrix(); body.setMatrixAt(placed,dummy.matrix);
+      body.setColorAt(placed,tmpC.setHex(bodyCols[placed%bodyCols.length]).offsetHSL(0,0,(Math.random()-0.5)*0.05));
+      dummy.position.set(x,h+(5.2+1.7)*s,z); dummy.rotation.set(0,rot+Math.PI/4,0); dummy.updateMatrix(); roof.setMatrixAt(placed,dummy.matrix);
+      roof.setColorAt(placed,tmpC.setHex(roofCols[placed%roofCols.length]));
+      placed++;
+    }
+    body.count=roof.count=placed;
+    if(body.instanceColor)body.instanceColor.needsUpdate=true;
+    if(roof.instanceColor)roof.instanceColor.needsUpdate=true;
+    scene.add(body); scene.add(roof);
+  })();
+
+  /* ---- commercial / industrial parks: Kearny Mesa, Sorrento Valley, Mission Valley ---- */
+  (function(){
+    var MAX=300;
+    var inst=new THREE.InstancedMesh(new THREE.BoxGeometry(48,13,32),new THREE.MeshStandardMaterial({roughness:0.85}),MAX);
+    inst.receiveShadow=true;
+    var zones=[[0,1500,2100],[-2600,-5300,1500],[-3800,4700,1500],[1500,-1800,1300],[13200,900,1300]];
+    var cols=[0xb9bcbe,0xa9a49a,0xcac5b8,0x9aa4ac,0xd2d5d7];
+    var placed=0, guard=0;
+    while(placed<MAX && guard++<9000){
+      var zn=zones[Math.floor(Math.random()*zones.length)];
+      var x=zn[0]+(Math.random()-0.5)*2*zn[2], z=zn[1]+(Math.random()-0.5)*zn[2]*1.1;
+      if(!clearOfField(x,z) || !groundOK(x,z,-40,190)) continue;
+      dummy.position.set(x,terrainH(x,z)+6.5,z);
+      dummy.rotation.set(0,Math.round(Math.random()*3)*Math.PI/2+(Math.random()-0.5)*0.14,0);
+      dummy.scale.set(0.7+Math.random()*1.1,0.6+Math.random()*1.15,0.7+Math.random()*1.0);
+      dummy.updateMatrix(); inst.setMatrixAt(placed,dummy.matrix);
+      inst.setColorAt(placed,tmpC.setHex(cols[placed%cols.length]));
+      placed++;
+    }
+    inst.count=placed; dummy.scale.set(1,1,1);
+    if(inst.instanceColor)inst.instanceColor.needsUpdate=true;
+    scene.add(inst);
+  })();
+
+  /* ---- more freeways + arterials, with moving-look traffic ---- */
+  function road2(x0,z0,x1,z1,w,col){
+    var steps=Math.max(4,Math.round(Math.sqrt((x1-x0)*(x1-x0)+(z1-z0)*(z1-z0))/700));
+    for(var rs=0;rs<steps;rs++){ var f0=rs/steps,f1=(rs+1)/steps;
+      var ax=x0+(x1-x0)*f0, az=z0+(z1-z0)*f0, bx=x0+(x1-x0)*f1, bz=z0+(z1-z0)*f1;
+      var mx=(ax+bx)/2, mz=(az+bz)/2, len=Math.sqrt((bx-ax)*(bx-ax)+(bz-az)*(bz-az));
+      var seg=new THREE.Mesh(new THREE.PlaneGeometry(w,len+2),new THREE.MeshStandardMaterial({color:col||0x33373c,roughness:0.95}));
+      seg.rotation.x=-Math.PI/2; seg.rotation.z=Math.atan2(bx-ax,bz-az)+Math.PI;
+      seg.position.set(mx,terrainH(mx,mz)+0.30,mz); seg.receiveShadow=true; scene.add(seg); }
+  }
+  road2(-5400,-15000,-4900,15000,26);            // I-805, N–S west of the field
+  road2(-15000,7400,13000,6600,28);              // I-8, E–W through Mission Valley
+  road2(-6800,12500,-2600,-2400,20);             // SR-163 toward downtown
+  road2(-13500,-3350,3000,-2900,20);             // SR-52 west leg
+  road2(-15000,1250,9000,900,15);                 // Balboa Ave
+  road2(-15000,4300,-2600,3750,15);              // Friars Rd
+  road2(2900,-15000,3400,15000,7,0x3c4046);       // I-15 centre median shading
+  (function(){ // traffic: instanced cars dotted along the freeways
+    var MAX=380;
+    var inst=new THREE.InstancedMesh(new THREE.BoxGeometry(1.9,1.35,4.5),new THREE.MeshStandardMaterial({roughness:0.35,metalness:0.4}),MAX);
+    var routes=[[3400,-15000,2900,15000],[-5400,-15000,-4900,15000],[-15000,7400,13000,6600],[-12500,-3350,15000,-3050],[-15000,1250,9000,900]];
+    var cols=[0xd8d8d8,0xb03a30,0x2f5f9e,0x22262b,0x7a7f85,0xe0a52e,0x3f7a52];
+    for(var i=0;i<MAX;i++){
+      var r=routes[i%routes.length], f=Math.random();
+      var lane=(Math.random()<0.5?-6.5:6.5);
+      var dx=r[2]-r[0], dz=r[3]-r[1], L=Math.sqrt(dx*dx+dz*dz), ux=dx/L, uz=dz/L;
+      var x=r[0]+dx*f + (-uz)*lane, z=r[1]+dz*f + ux*lane;
+      dummy.position.set(x,terrainH(x,z)+1.0,z);
+      dummy.rotation.set(0,Math.atan2(ux,uz)+(lane<0?Math.PI:0),0);
+      dummy.scale.set(1,1,1); dummy.updateMatrix(); inst.setMatrixAt(i,dummy.matrix);
+      inst.setColorAt(i,tmpC.setHex(cols[i%cols.length]));
+    }
+    if(inst.instanceColor)inst.instanceColor.needsUpdate=true;
+    scene.add(inst);
+  })();
+
+  /* ---- KMYF gets busier: extra hangar rows, fuel farm, parked trainers ---- */
+  (function(){
+    var px2=-RWY_DIR.z, pz2=RWY_DIR.x;
+    var ry=Math.atan2(-RWY_DIR.z,RWY_DIR.x);
+    function hangar(along,perp,w,h,d,c){
+      var b=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color:c,roughness:0.8,metalness:0.08}));
+      b.position.set(RWY_DIR.x*along+px2*perp,h/2,RWY_DIR.z*along+pz2*perp); b.rotation.y=ry; b.castShadow=true; b.receiveShadow=true; scene.add(b);
+      var r=new THREE.Mesh(new THREE.BoxGeometry(w+1.5,1.1,d+1.5),new THREE.MeshStandardMaterial({color:0x596068,roughness:0.6,metalness:0.15}));
+      r.position.copy(b.position); r.position.y=h+0.55; r.rotation.y=ry; scene.add(r);
+    }
+    for(var i=0;i<7;i++) hangar(-460+i*150,-168,30,8.5,24, i%2?0xb9bfc5:0xaeb6a8);   // north hangar row
+    for(var j=0;j<6;j++) hangar(-390+j*160,196,34,9.5,26, j%2?0xc4c9cd:0xb2b8be);    // south hangar row
+    // fuel farm — two white tanks east of the ramp
+    [-30,30].forEach(function(off){
+      var tank=new THREE.Mesh(new THREE.CylinderGeometry(4.5,4.5,3.4,14),new THREE.MeshStandardMaterial({color:0xe8ebee,roughness:0.4,metalness:0.2}));
+      tank.position.set(RWY_DIR.x*560+px2*(150+off),1.7,RWY_DIR.z*560+pz2*(150+off)); tank.castShadow=true; scene.add(tank);
+    });
+    // parked trainers on the south ramp
+    var cols2=[0xf2f4f6,0xd8483a,0x2f6fb4,0xf2f4f6,0x3f7a52,0xf5a623,0xf2f4f6,0x8a5aa0];
+    for(var k=0;k<8;k++){
+      var g=new THREE.Group(), al=-330+k*95, pp=152+(k%2)*16;
+      var mat=new THREE.MeshStandardMaterial({color:cols2[k],roughness:0.4,metalness:0.08});
+      var fus=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.5,6.8),mat); fus.position.y=1.15; fus.castShadow=true; g.add(fus);
+      var wing=new THREE.Mesh(new THREE.BoxGeometry(9.6,0.14,1.35),mat); wing.position.set(0,1.8,0.5); wing.castShadow=true; g.add(wing);
+      var tail=new THREE.Mesh(new THREE.BoxGeometry(2.9,0.12,0.8),mat); tail.position.set(0,1.35,-3.2); g.add(tail);
+      var fin=new THREE.Mesh(new THREE.BoxGeometry(0.12,1.3,0.9),mat); fin.position.set(0,1.9,-3.2); g.add(fin);
+      g.position.set(RWY_DIR.x*al+px2*pp,0.1,RWY_DIR.z*al+pz2*pp);
+      g.rotation.y=ry+(k%3-1)*0.22; scene.add(g);
+    }
+  })();
+
+  /* ---- Mission Bay marina + bay boats + ships ---- */
+  (function(){
+    var MAX=150;
+    var inst=new THREE.InstancedMesh(new THREE.BoxGeometry(2.1,1.4,6.4),new THREE.MeshStandardMaterial({color:0xf4f7f9,roughness:0.5}),MAX);
+    var masts=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.07,0.07,7,5),new THREE.MeshStandardMaterial({color:0xb9c2c9,roughness:0.4,metalness:0.5}),MAX);
+    var clusters=[[-10200,2100],[-10600,1500],[-11800,8800],[-10900,10200]];
+    for(var i=0;i<MAX;i++){
+      var c=clusters[i%clusters.length];
+      var x=c[0]+(Math.random()-0.5)*620, z=c[1]+(Math.random()-0.5)*430;
+      dummy.rotation.set(0,Math.random()*Math.PI,0); dummy.scale.set(1,1,1);
+      dummy.position.set(x,-128.2,z); dummy.updateMatrix(); inst.setMatrixAt(i,dummy.matrix);
+      dummy.position.set(x,-124.8,z); dummy.updateMatrix(); masts.setMatrixAt(i,dummy.matrix);
+    }
+    scene.add(inst); scene.add(masts);
+    // two ships at anchor in the bay / off Point Loma
+    [[-13300,10100,0.7],[-15200,5600,1.2]].forEach(function(s){
+      var g=new THREE.Group();
+      var hull=new THREE.Mesh(new THREE.BoxGeometry(16,7,95),new THREE.MeshStandardMaterial({color:0x37424c,roughness:0.6})); hull.position.y=1; g.add(hull);
+      var sup=new THREE.Mesh(new THREE.BoxGeometry(12,12,14),new THREE.MeshStandardMaterial({color:0xd8dde2,roughness:0.5})); sup.position.set(0,10,-32); g.add(sup);
+      g.position.set(s[0],-130,s[1]); g.rotation.y=s[2]; scene.add(g);
+    });
+  })();
+
+  /* ---- landmarks: Coronado Bridge, Soledad cross, stadium, golf, comm towers ---- */
+  (function(){
+    // Coronado Bridge — deck segments on a gentle arc over the bay
+    var p0={x:-9300,z:12300}, p1={x:-11400,z:11800}, p2={x:-13600,z:13300};
+    for(var i=0;i<16;i++){
+      var f0=i/16, f1=(i+1)/16;
+      function bez(f){ return {x:(1-f)*(1-f)*p0.x+2*(1-f)*f*p1.x+f*f*p2.x, z:(1-f)*(1-f)*p0.z+2*(1-f)*f*p1.z+f*f*p2.z, y:-112+Math.sin(f*Math.PI)*46}; }
+      var a=bez(f0), b=bez(f1), mx=(a.x+b.x)/2, mz=(a.z+b.z)/2;
+      var len=Math.sqrt((b.x-a.x)*(b.x-a.x)+(b.z-a.z)*(b.z-a.z));
+      var seg=new THREE.Mesh(new THREE.BoxGeometry(17,2.2,len+3),new THREE.MeshStandardMaterial({color:0x7d99ad,roughness:0.55,metalness:0.2}));
+      seg.position.set(mx,(a.y+b.y)/2,mz); seg.rotation.y=Math.atan2(b.x-a.x,b.z-a.z); scene.add(seg);
+      if(i%3===0){ var pier=new THREE.Mesh(new THREE.BoxGeometry(4,60,4),new THREE.MeshStandardMaterial({color:0x9aa4ac,roughness:0.8}));
+        pier.position.set(mx,(a.y-30),mz); scene.add(pier); }
+    }
+    // Mt. Soledad memorial cross
+    var soledadH=terrainH(-9800,-600);
+    var cv1=new THREE.Mesh(new THREE.BoxGeometry(0.9,10,0.9),new THREE.MeshStandardMaterial({color:0xf2f4f6,roughness:0.6}));
+    cv1.position.set(-9800,soledadH+5,-600); scene.add(cv1);
+    var cv2=new THREE.Mesh(new THREE.BoxGeometry(4.6,0.9,0.9),new THREE.MeshStandardMaterial({color:0xf2f4f6,roughness:0.6}));
+    cv2.position.set(-9800,soledadH+7.4,-600); scene.add(cv2);
+    // Mission Valley stadium — bowl ring + green bowl floor
+    var stX=-2600, stZ=6100, stH=terrainH(stX,stZ);
+    var bowl=new THREE.Mesh(new THREE.CylinderGeometry(105,92,24,22,1,true),new THREE.MeshStandardMaterial({color:0xb9bcbe,roughness:0.8,side:THREE.DoubleSide}));
+    bowl.position.set(stX,stH+12,stZ); bowl.castShadow=true; scene.add(bowl);
+    var pitch=new THREE.Mesh(new THREE.CircleGeometry(88,22),new THREE.MeshStandardMaterial({color:0x4e7d32,roughness:1}));
+    pitch.rotation.x=-Math.PI/2; pitch.position.set(stX,stH+3,stZ); scene.add(pitch);
+    // golf courses — flat green discs (Balboa Park, Tecolote, Riverwalk)
+    [[-6800,8600,270],[-8300,2500,210],[-3300,5450,240],[12400,4900,300]].forEach(function(gc2){
+      var d=new THREE.Mesh(new THREE.CircleGeometry(gc2[2],20),new THREE.MeshStandardMaterial({color:0x54823a,roughness:1}));
+      d.rotation.x=-Math.PI/2; d.position.set(gc2[0],terrainH(gc2[0],gc2[1])+0.35,gc2[1]); d.receiveShadow=true; scene.add(d);
+    });
+    // comm towers on Cowles Mountain and the Miramar mesa, with beacon tips
+    [[12500,3500],[-1500,-6800]].forEach(function(tp){
+      var th=terrainH(tp[0],tp[1]);
+      var tw=new THREE.Mesh(new THREE.CylinderGeometry(0.5,1.6,52,6),new THREE.MeshStandardMaterial({color:0x8a9298,roughness:0.5,metalness:0.5}));
+      tw.position.set(tp[0],th+26,tp[1]); scene.add(tw);
+      var bc=new THREE.Mesh(new THREE.SphereGeometry(1.1,8,8),new THREE.MeshBasicMaterial({color:0xff2a22}));
+      bc.position.set(tp[0],th+53,tp[1]); scene.add(bc);
+    });
+    // KSAN terminal blocks + Miramar hangars so the other fields read as airports
+    function block(x,z,w,h,d,c){ var b=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color:c,roughness:0.8})); b.position.set(x,terrainH(x,z)+h/2,z); b.castShadow=true; scene.add(b); }
+    block(APT.KSAN.x+180,APT.KSAN.z-260,420,16,60,0xc9ced4);
+    block(APT.KSAN.x-320,APT.KSAN.z-300,260,13,52,0xb9bfc7);
+    for(var m2=0;m2<5;m2++) block(APT.KNKX.x-500+m2*260,APT.KNKX.z+330,150,13,64,0xa9a49a);
+    for(var m3=0;m3<4;m3++) block(APT.KSEE.x+140+m3*120,APT.KSEE.z+180,80,10,44,0xb5aca0);
+  })();
+
+  /* ---- a second, denser tree pass: parks, canyons and garden suburbs ---- */
+  (function(){
+    var N=650;
+    var trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.35,0.5,3,5),new THREE.MeshStandardMaterial({color:0x5a4230,roughness:1}),N);
+    var crown=new THREE.InstancedMesh(new THREE.ConeGeometry(3.0,8.6,7),new THREE.MeshStandardMaterial({color:0xffffff,roughness:1}),N);
+    var M=new THREE.Matrix4(), Q=new THREE.Quaternion(), S3=new THREE.Vector3(), P=new THREE.Vector3();
+    var cA=new THREE.Color(0x416b32), cB=new THREE.Color(0x5f843e), tc=new THREE.Color();
+    var placed=0, guard=0;
+    while(placed<N && guard++<9000){
+      var x=(Math.random()-0.5)*24000, z=(Math.random()-0.5)*24000;
+      if(!clearOfField(x,z)) continue;
+      var h=terrainH(x,z); if(h<-60||h>230) continue;
+      var s=0.7+Math.random()*1.15;
+      P.set(x,h+1.4*s,z); S3.set(s,s,s); M.compose(P,Q,S3); trunk.setMatrixAt(placed,M);
+      P.set(x,h+7.2*s,z); M.compose(P,Q,S3); crown.setMatrixAt(placed,M);
+      tc.copy(cA).lerp(cB,Math.random()); crown.setColorAt(placed,tc); placed++;
+    }
+    trunk.count=crown.count=placed;
+    if(crown.instanceColor)crown.instanceColor.needsUpdate=true;
+    scene.add(trunk); scene.add(crown);
+  })();
+},80);
 
 /* ================= AIRCRAFT MODEL — 1979 Cessna 172N ================= */
 var plane=new THREE.Group();
