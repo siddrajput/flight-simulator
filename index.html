@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="color-scheme" content="dark"/>
 <link rel="icon" href="data:,"/>
-<title>Jean-Jacques' Skyhawk School — N4975F · Cessna 172N · KMYF</title>
+<title>Jean-Jacques' Skylane School — N4975F · Cessna 182Q · KMYF</title>
 <style>
   :root{
     --ink:#e8edf1; --dim:#8fa1b0; --dim2:#647786;
@@ -210,11 +210,11 @@
 <body>
 <header>
   <div>
-    <h1>JEAN-JACQUES' <span class="gold">SKYHAWK SCHOOL</span> <span class="ver">v1.47.0</span></h1>
-    <div class="spec">N4975F &nbsp;·&nbsp; 1979 172N &nbsp;·&nbsp; 180 hp O-360 [carb] &nbsp;·&nbsp; G5s &nbsp;·&nbsp; GNS 430W &nbsp;·&nbsp; Montgomery-Gibbs Executive (KMYF) · San Diego</div>
+    <h1>JEAN-JACQUES' <span class="gold">SKYLANE SCHOOL</span> <span class="ver">v1.49.0</span></h1>
+    <div class="spec">N4975F &nbsp;·&nbsp; 1979 Cessna 182Q Skylane &nbsp;·&nbsp; 230 hp Continental O-470 [carb] &nbsp;·&nbsp; G5s &nbsp;·&nbsp; GNS 430W &nbsp;·&nbsp; Montgomery-Gibbs Executive (KMYF) · San Diego</div>
   </div>
-  <div class="badge">N4975F &nbsp;·&nbsp; 172N &nbsp;<b>180 hp</b></div>
-  <div class="chip2">C172S</div>
+  <div class="badge">N4975F &nbsp;·&nbsp; 182Q &nbsp;<b>230 hp</b></div>
+  <div class="chip2">C182</div>
   <div class="cfi"><div class="av">JJ</div><div><div class="n">CFI Jean-Jacques</div><div class="s">1,487.3 hrs &nbsp;·&nbsp; Air France-bound</div></div></div>
 </header>
 
@@ -227,7 +227,7 @@
       <div class="hchip"><span>IAS</span><b id="hSpd">0</b></div>
       <div class="hchip"><span>ALT</span><b id="hAlt">427</b></div>
       <div class="hchip"><span>VS</span><b id="hVs">+0</b></div>
-      <div class="hchip"><span>HDG</span><b id="hHdg">280</b></div>
+      <div class="hchip"><span>HDG</span><b id="hHdg">295</b></div>
       <div class="hchip"><span>AGL</span><b id="hAgl">0</b></div>
       <div class="hchip"><span>WIND</span><b id="hWind">270/08</b></div>
       <div class="hchip"><span>DA</span><b id="hDA">—</b></div>
@@ -252,7 +252,7 @@
       </div>
       <div id="thrZone"><div class="slab">THROTTLE</div><div id="thrTrack"><div id="thrFill"></div><div id="thrNub">THR</div></div></div>
     </div>
-    <div id="towerBar">📻 <span id="towerText">MYF TOWER: Skyhawk 75F, Montgomery Tower, wind 270 at 8, Runway 28L, cleared for takeoff.</span></div>
+    <div id="towerBar">📻 <span id="towerText">MYF TOWER: Skylane 75F, Montgomery Tower, wind 270 at 8, Runway 28L, cleared for takeoff.</span></div>
     <div id="glare"></div>
   </div>
 
@@ -358,13 +358,13 @@
         <p>You start lined up on Runway 28L at Montgomery-Gibbs Executive Airport, San Diego (427 ft MSL). Fly wherever. Landmarks: MCAS Miramar 3 nm north, Lindbergh Field (SAN, Class B) and downtown southwest, Mission Bay and Mt. Soledad west, Gillespie east, Cowles Mountain just east of the field. Try GPS Direct-To on the Avionics tab.</p>
         <div class="kv"><span>IAS</span><b><span id="sbSpd">0</span> kt</b></div>
         <div class="kv"><span>Altitude</span><b><span id="sbAlt">427</span> ft</b></div>
-        <div class="kv"><span>Heading</span><b><span id="sbHdg">280</span>°</b></div>
+        <div class="kv"><span>Heading</span><b><span id="sbHdg">295</span>°</b></div>
       </div>
       <div class="card plain">
         <h3>Scenarios — one click, instant trouble</h3>
         <p>Jump straight into the interesting part. A Mooney (well, a Skyhawk) flies the live pattern as traffic — tower calls included in the price.</p>
         <button class="freqBtn" id="scnDown">↻ Downwind entry<small>Airborne on the downwind for 28L at 1,900 ft — fly the pattern and land</small></button>
-        <button class="freqBtn" id="scnDead">✦ Dead-stick challenge<small>Engine dead at 3,500 ft over the field. Best glide 65 kt. One runway. No pressure.</small></button>
+        <button class="freqBtn" id="scnDead">✦ Dead-stick practice<small>Engine out at 3,500 ft over the field. Best glide 70 kt. Make the runway — the classic engine-out exercise.</small></button>
         <button class="freqBtn" id="scnXwind">≋ Gusty crosswind final<small>300° at 14 gusting, on a 2 nm final. Crab it, slip it, land it.</small></button>
         <button class="freqBtn" id="scnNight">☾ Night final<small>Dusk-to-dark arrival: runway lights, the sequenced flashers and the PAPI are your world.</small></button>
       </div>
@@ -372,11 +372,8 @@
         <h3>Logbook — this session</h3>
         <div class="kv"><span>Takeoffs</span><b id="lgTO">0</b></div>
         <div class="kv"><span>Landings</span><b id="lgLD">0</b></div>
-        <div class="kv"><span>Last landing</span><b id="lgLast">—</b></div>
-        <div class="kv"><span>Last score</span><b id="lgScore">—</b></div>
-        <div class="kv"><span>Best score</span><b id="lgBest">—</b></div>
-        <div class="kv"><span>Smoothest touchdown</span><b id="lgSmooth">—</b></div>
-        <p class="dim" style="margin-top:6px">Every runway touchdown is graded: sink rate, centreline, touchdown zone and approach speed — like a flight-data monitor with a French accent.</p>
+        <div class="kv"><span>Last touchdown sink</span><b id="lgLast">—</b></div>
+        <p class="dim" style="margin-top:6px">Every runway touchdown gets an instructor debrief in the log below: sink rate, centreline, touchdown point and approach speed. No points, no grades — just the facts, like a real debrief.</p>
       </div>
       <div class="card">
         <button class="startBtn" id="crMockBtn">Start</button>
@@ -411,41 +408,41 @@
       <div class="card plain"><h3>Approach &amp; landing</h3><ul class="chk">
         <li><b>Mixture</b> — RICH</li>
         <li><b>Carb heat</b> — ON before throttle reduction</li>
-        <li><b>Downwind</b> — 85 kt, flaps 10° abeam</li>
-        <li><b>Base</b> — 75 kt, flaps 20°</li>
-        <li><b>Final</b> — 65 kt, flaps 30–40°</li>
-        <li><b>GUMPS</b> — gas, undercarriage (fixed!), mixture, prop (fixed), seatbelts</li>
+        <li><b>Downwind</b> — 90 kt, flaps 10° abeam</li>
+        <li><b>Base</b> — 80 kt, flaps 20°</li>
+        <li><b>Final</b> — 70 kt, flaps 30–40°</li>
+        <li><b>GUMPS</b> — gas, undercarriage (fixed!), mixture, prop (full forward), seatbelts</li>
       </ul></div>
       <div class="card plain"><h3>Go-around</h3><ul class="chk">
         <li><b>Power</b> — FULL, carb heat COLD</li>
         <li><b>Flaps</b> — retract to 20° immediately</li>
-        <li><b>Climb</b> — Vy 76 kt, flaps up when clear</li>
+        <li><b>Climb</b> — Vy 84 kt, flaps up when clear</li>
         <li><b>Call</b> — "75F going around"</li>
       </ul></div>
     </div>
 
     <!-- FLY / V-SPEEDS -->
     <div class="pane" data-pane="fly-vspeeds">
-      <div class="card plain"><h3>V-speeds — 172N, 2,300 lb</h3><table class="vsp">
+      <div class="card plain"><h3>V-speeds — 182Q, 2,950 lb</h3><table class="vsp">
         <tr><td>Vr — rotation</td><td>55</td></tr>
-        <tr><td>Vx — best angle</td><td>59</td></tr>
-        <tr><td>Vy — best rate</td><td>76</td></tr>
-        <tr><td>Best glide</td><td>65</td></tr>
-        <tr><td>Vs — stall, clean</td><td>47</td></tr>
-        <tr><td>Vs0 — stall, flaps 40°</td><td>41</td></tr>
-        <tr><td>Vfe — max flap extended</td><td>85</td></tr>
-        <tr><td>Va — maneuvering</td><td>99</td></tr>
-        <tr><td>Vno — max structural cruise</td><td>127</td></tr>
-        <tr><td>Vne — never exceed</td><td>160</td></tr>
-        <tr><td>Final approach (full flap)</td><td>60–65</td></tr>
-        <tr><td>Short-field approach</td><td>61</td></tr>
-      </table><p class="dim" style="margin-top:8px">All speeds KIAS at gross weight, from the 172N POH.</p></div>
+        <tr><td>Vx — best angle</td><td>58</td></tr>
+        <tr><td>Vy — best rate</td><td>84</td></tr>
+        <tr><td>Best glide</td><td>70</td></tr>
+        <tr><td>Vs — stall, clean</td><td>54</td></tr>
+        <tr><td>Vs0 — stall, flaps 40°</td><td>49</td></tr>
+        <tr><td>Vfe — max flap extended</td><td>95</td></tr>
+        <tr><td>Va — maneuvering</td><td>110</td></tr>
+        <tr><td>Vno — max structural cruise</td><td>140</td></tr>
+        <tr><td>Vne — never exceed</td><td>175</td></tr>
+        <tr><td>Final approach (full flap)</td><td>65–70</td></tr>
+        <tr><td>Short-field approach</td><td>65</td></tr>
+      </table><p class="dim" style="margin-top:8px">All speeds KIAS at gross weight, from the 182Q POH.</p></div>
     </div>
 
     <!-- FLY / ENGINE -->
     <div class="pane" data-pane="fly-engine">
-      <div class="card plain"><h3>Lycoming O-360 — 180 hp</h3>
-        <p>Four cylinders, carbureted, fixed-pitch prop. Redline 2,700 RPM. Burns about 9–10 gph at cruise.</p>
+      <div class="card plain"><h3>Continental O-470 — 230 hp</h3>
+        <p>Six cylinders, carbureted, constant-speed prop. Redline 2,600 RPM. Burns about 13 gph at cruise — the Skylane's extra speed is not free. (Sim simplification: there is no separate prop lever — the governor is folded into the throttle, so RPM still follows the black knob like the old 172.)</p>
         <div class="kv"><span>RPM</span><b id="engRpm">0</b></div>
         <div class="kv"><span>Mixture</span><b id="engMix">RICH</b></div>
         <div class="kv"><span>Carb heat</span><b id="engCarb">COLD</b></div>
@@ -513,7 +510,7 @@
         <p><b>Slow flight:</b> 1.2 Vs, gear… fixed. Flaps as specified, ±100 ft, ±10 kt. The horn is music; the break is failure.</p>
         <p><b>Stalls:</b> recover at the first indication on a checkride if the DPE briefs it — here, we fly to the break and recover with minimum altitude loss. Power, pitch, level the wings, in that order.</p>
         <p><b>Steep turns:</b> 45° bank, ±100 ft, rollout within 10° of entry heading. Look outside! The G5 is not a television.</p>
-        <p><b>Emergencies:</b> aviate, navigate, communicate. Best glide 65, pick a field, <i>then</i> troubleshoot. The engine in the mock ride will quit once. Probably once.</p>
+        <p><b>Emergencies:</b> aviate, navigate, communicate. Best glide 70, pick a field, <i>then</i> troubleshoot. The engine in the mock ride will quit once. Probably once.</p>
       </div>
     </div>
 
@@ -527,7 +524,7 @@
         <div class="kv"><span>MZB VOR</span><b>117.80</b></div>
       </div>
       <div class="card plain"><h3>Say it like Jean-Jacques</h3>
-        <p>"Montgomery Tower, Skyhawk 4975F, holding short Runway 28L at Bravo, ready for departure, westbound."</p>
+        <p>"Montgomery Tower, Skylane 4975F, holding short Runway 28L at Bravo, ready for departure, westbound."</p>
         <p>Short, who-where-what. The tower is busy; your life story can wait until the debrief, where it will be charged by the hour.</p>
       </div>
       <div class="card plain"><h3>Live frequency — 119.20</h3><div id="radioLog" style="font-size:12.5px;line-height:1.55"></div></div>
@@ -553,8 +550,9 @@
         <tr><td>Pause</td><td>P</td></tr>
         <tr><td>Reset to runway</td><td>RESET button</td></tr>
       </table>
-      <p style="margin-top:8px">Takeoff: mixture rich, carb heat cold, full throttle (W), rotate at 55 kt (↑ or pull the yoke), climb at Vy 76. Land: carb heat on, 65 kt on final, flaps 30–40°, flare gently — Jean-Jacques is watching the VSI.</p><p style="margin-top:8px"><b>Flight model v1.47:</b> ISA density (IAS sags vs TAS as you climb, and the O-360 loses power with it), a real lift/drag polar with ground effect — expect the float in the flare — plus pitch stability, dihedral, adverse yaw, prop torque and P-factor (feed in right rudder in the climb), buffet before the break, and an accelerated stall if you haul G in a steep turn. The PAPI left of the 28L threshold is live: two white, two red and you are on the 3° path.</p>
-      <p style="margin-top:8px"><b>New in v1.47:</b> a two-axis autopilot (HDG hold captures your heading, ALT hold captures altitude and works the throttle — it bails out if you stall or touch down, and your yoke inputs always win), time-of-day lighting from morning to a starlit night with sequenced approach flashers, visibility presets including a coastal marine layer, a graded landing scorer with a session logbook, four instant scenarios, live pattern traffic, moving freeway traffic, a stall warning horn in the audio mix, and a live performance readout (density altitude, fuel flow, EGT, runway wind components) on the Engine tab.</p></div>
+      <p style="margin-top:8px">Takeoff: mixture rich, carb heat cold, full throttle (W), rotate at 55 kt (↑ or pull the yoke), climb at Vy 84. Land: carb heat on, 70 kt on final, flaps 30–40°, flare gently — Jean-Jacques is watching the VSI.</p><p style="margin-top:8px"><b>Flight model v1.49:</b> ISA density (IAS sags vs TAS as you climb, and the O-470 loses power with it), a real lift/drag polar with ground effect — expect the float in the flare — plus pitch stability, dihedral, adverse yaw, prop torque and P-factor (feed in right rudder in the climb), a long buffet warning before a gentle, mushy break (the Skylane talks to you well before it lets go, and mushes rather than drops), and an accelerated stall if you haul G in a steep turn. The PAPI left of the 28L threshold is live: two white, two red and you are on the 3° path.</p>
+      <p style="margin-top:8px"><b>New in v1.49:</b> the school aeroplane is now a Cessna 182Q Skylane — 230 hp Continental O-470 in place of the Skyhawk's 180, so she climbs harder, cruises around 135–140 kt instead of 115, and carries Skylane speeds everywhere (Vy 84, best glide 70, final at 70, stall up at 54 clean). Same carb heat, same fixed gear, same KMYF. And the G5 attitude indicator is fixed: its horizon disc was rotating <i>with</i> your bank instead of counter-rotating against it like a real gyro horizon, so a right bank tilted the horizon the wrong way. Bank right now and the horizon stays world-level, exactly as it does out the windscreen.</p>
+      <p style="margin-top:8px"><b>New in v1.48:</b> the ground is real — Esri World Imagery satellite photography draped over the terrain and georeferenced to the FAA-surveyed runway ends, so every strip (all three at KMYF, Miramar, Lindbergh, North Island, Gillespie), the coastline, Mission Bay and the road network sit exactly where they should; the painted terrain remains underneath as an offline fallback. Also: a more forgiving stall, leafier trees, denser suburbs on their real streets, airliners at Lindbergh's gates, boats and ships with wakes working Mission Bay, San Diego Bay and the coast — and the landing scorer is gone. Touchdowns get an instructor debrief, not points. (v1.47 added the two-axis autopilot, time-of-day lighting, the marine layer, scenarios, live traffic and the stall horn.)</p></div>
     </div>
 
   </div>
@@ -582,16 +580,22 @@ var FIELD_ELEV_FT=427;
 
 /* ================= WORLD LAYOUT (San Diego, KMYF at origin) =================
    World: +X east, +Z south, -Z north. 1 unit = 1 m. Field elev = y 0.      */
+/* Georeference: the world origin is the centre of KMYF Runway 28L
+   (32.8149474°N, 117.1403547°W — midpoint of the FAA-surveyed 10R/28L ends).
+   Every airport, runway and landmark below sits at its real lat/lon through
+   a local tangent-plane projection (110,901 m per degree of latitude,
+   93,569 m per degree of longitude at 32.81°N), so the 3D strips lie exactly
+   on the satellite imagery draped over the terrain. Headings are TRUE. */
 var APT={
-  KMYF:{x:0,z:0,name:'Montgomery-Gibbs'},
-  KNKX:{x:-900,z:-5600,name:'MCAS Miramar'},
-  KSAN:{x:-9800,z:11300,name:'Lindbergh Field'},
-  KNZY:{x:-14200,z:13900,name:'NAS North Island'},
-  KSEE:{x:17400,z:2600,name:'Gillespie Field'},
-  MZB:{x:-11300,z:5200,name:'Mission Bay VOR'}
+  KMYF:{x:75,z:-86,name:'Montgomery-Gibbs'},
+  KNKX:{x:-265,z:-5942,name:'MCAS Miramar'},
+  KSAN:{x:-4614,z:9026,name:'Lindbergh Field'},
+  KNZY:{x:-6808,z:12948,name:'NAS North Island'},
+  KSEE:{x:15711,z:-1250,name:'Gillespie Field'},
+  MZB:{x:-7967,z:3636,name:'Mission Bay VOR'}
 };
-var RWY_HDG=280; // 28L
-var RWY_DIR={x:Math.sin(RWY_HDG*Math.PI/180), z:-Math.cos(RWY_HDG*Math.PI/180)}; // unit vec along 280
+var RWY_HDG=295; // 28L — true alignment from the FAA endpoint survey
+var RWY_DIR={x:Math.sin(RWY_HDG*Math.PI/180), z:-Math.cos(RWY_HDG*Math.PI/180)}; // unit vec along 295
 function rwyLocal(x,z){ // along / perp relative to runway axis through origin
   var along=x*RWY_DIR.x+z*RWY_DIR.z;
   var perp=x*(-RWY_DIR.z)+z*(RWY_DIR.x);
@@ -599,22 +603,31 @@ function rwyLocal(x,z){ // along / perp relative to runway axis through origin
 }
 function gauss(x,z,cx,cz,r,h){ var dx=x-cx,dz=z-cz; return h*Math.exp(-(dx*dx+dz*dz)/(r*r)); }
 function fnoise(x,z){ return Math.sin(x*0.011+Math.sin(z*0.007)*1.7)*Math.cos(z*0.009+Math.sin(x*0.005)*1.3)*2.6 + Math.sin(x*0.031)*Math.sin(z*0.027)*1.15 + Math.sin((x+z)*0.0031)*2.0; }
+function fieldPlateau(h,x,z,cx,cz,ty,r){
+  // blend the procedural hills into a flat apron at a field's surveyed
+  // elevation (ty, metres above KMYF) so its runways sit flat on the imagery
+  var dx=x-cx, dz=z-cz, d=Math.sqrt(dx*dx+dz*dz);
+  if(d>=r) return h;
+  var u=Math.min(1, Math.max(0,(d-r*0.5)/(r*0.5))); var s=u*u*(3-2*u);
+  return ty+(h-ty)*s;
+}
 function terrainH(x,z){
-  // shore line approx x=-11500 (Pacific). Ocean floor -150.
-  var shore=-11500+1200*Math.sin(z*0.00012);
+  // shore line approx x=-10950 (Pacific, real coastline). Ocean floor -150.
+  var shore=-10950+1100*Math.sin(z*0.00012);
   // base rolling terrain, growing east
   var east=Math.max(0,(x-2500)/26000);
   var h=26*(0.5*Math.sin(x*0.0011+1.7)*Math.cos(z*0.0013-0.6)+0.3*Math.sin(x*0.0027-0.4)*Math.sin(z*0.0021+2.1))
        + east*east*640*(0.65+0.35*Math.sin(x*0.00035)*Math.cos(z*0.0004))
        + east*130;
-  h+=gauss(x,z,12500,3500,2600,355);   // Cowles Mountain (1,593 ft MSL)
-  h+=gauss(x,z,-9800,-600,1700,118);   // Mt. Soledad (822 ft MSL)
+  h+=gauss(x,z,10103,16,2600,355);     // Cowles Mountain (1,593 ft MSL) — real position
+  h+=gauss(x,z,-10443,-2777,1700,118); // Mt. Soledad (822 ft MSL) — real position
   h+=gauss(x,z,21000,-6000,5200,420);  // inland ranges NE
   h+=gauss(x,z,6000,-11000,6000,150);  // Miramar mesa north
   h+=gauss(x,z,5200,6800,2200,42);     // Tierrasanta / Mission Trails undulation
   h+=gauss(x,z,-4200,8200,2600,28);    // Balboa / Mesa College rise
-  // Mission Bay: water inlet west
-  var bay=gauss(x,z,-10200,2100,1500,-150); h+=bay;
+  // Mission Bay + San Diego Bay: real water inlets, cut below the water plane
+  h+=gauss(x,z,-8872,3866,2100,-235);
+  h+=gauss(x,z,-5600,13800,2600,-235);
   if(x<shore){ var t=Math.min(1,(shore-x)/2600); h=h*(1-t)+(-150)*t; }
   if(x<-14500) h=-150;
   // field plateau + runway corridor flatten (Montgomery-Gibbs KMYF — keep the airfield dead flat)
@@ -630,13 +643,18 @@ function terrainH(x,z){
   var base=h*flat;
   // micro-relief only away from the airfield so the pavement stays true
   if(flat>0.35 && base>-100) base+=fnoise(x,z)*flat;
+  // real field plateaus — every other airport at its surveyed elevation
+  base=fieldPlateau(base,x,z,-4614,9026,-125,3400);   // KSAN, 17 ft MSL
+  base=fieldPlateau(base,x,z,-6808,12948,-122,2300);  // KNZY, 26 ft MSL
+  base=fieldPlateau(base,x,z,15711,-1250,-12,1700);   // KSEE, 388 ft MSL
+  base=fieldPlateau(base,x,z,-265,-5942,15,4200);     // KNKX, 477 ft MSL
   return base;
 }
 
 /* ================= THREE SETUP ================= */
 var container=document.getElementById('scene');
 var renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.35));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
 renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.outputColorSpace=THREE.SRGBColorSpace;
 renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.14;
@@ -653,7 +671,7 @@ camera.position.set(0,3,-700);
 // synchronous GPU job that otherwise blocks the page's initial load.
 setTimeout(function(){ try{ var pmrem=new THREE.PMREMGenerator(renderer); scene.environment=pmrem.fromScene(new THREE.RoomEnvironment(),0.04).texture; }catch(e){} }, 350);
 var sun=new THREE.DirectionalLight(0xfff0d0,2.95);
-sun.castShadow=true; sun.shadow.mapSize.set(1024,1024);
+sun.castShadow=true; sun.shadow.mapSize.set(2048,2048);
 sun.shadow.camera.left=-240; sun.shadow.camera.right=240; sun.shadow.camera.top=240; sun.shadow.camera.bottom=-240;
 sun.shadow.camera.near=10; sun.shadow.camera.far=2200; sun.shadow.bias=-0.00028; sun.shadow.normalBias=0.6;
 scene.add(sun); scene.add(sun.target);
@@ -698,7 +716,7 @@ var clouds=[];
   var coreMat=new THREE.MeshStandardMaterial({color:0xf4f7fa,roughness:1,transparent:true,opacity:0.82,flatShading:false});
   var shadeMat=new THREE.MeshStandardMaterial({color:0xc9d4df,roughness:1,transparent:true,opacity:0.55});
   window.__cloudMats=[coreMat,shadeMat];
-  for(var i=0;i<26;i++){ var g=new THREE.Group(); var n=5+Math.floor(Math.random()*5);
+  for(var i=0;i<32;i++){ var g=new THREE.Group(); var n=5+Math.floor(Math.random()*5);
     for(var j=0;j<n;j++){ var rad=62+Math.random()*110; var s=new THREE.Mesh(new THREE.SphereGeometry(rad,11,8), (j%3===0?shadeMat:coreMat));
       s.position.set((Math.random()-0.5)*340,(Math.random()-0.5)*42 - (j%3===0?14:0),(Math.random()-0.5)*170); s.scale.y=0.40; g.add(s);
       if(j===0){ var spr=new THREE.Sprite(new THREE.SpriteMaterial({map:ctex,transparent:true,opacity:0.42,depthWrite:false})); spr.scale.set(rad*3.4,rad*1.5,1); spr.position.copy(s.position); spr.position.y+=8; g.add(spr); } }
@@ -709,9 +727,9 @@ var clouds=[];
   var SIZE=34000, SEG=164;
   var geo=new THREE.PlaneGeometry(SIZE,SIZE,SEG,SEG); geo.rotateX(-Math.PI/2);
   var pos=geo.attributes.position, colors=[];
-  var cGrass=new THREE.Color(0x5f7a3a), cDry=new THREE.Color(0x9a8f5e), cRock=new THREE.Color(0x7d7268),
+  var cGrass=new THREE.Color(0x5c6e38), cDry=new THREE.Color(0x948a5f), cRock=new THREE.Color(0x7d7268),
       cSnow=new THREE.Color(0xdfe6ea), cSand=new THREE.Color(0xc9b27d), cSea=new THREE.Color(0x2e5f78),
-      cUrban=new THREE.Color(0x8f9296), cChap=new THREE.Color(0x6e7d46), tmp=new THREE.Color();
+      cUrban=new THREE.Color(0x8f9296), cChap=new THREE.Color(0x687448), tmp=new THREE.Color();
   // subtle repeating grain so the ground doesn't look airbrushed from 1,000 ft
   var gc=document.createElement('canvas'); gc.width=gc.height=256; var gg=gc.getContext('2d');
   gg.fillStyle='#ffffff'; gg.fillRect(0,0,256,256);
@@ -719,20 +737,28 @@ var clouds=[];
   var grain=new THREE.CanvasTexture(gc); grain.wrapS=grain.wrapT=THREE.RepeatWrapping; grain.repeat.set(90,90); grain.colorSpace=THREE.SRGBColorSpace;
   for(var i=0;i<pos.count;i++){ var x=pos.getX(i), z=pos.getZ(i), h=terrainH(x,z); pos.setY(i,h);
     var n=(Math.sin(x*0.008)*Math.cos(z*0.011)*0.5+0.5);
+    var patch=0.5+0.5*Math.sin(x*0.0013+1.7)*Math.sin(z*0.0011-0.6); // field-by-field patchwork
     var urban=0; // San Diego urban fabric: around KMYF / Kearny Mesa + downtown + El Cajon corridor
     var du=Math.exp(-((x+1500)*(x+1500)+(z-2500)*(z-2500))/(5200*5200)); var dd=Math.exp(-((x+9800)*(x+9800)+(z-11800)*(z-11800))/(3800*3800)); var de=Math.exp(-((x-15500)*(x-15500)+(z-2200)*(z-2200))/(4200*4200));
     urban=Math.max(du*0.62, dd*0.85, de*0.55);
     if(h<-128) tmp.copy(cSea).lerp(new THREE.Color(0x3f7d9e), n*0.35); else if(h<-106) tmp.copy(cSand);
-    else if(h<55) tmp.copy(cGrass).lerp(cDry, Math.min(1,h/70)*0.45+n*0.28);
+    else if(h<55) tmp.copy(cGrass).lerp(cDry, Math.min(1,h/70)*0.45+n*0.20+patch*0.22);
     else if(h<180) tmp.copy(cChap).lerp(cRock,(h-55)/150);
     else if(h<300) tmp.copy(cRock); else tmp.copy(cRock).lerp(cSnow,Math.min(1,(h-300)/320));
     if(urban>0.12 && h>-20 && h<140) tmp.lerp(cUrban, Math.min(0.68, urban));
     // airfield grass: greener, mown look inside the KMYF plateau
     var dF=Math.sqrt(x*x+z*z); if(dF<950 && h>-5) tmp.setHex(0x6d8a44).lerp(new THREE.Color(0x7fa050), n*0.4);
     colors.push(tmp.r,tmp.g,tmp.b); }
-  geo.setAttribute('color',new THREE.Float32BufferAttribute(colors,3)); geo.computeVertexNormals();
+  geo.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));
+  // warp the V coordinate through Web Mercator, so the satellite drape is
+  // exact at every latitude in the tile grid, not just at the corners
+  (function(){ var uvA=geo.attributes.uv, mLat0=32.8149474, mHalf=17000/110901.1;
+    function mercY(la){ var s=Math.sin(la*Math.PI/180); return 0.5-Math.log((1+s)/(1-s))/(4*Math.PI); }
+    var mYN=mercY(mLat0+mHalf), mYS=mercY(mLat0-mHalf);
+    for(var ui=0;ui<uvA.count;ui++){ var la=mLat0-pos.getZ(ui)/110901.1; uvA.setY(ui,(mercY(la)-mYS)/(mYN-mYS)); } })();
+  geo.computeVertexNormals();
   var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,map:grain,roughness:0.97,metalness:0.0}));
-  m.receiveShadow=true; scene.add(m);
+  m.receiveShadow=true; scene.add(m); window.__terrMat=m.material;
   // ocean / bay water — deep Pacific blue with a faint sun path
   var wc=document.createElement('canvas'); wc.width=wc.height=256; var wg=wc.getContext('2d');
   wg.fillStyle='#2a6a90'; wg.fillRect(0,0,256,256);
@@ -740,6 +766,59 @@ var clouds=[];
   var wtex=new THREE.CanvasTexture(wc); wtex.wrapS=wtex.wrapT=THREE.RepeatWrapping; wtex.repeat.set(22,22); wtex.colorSpace=THREE.SRGBColorSpace;
   var water=new THREE.Mesh(new THREE.PlaneGeometry(36000,36000),new THREE.MeshStandardMaterial({color:0xffffff,map:wtex,roughness:0.10,metalness:0.18,transparent:true,opacity:0.96}));
   water.rotation.x=-Math.PI/2; water.position.y=-129; water.name='water'; scene.add(water); window.__waterTex=wtex; window.__water=water;
+})();
+/* procedural road ribbons live in their own group: once the real satellite
+   imagery is on the ground, painted ribbons would double up the real roads
+   in the photography, so they bow out (and stay as the offline fallback) */
+window.__procRoads=new THREE.Group(); scene.add(window.__procRoads);
+/* ================= SATELLITE GROUND IMAGERY — Esri World Imagery =================
+   Real aerial photography (Esri World Imagery tile service, no key required)
+   stitched into one texture and draped over the terrain mesh. The drape uses
+   the same georeference as the world layout — origin at the centre of KMYF
+   Runway 28L (32.8149474°N, 117.1403547°W), tangent-plane metres — so the
+   coastline, Mission Bay, roads, neighbourhoods and every runway in the
+   photography land exactly where the 3D world has them. If the tiles can't
+   load (offline, blocked, too patchy), nothing changes: the painted
+   procedural terrain underneath simply stays. */
+(function(){
+  var mat=window.__terrMat; if(!mat) return;
+  var LAT0=32.8149474, LON0=-117.1403547, HALF=17000, Z=13, TS=256, CAN=2048;
+  var MPD_LAT=110901.1, MPD_LON=93569.4;
+  var latN=LAT0+HALF/MPD_LAT, latS=LAT0-HALF/MPD_LAT;
+  var lonW=LON0-HALF/MPD_LON, lonE=LON0+HALF/MPD_LON;
+  function tileX(lon){ return (lon+180)/360*Math.pow(2,Z); }
+  function tileY(lat){ var s=Math.sin(lat*Math.PI/180); return (0.5-Math.log((1+s)/(1-s))/(4*Math.PI))*Math.pow(2,Z); }
+  var x0=Math.floor(tileX(lonW)), x1=Math.floor(tileX(lonE));
+  var y0=Math.floor(tileY(latN)), y1=Math.floor(tileY(latS));
+  var gx0=tileX(lonW)*TS, gy0=tileY(latN)*TS, gx1=tileX(lonE)*TS, gy1=tileY(latS)*TS;
+  var scX=CAN/(gx1-gx0), scY=CAN/(gy1-gy0);
+  var cv=document.createElement('canvas'); cv.width=CAN; cv.height=CAN;
+  var g=cv.getContext('2d'); g.fillStyle='#5c6e38'; g.fillRect(0,0,CAN,CAN);
+  var total=(x1-x0+1)*(y1-y0+1), done=0, ok=0, applied=false;
+  function apply(){
+    if(applied) return; applied=true;
+    if(ok<total*0.55) return; // too patchy — keep the painted terrain
+    try{
+      var tex=new THREE.CanvasTexture(cv);
+      tex.colorSpace=THREE.SRGBColorSpace; tex.anisotropy=8;
+      mat.map=tex; mat.vertexColors=false; mat.needsUpdate=true;
+      window.__satImagery=true;
+      if(window.__procRoads) window.__procRoads.visible=false;
+    }catch(e){ /* canvas unavailable — procedural fallback stays */ }
+  }
+  // start a beat after first paint, so the photography never delays the
+  // panel, the flight model or the first frame
+  setTimeout(function(){
+  var timer=setTimeout(apply, 15000);
+  for(var tx=x0;tx<=x1;tx++) for(var ty=y0;ty<=y1;ty++){
+    (function(tx,ty){
+      var img=new Image(); img.crossOrigin='anonymous';
+      img.onload=function(){ try{ g.drawImage(img,(tx*TS-gx0)*scX,(ty*TS-gy0)*scY,TS*scX+1,TS*scY+1); ok++; }catch(e){} if(++done===total){ clearTimeout(timer); apply(); } };
+      img.onerror=function(){ if(++done===total){ clearTimeout(timer); apply(); } };
+      img.src='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/'+Z+'/'+ty+'/'+tx;
+    })(tx,ty);
+  }
+  }, 600);
 })();
 /* runway texture maker — FAA-style: piano keys, TDZ, centreline, rubber deposits */
 function runwayTex(num1,num2){
@@ -769,20 +848,28 @@ function runwayTex(num1,num2){
   g.save(); g.translate(256,520); g.rotate(Math.PI); g.fillText(num2,0,0); g.restore();
   var t=new THREE.CanvasTexture(cv); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=8; return t;
 }
-function addRunway(cx,cz,hdgDeg,len,wid,n1,n2){
+function addRunway(cx,cz,hdgDeg,len,wid,n1,n2,yOff){
   var m=new THREE.Mesh(new THREE.PlaneGeometry(wid,len),new THREE.MeshStandardMaterial({map:runwayTex(n1,n2),roughness:0.92}));
   // NOTE: for a plane laid flat with rotation.x=-90°, the length axis maps to
   // (sin·hdg, -cos·hdg) only when rotation.z is NEGATED. Using +hdg here put
   // the painted strip ~20° off the RWY_DIR centreline the sim flies from —
   // at the 28L start point that left the aircraft ~270 m away on the grass.
   m.rotation.x=-Math.PI/2; m.rotation.z=-(hdgDeg)*Math.PI/180;
-  var y=terrainH(cx,cz); m.position.set(cx,y+0.12,cz); m.receiveShadow=true; scene.add(m); return m;
+  var y=terrainH(cx,cz); m.position.set(cx,y+(yOff||0.12),cz); m.receiveShadow=true; scene.add(m); return m;
 }
-addRunway(0,0,RWY_HDG,1700,46,'28','10');            // KMYF 28L/10R along 280
-addRunway(APT.KNKX.x,APT.KNKX.z,135,2400,52,'14','32'); // Miramar (visual)
-addRunway(APT.KSAN.x,APT.KSAN.z,270,2900,60,'27','09'); // Lindbergh
-addRunway(APT.KSEE.x,APT.KSEE.z,175,1650,40,'17','35'); // Gillespie
-addRunway(APT.KNZY.x,APT.KNZY.z,290,2400,52,'29','11'); // North Island
+/* every strip at its surveyed centre, true heading, length and width —
+   each one lies exactly on the same pavement in the satellite imagery */
+addRunway(0,0,RWY_HDG,1036,18,'28','10');               // KMYF 28L/10R — the school runway
+addRunway(230,-61,295,1401,46,'28','10',0.15);          // KMYF 28R/10L
+addRunway(-60,-209,245,1036,23,'23','05',0.18);         // KMYF 23/05
+addRunway(-523,-5964,255.4,3657,61,'24','06');          // Miramar 24R/06L
+addRunway(120,-5911,255.4,2438,61,'24','06');           // Miramar 24L/06R
+addRunway(APT.KSAN.x,APT.KSAN.z,286,2861,61,'27','09'); // Lindbergh 27/09
+addRunway(-6604,13094,302,2283,61,'29','11');           // North Island 29/11
+addRunway(-6999,12810,15.4,2438,61,'36','18',0.15);     // North Island 36/18
+addRunway(15683,-1439,282.1,1627,30,'27','09');         // Gillespie 27R/09L
+addRunway(15764,-1292,282.1,834,18,'27','09');          // Gillespie 27L/09R
+addRunway(15712,-984,359.6,1263,30,'35','17',0.15);     // Gillespie 35/17
 /* airfield — Montgomery-Gibbs (KMYF): taxiways, ramp, PAPI, tower, downtown, roads */
 (function(){
   function building(x,z,w,h,d,c,roofC,y0,ry){ var b=new THREE.Group();
@@ -794,21 +881,22 @@ addRunway(APT.KNZY.x,APT.KNZY.z,290,2400,52,'29','11'); // North Island
   function flatPlane(cx,cz,w,l,hdgDeg,col,yOff,rough){
     var m=new THREE.Mesh(new THREE.PlaneGeometry(w,l),new THREE.MeshStandardMaterial({color:col,roughness:rough||0.94}));
     m.rotation.x=-Math.PI/2; m.rotation.z=-hdgDeg*Math.PI/180; m.position.set(cx,(yOff||0.05),cz); m.receiveShadow=true; scene.add(m); return m; }
-  // Parallel taxiway + connectors + ramp at KMYF (south side, Gibbs Drive side)
+  // Parallel taxiway + connectors + ramp at KMYF — the ramp and hangars sit
+  // north of 28R, where the real Gibbs Flying Service ramp is
   flatPlane(px*72, pz*72, 14, 1500, RWY_HDG, 0x4a4f55, 0.06);
-  flatPlane(px*118+RWY_DIR.x*180, pz*118+RWY_DIR.z*180, 210, 300, RWY_HDG, 0x555a60, 0.055);
+  flatPlane(px*235+RWY_DIR.x*180, pz*235+RWY_DIR.z*180, 110, 300, RWY_HDG, 0x555a60, 0.055);
   [-520,60,560].forEach(function(a){ flatPlane(RWY_DIR.x*a+px*40, RWY_DIR.z*a+pz*40, 13, 76, RWY_HDG+90, 0x4a4f55, 0.06); });
   // taxiway centreline (thin yellow strip on the parallel)
   flatPlane(px*72, pz*72, 0.7, 1480, RWY_HDG, 0xd8b93a, 0.09, 0.7);
   // hangar row + FBO / terminal on the ramp
-  building(px*132+RWY_DIR.x*300, pz*132+RWY_DIR.z*300, 62,11,32, 0xc2c7cc,0x5a6068, 0);
-  building(px*132+RWY_DIR.x*150, pz*132+RWY_DIR.z*150, 48,9,28, 0xb4bac0,0x4c525a, 0);
-  building(px*132-RWY_DIR.x*60, pz*132-RWY_DIR.z*60, 52,10,30, 0xbfc5ca,0x565e66, 0);
-  building(px*138-RWY_DIR.x*300, pz*138-RWY_DIR.z*300, 40,8,24, 0xaab0b6,0x454b52, 0);
-  building(px*150+RWY_DIR.x*30, pz*150+RWY_DIR.z*30, 34,7,20, 0xd8d2c4,0x8a4a32, 0); // FBO / Gibbs Flying Service
+  building(px*232+RWY_DIR.x*300, pz*232+RWY_DIR.z*300, 62,11,32, 0xc2c7cc,0x5a6068, 0);
+  building(px*232+RWY_DIR.x*150, pz*232+RWY_DIR.z*150, 48,9,28, 0xb4bac0,0x4c525a, 0);
+  building(px*232-RWY_DIR.x*60, pz*232-RWY_DIR.z*60, 52,10,30, 0xbfc5ca,0x565e66, 0);
+  building(px*240-RWY_DIR.x*300, pz*240-RWY_DIR.z*300, 40,8,24, 0xaab0b6,0x454b52, 0);
+  building(px*252+RWY_DIR.x*30, pz*252+RWY_DIR.z*30, 34,7,20, 0xd8d2c4,0x8a4a32, 0); // FBO / Gibbs Flying Service
   // parked cars on the ramp lot
   var carCols=[0xb03a30,0x2f5f9e,0xd9d9d9,0x22262b,0x7a7f85,0x3f7a52];
-  for(var ci=0;ci<14;ci++){ var ca=new THREE.Mesh(new THREE.BoxGeometry(4.4,1.4,1.9),new THREE.MeshStandardMaterial({color:carCols[ci%6],roughness:0.35,metalness:0.4})); var along=-260+ci*22; ca.position.set(px*168+RWY_DIR.x*along, 0.75, pz*168+RWY_DIR.z*along); ca.rotation.y=Math.atan2(RWY_DIR.x,RWY_DIR.z); ca.castShadow=true; scene.add(ca); }
+  for(var ci=0;ci<14;ci++){ var ca=new THREE.Mesh(new THREE.BoxGeometry(4.4,1.4,1.9),new THREE.MeshStandardMaterial({color:carCols[ci%6],roughness:0.35,metalness:0.4})); var along=-260+ci*22; ca.position.set(px*282+RWY_DIR.x*along, 0.75, pz*282+RWY_DIR.z*along); ca.rotation.y=Math.atan2(RWY_DIR.x,RWY_DIR.z); ca.castShadow=true; scene.add(ca); }
   // control tower (north side, as at the real field) with glass cab
   building(px*-105+RWY_DIR.x*40, pz*-105+RWY_DIR.z*40, 10,22,10, 0xd7dde2,0x37424e, 0);
   var cab=new THREE.Mesh(new THREE.BoxGeometry(12.5,4.2,12.5),new THREE.MeshStandardMaterial({color:0x1d3448,roughness:0.12,metalness:0.55}));
@@ -817,41 +905,44 @@ addRunway(APT.KNZY.x,APT.KNZY.z,290,2400,52,'29','11'); // North Island
   // PAPI — 4 units left of the 28L threshold, glidepath-driven in the main loop
   window.__papi=[];
   var papiMatW=new THREE.MeshBasicMaterial({color:0xffffff}); var papiMatR=new THREE.MeshBasicMaterial({color:0xff2a22});
-  for(var pi=0; pi<4; pi++){ var pa=RWY_DIR.x*(-640+pi*11)+px*-34, pz2=RWY_DIR.z*(-640+pi*11)+pz*-34;
+  for(var pi=0; pi<4; pi++){ var pa=RWY_DIR.x*(-500+pi*11)+px*-34, pz2=RWY_DIR.z*(-500+pi*11)+pz*-34;
     var box=new THREE.Mesh(new THREE.BoxGeometry(1.6,0.9,0.9),new THREE.MeshStandardMaterial({color:0x2b2f34,roughness:0.7})); box.position.set(pa,0.55,pz2); scene.add(box);
     var lamp=new THREE.Mesh(new THREE.SphereGeometry(0.34,8,8), papiMatW.clone()); lamp.position.set(pa,1.15,pz2); scene.add(lamp); window.__papi.push(lamp); }
   window.__papiMats={w:papiMatW, r:papiMatR};
   // windsock near the 28L threshold (segmented, lit mast)
-  var sx=RWY_DIR.x*-790+px*46, sz=RWY_DIR.z*-790+pz*46;
+  var sx=RWY_DIR.x*-545+px*46, sz=RWY_DIR.z*-545+pz*46;
   var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.15,0.18,7.5),new THREE.MeshStandardMaterial({color:0xd8dde2,roughness:0.4,metalness:0.5}));
   pole.position.set(sx,3.75,sz); pole.castShadow=true; scene.add(pole);
   var sock=new THREE.Mesh(new THREE.ConeGeometry(0.95,3.8,10,1,true),new THREE.MeshStandardMaterial({color:0xff7a29,roughness:0.8,side:THREE.DoubleSide}));
   sock.rotation.z=Math.PI/2.3; sock.position.set(sx,7.0,sz); sock.name='sock'; scene.add(sock); window.__sock=sock;
-  // downtown San Diego skyline near KSAN — varied glass towers
+  // downtown San Diego skyline — at its real location NE of Lindbergh Field
   var glassCols=[0x8d99a6,0x7f95ab,0x9fb0bc,0x6e8296];
-  for(var i=0;i<22;i++){ var bx=APT.KSAN.x+620+(Math.random()-0.5)*1150, bz=APT.KSAN.z-1350+(Math.random()-0.5)*950;
-    building(bx,bz, 55+Math.random()*55, 38+Math.random()*125, 55+Math.random()*55, glassCols[i%4], 0x4c5864); }
+  for(var i=0;i<30;i++){ var bx=-1957+(Math.random()-0.5)*1150, bz=10997+(Math.random()-0.5)*950;
+    building(bx,bz, 55+Math.random()*55, 40+Math.random()*140, 55+Math.random()*55, glassCols[i%4], 0x4c5864); }
   // Kearny Mesa / Tierrasanta rooftops — low commercial sprawl around KMYF
   for(var si=0;si<20;si++){ var sa=(Math.random()-0.5)*5200, sp2=900+Math.random()*2600; var sgn=Math.random()<0.5?1:-1;
     var bx2=RWY_DIR.x*sa+px*sp2*sgn, bz2=RWY_DIR.z*sa+pz*sp2*sgn; if(Math.abs(bx2)>15000) continue;
     building(bx2,bz2, 40+Math.random()*70, 7+Math.random()*8, 30+Math.random()*50, 0xa9a49a, 0x6b6f72); }
-  // highways: I-15 (N–S east of the field) + SR-52 (E–W north) as dark ribbons following terrain
-  function road(x0,z0,x1,z1,w){ var steps=15; for(var rs=0;rs<steps;rs++){ var f0=rs/steps, f1=(rs+1)/steps; var ax=x0+(x1-x0)*f0, az=z0+(z1-z0)*f0, bx3=x0+(x1-x0)*f1, bz3=z0+(z1-z0)*f1; var mx2=(ax+bx3)/2, mz2=(az+bz3)/2; var len=Math.sqrt((bx3-ax)*(bx3-ax)+(bz3-az)*(bz3-az)); var seg=new THREE.Mesh(new THREE.PlaneGeometry(w,len+2),new THREE.MeshStandardMaterial({color:0x33373c,roughness:0.95})); seg.rotation.x=-Math.PI/2; seg.rotation.z=Math.atan2(bx3-ax,bz3-az)+Math.PI; seg.position.set(mx2, terrainH(mx2,mz2)+0.28, mz2); seg.receiveShadow=true; scene.add(seg); } }
-  road(3400,-15000, 2900,15000, 26); road(-12500,-2600, 15000,-3400, 22); road(-15000,4200, -2600,3600, 18);
+  // highways as dark ribbons following terrain, on their real alignments —
+  // they live in the procedural group and bow out when satellite imagery lands
+  function road(x0,z0,x1,z1,w){ var steps=15; for(var rs=0;rs<steps;rs++){ var f0=rs/steps, f1=(rs+1)/steps; var ax=x0+(x1-x0)*f0, az=z0+(z1-z0)*f0, bx3=x0+(x1-x0)*f1, bz3=z0+(z1-z0)*f1; var mx2=(ax+bx3)/2, mz2=(az+bz3)/2; var len=Math.sqrt((bx3-ax)*(bx3-ax)+(bz3-az)*(bz3-az)); var seg=new THREE.Mesh(new THREE.PlaneGeometry(w,len+2),new THREE.MeshStandardMaterial({color:0x33373c,roughness:0.95})); seg.rotation.x=-Math.PI/2; seg.rotation.z=Math.atan2(bx3-ax,bz3-az)+Math.PI; seg.position.set(mx2, terrainH(mx2,mz2)+0.28, mz2); seg.receiveShadow=true; window.__procRoads.add(seg); } }
+  road(3480,-11660, 2825,12739, 26);   // I-15, N–S east of the field
+  road(-9807,-2566, 16860,-1679, 22);  // SR-52, E–W north of the field
+  road(-1994,10964, -825,-5893, 18);   // SR-163, downtown to Miramar
   // runway edge lights + green threshold / red end lights at KMYF
   var lg=new THREE.SphereGeometry(0.32,6,6), lm=new THREE.MeshBasicMaterial({color:0xffe9a8});
   var inst=new THREE.InstancedMesh(lg,lm,44); var M=new THREE.Matrix4();
-  for(var i2=0;i2<22;i2++){ var a=-820+i2*76;
+  for(var i2=0;i2<22;i2++){ var a=-505+i2*48;
     M.setPosition(RWY_DIR.x*a+px*25, 0.55, RWY_DIR.z*a+pz*25); inst.setMatrixAt(i2*2,M);
     M.setPosition(RWY_DIR.x*a-px*25, 0.55, RWY_DIR.z*a-pz*25); inst.setMatrixAt(i2*2+1,M); }
   scene.add(inst); window.__rwyLightMat=lm;
   var thrG=new THREE.MeshBasicMaterial({color:0x2eff6a}); var endR=new THREE.MeshBasicMaterial({color:0xff2a22});
-  [-1,1].forEach(function(sgn2){ var gl=new THREE.Mesh(new THREE.SphereGeometry(0.4,8,8),thrG); gl.position.set(RWY_DIR.x*-848+px*23*sgn2,0.6,RWY_DIR.z*-848+pz*23*sgn2); scene.add(gl);
-    var rl2=new THREE.Mesh(new THREE.SphereGeometry(0.4,8,8),endR); rl2.position.set(RWY_DIR.x*848+px*23*sgn2,0.6,RWY_DIR.z*848+pz*23*sgn2); scene.add(rl2); });
+  [-1,1].forEach(function(sgn2){ var gl=new THREE.Mesh(new THREE.SphereGeometry(0.4,8,8),thrG); gl.position.set(RWY_DIR.x*-512+px*23*sgn2,0.6,RWY_DIR.z*-512+pz*23*sgn2); scene.add(gl);
+    var rl2=new THREE.Mesh(new THREE.SphereGeometry(0.4,8,8),endR); rl2.position.set(RWY_DIR.x*512+px*23*sgn2,0.6,RWY_DIR.z*512+pz*23*sgn2); scene.add(rl2); });
   // sequenced approach flashers ("the rabbit") for 28L — a chase light running
   // toward the threshold, lit up when darkness falls (sequenced in the loop)
   window.__rabbit=[];
-  for(var rb=0; rb<5; rb++){ var ra=-872-rb*30;
+  for(var rb=0; rb<5; rb++){ var ra=-545-rb*30;
     var post=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.09,2.6),new THREE.MeshStandardMaterial({color:0x596068,roughness:0.6,metalness:0.4}));
     post.position.set(RWY_DIR.x*ra,1.3,RWY_DIR.z*ra); scene.add(post);
     var lamp2=new THREE.Mesh(new THREE.SphereGeometry(0.42,8,8),new THREE.MeshBasicMaterial({color:0x2a2f36}));
@@ -872,21 +963,31 @@ function textSprite(txt,scale){
 }
 Object.keys(APT).forEach(function(k){ if(k==='MZB'||k==='KMYF')return; var a=APT[k];
   var sp=textSprite(k,0.55); sp.position.set(a.x, terrainH(a.x,a.z)+240, a.z); scene.add(sp); });
+/* tree canopy: a low-poly sphere with position-hashed jitter — reads as a
+   leafy eucalyptus crown from the air instead of a perfect cone */
+function canopyGeo(r){
+  var g=new THREE.SphereGeometry(r,7,5), p=g.attributes.position;
+  for(var i=0;i<p.count;i++){ var x=p.getX(i), y=p.getY(i), z=p.getZ(i);
+    var hsh=Math.sin(x*12.9898+y*78.233+z*37.719)*43758.5453; hsh-=Math.floor(hsh);
+    var s=0.86+hsh*0.30; p.setXYZ(i, x*s, y*s*1.18, z*s); }
+  g.computeVertexNormals(); return g;
+}
 /* trees — eucalyptus / pine mix with per-instance colour variation */
 (function(){
   var N=780;
   var trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.35,0.5,3,5),new THREE.MeshStandardMaterial({color:0x5a4230,roughness:1}),N);
-  var crown=new THREE.InstancedMesh(new THREE.ConeGeometry(2.7,7.8,7),new THREE.MeshStandardMaterial({color:0xffffff,roughness:1}),N);
-  var M=new THREE.Matrix4(), Q=new THREE.Quaternion(), S3=new THREE.Vector3(), P=new THREE.Vector3();
-  var cA=new THREE.Color(0x3d6030), cB=new THREE.Color(0x5a7d3a), cC=new THREE.Color(0x2f5226), tc=new THREE.Color();
+  var crown=new THREE.InstancedMesh(canopyGeo(3.3),new THREE.MeshStandardMaterial({color:0xffffff,roughness:1,flatShading:true}),N);
+  var M=new THREE.Matrix4(), Q=new THREE.Quaternion(), S3=new THREE.Vector3(), P=new THREE.Vector3(), YAX=new THREE.Vector3(0,1,0);
+  var cA=new THREE.Color(0x44582e), cB=new THREE.Color(0x5c7038), cC=new THREE.Color(0x37482a), tc=new THREE.Color();
   var placed=0, guard=0;
   while(placed<N && guard++<9000){
     var x=(Math.random()-0.5)*23000, z=(Math.random()-0.5)*23000;
     var rl=rwyLocal(x,z); if(Math.abs(rl.along)<1350 && Math.abs(rl.perp)<150) continue;
     var h=terrainH(x,z); if(h<-100||h>210) continue;
     var s=0.65+Math.random()*1.05;
+    Q.setFromAxisAngle(YAX, Math.random()*Math.PI*2);
     P.set(x,h+1.4*s,z); S3.set(s,s,s); M.compose(P,Q,S3); trunk.setMatrixAt(placed,M);
-    P.set(x,h+6.7*s,z); M.compose(P,Q,S3); crown.setMatrixAt(placed,M);
+    P.set(x,h+6.2*s,z); S3.set(s*(0.85+Math.random()*0.35), s*(0.9+Math.random()*0.45), s*(0.85+Math.random()*0.35)); M.compose(P,Q,S3); crown.setMatrixAt(placed,M);
     tc.copy(cA).lerp(Math.random()<0.5?cB:cC, Math.random()*0.8); crown.setColorAt(placed, tc); placed++;
   }
   trunk.count=crown.count=placed; if(crown.instanceColor) crown.instanceColor.needsUpdate=true; scene.add(trunk); scene.add(crown);
@@ -909,14 +1010,14 @@ setTimeout(function(){
 
   /* ---- residential neighbourhoods: instanced houses + pyramid roofs ---- */
   (function(){
-    var MAX=1700;
+    var MAX=2100;
     var body=new THREE.InstancedMesh(new THREE.BoxGeometry(11,5.2,9),new THREE.MeshStandardMaterial({roughness:0.9}),MAX);
     var roof=new THREE.InstancedMesh(new THREE.ConeGeometry(8.2,3.4,4),new THREE.MeshStandardMaterial({roughness:0.95}),MAX);
     body.castShadow=false; body.receiveShadow=true;
-    var hoods=[ // [cx, cz, radius, grid angle] — Clairemont, Kearny Mesa S, Tierrasanta, Scripps Ranch, Mira Mesa, University City, La Jolla, Pacific Beach, Mission Valley, El Cajon, Santee, Allied Gardens
-      [-4200,1500,1500,0.3],[600,2900,1700,0.05],[4300,2700,1500,-0.2],[4600,-3900,1600,0.5],[1200,-5400,1700,0.1],
-      [-4600,-2700,1400,0.7],[-9000,-500,1100,0.9],[-9300,2100,900,0.2],[-3600,5300,1300,0.0],[13800,2500,1700,0.4],
-      [15200,-1400,1400,0.15],[7600,2900,1200,-0.3]];
+    var hoods=[ // [cx, cz, radius, grid angle] at their real lat/lon — Clairemont, Kearny Mesa S, Tierrasanta, Scripps Ranch, Mira Mesa, University City, La Jolla, Pacific Beach, Mission Valley, El Cajon, Santee, Allied Gardens
+      [-6064,-2233,1500,0.3],[485,1648,1700,0.05],[7503,-1124,1500,-0.2],[4696,-11105,1600,0.5],[-450,-11105,1700,0.1],
+      [-6064,-4451,1400,0.7],[-12146,-3897,1100,0.9],[-8872,1648,900,0.2],[-2789,4975,1300,0.0],[16200,2203,1200,0.4],
+      [15644,-2566,1400,0.15],[6567,1427,1200,-0.3]];
     var bodyCols=[0xe8ded0,0xd9c9a8,0xc7d0d4,0xe2cfc0,0xcfd8c2,0xd8bfae,0xbfc5ce];
     var roofCols=[0x8a4a32,0x6e4a3a,0x59504a,0x7a3f2d,0x4c4c50];
     var placed=0, guard=0;
@@ -948,7 +1049,7 @@ setTimeout(function(){
     var MAX=300;
     var inst=new THREE.InstancedMesh(new THREE.BoxGeometry(48,13,32),new THREE.MeshStandardMaterial({roughness:0.85}),MAX);
     inst.receiveShadow=true;
-    var zones=[[0,1500,2100],[-2600,-5300,1500],[-3800,4700,1500],[1500,-1800,1300],[13200,900,1300]];
+    var zones=[[300,1200,2100],[-4661,-8887,1500],[-2789,4975,1500],[-918,-9996,1300],[16200,2100,1300]];
     var cols=[0xb9bcbe,0xa9a49a,0xcac5b8,0x9aa4ac,0xd2d5d7];
     var placed=0, guard=0;
     while(placed<MAX && guard++<9000){
@@ -975,19 +1076,16 @@ setTimeout(function(){
       var mx=(ax+bx)/2, mz=(az+bz)/2, len=Math.sqrt((bx-ax)*(bx-ax)+(bz-az)*(bz-az));
       var seg=new THREE.Mesh(new THREE.PlaneGeometry(w,len+2),new THREE.MeshStandardMaterial({color:col||0x33373c,roughness:0.95}));
       seg.rotation.x=-Math.PI/2; seg.rotation.z=Math.atan2(bx-ax,bz-az)+Math.PI;
-      seg.position.set(mx,terrainH(mx,mz)+0.30,mz); seg.receiveShadow=true; scene.add(seg); }
+      seg.position.set(mx,terrainH(mx,mz)+0.30,mz); seg.receiveShadow=true; window.__procRoads.add(seg); }
   }
-  road2(-5400,-15000,-4900,15000,26);            // I-805, N–S west of the field
-  road2(-15000,7400,13000,6600,28);              // I-8, E–W through Mission Valley
-  road2(-6800,12500,-2600,-2400,20);             // SR-163 toward downtown
-  road2(-13500,-3350,3000,-2900,20);             // SR-52 west leg
-  road2(-15000,1250,9000,900,15);                 // Balboa Ave
-  road2(-15000,4300,-2600,3750,15);              // Friars Rd
-  road2(2900,-15000,3400,15000,7,0x3c4046);       // I-15 centre median shading
+  road2(-4474,-11660,-4193,12739,26);            // I-805, N–S west of the field
+  road2(-9807,5308,14053,4975,28);               // I-8, E–W through Mission Valley
+  road2(-9807,-758,10310,-758,15);               // Balboa Ave
+  road2(-8404,5530,4696,4643,15);                // Friars Rd
   (function(){ // traffic: instanced cars dotted along the freeways
     var MAX=380;
     var inst=new THREE.InstancedMesh(new THREE.BoxGeometry(1.9,1.35,4.5),new THREE.MeshStandardMaterial({roughness:0.35,metalness:0.4}),MAX);
-    var routes=[[3400,-15000,2900,15000],[-5400,-15000,-4900,15000],[-15000,7400,13000,6600],[-12500,-3350,15000,-3050],[-15000,1250,9000,900]];
+    var routes=[[3480,-11660,2825,12739],[-4474,-11660,-4193,12739],[-9807,5308,14053,4975],[-9807,-2566,16860,-1679],[-9807,-758,10310,-758]];
     var cols=[0xd8d8d8,0xb03a30,0x2f5f9e,0x22262b,0x7a7f85,0xe0a52e,0x3f7a52];
     for(var i=0;i<MAX;i++){
       var r=routes[i%routes.length], f=Math.random();
@@ -1018,12 +1116,12 @@ setTimeout(function(){
     // fuel farm — two white tanks east of the ramp
     [-30,30].forEach(function(off){
       var tank=new THREE.Mesh(new THREE.CylinderGeometry(4.5,4.5,3.4,14),new THREE.MeshStandardMaterial({color:0xe8ebee,roughness:0.4,metalness:0.2}));
-      tank.position.set(RWY_DIR.x*560+px2*(150+off),1.7,RWY_DIR.z*560+pz2*(150+off)); tank.castShadow=true; scene.add(tank);
+      tank.position.set(RWY_DIR.x*560+px2*(215+off),1.7,RWY_DIR.z*560+pz2*(215+off)); tank.castShadow=true; scene.add(tank);
     });
     // parked trainers on the south ramp
     var cols2=[0xf2f4f6,0xd8483a,0x2f6fb4,0xf2f4f6,0x3f7a52,0xf5a623,0xf2f4f6,0x8a5aa0];
     for(var k=0;k<8;k++){
-      var g=new THREE.Group(), al=-330+k*95, pp=152+(k%2)*16;
+      var g=new THREE.Group(), al=-330+k*95, pp=205+(k%2)*16;
       var mat=new THREE.MeshStandardMaterial({color:cols2[k],roughness:0.4,metalness:0.08});
       var fus=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.5,6.8),mat); fus.position.y=1.15; fus.castShadow=true; g.add(fus);
       var wing=new THREE.Mesh(new THREE.BoxGeometry(9.6,0.14,1.35),mat); wing.position.set(0,1.8,0.5); wing.castShadow=true; g.add(wing);
@@ -1039,17 +1137,17 @@ setTimeout(function(){
     var MAX=150;
     var inst=new THREE.InstancedMesh(new THREE.BoxGeometry(2.1,1.4,6.4),new THREE.MeshStandardMaterial({color:0xf4f7f9,roughness:0.5}),MAX);
     var masts=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.07,0.07,7,5),new THREE.MeshStandardMaterial({color:0xb9c2c9,roughness:0.4,metalness:0.5}),MAX);
-    var clusters=[[-10200,2100],[-10600,1500],[-11800,8800],[-10900,10200]];
+    var clusters=[[-8684,5308],[-7374,3977],[-7600,4700]]; // Quivira Basin, De Anza Cove, Paradise Point
     for(var i=0;i<MAX;i++){
       var c=clusters[i%clusters.length];
-      var x=c[0]+(Math.random()-0.5)*620, z=c[1]+(Math.random()-0.5)*430;
+      var x=c[0]+(Math.random()-0.5)*380, z=c[1]+(Math.random()-0.5)*260;
       dummy.rotation.set(0,Math.random()*Math.PI,0); dummy.scale.set(1,1,1);
       dummy.position.set(x,-128.2,z); dummy.updateMatrix(); inst.setMatrixAt(i,dummy.matrix);
       dummy.position.set(x,-124.8,z); dummy.updateMatrix(); masts.setMatrixAt(i,dummy.matrix);
     }
     scene.add(inst); scene.add(masts);
-    // two ships at anchor in the bay / off Point Loma
-    [[-13300,10100,0.7],[-15200,5600,1.2]].forEach(function(s){
+    // two ships at anchor — off Point Loma and in the San Diego Bay channel
+    [[-12500,11500,0.7],[-5600,14200,1.9]].forEach(function(s){
       var g=new THREE.Group();
       var hull=new THREE.Mesh(new THREE.BoxGeometry(16,7,95),new THREE.MeshStandardMaterial({color:0x37424c,roughness:0.6})); hull.position.y=1; g.add(hull);
       var sup=new THREE.Mesh(new THREE.BoxGeometry(12,12,14),new THREE.MeshStandardMaterial({color:0xd8dde2,roughness:0.5})); sup.position.set(0,10,-32); g.add(sup);
@@ -1059,11 +1157,13 @@ setTimeout(function(){
 
   /* ---- landmarks: Coronado Bridge, Soledad cross, stadium, golf, comm towers ---- */
   (function(){
-    // Coronado Bridge — deck segments on a gentle arc over the bay
-    var p0={x:-9300,z:12300}, p1={x:-11400,z:11800}, p2={x:-13600,z:13300};
+    // Coronado Bridge — deck segments on a gentle arc over the bay, on its
+    // real alignment, with end heights taken from the terrain it lands on
+    var p0={x:-1292,z:12849}, p1={x:-2509,z:13848}, p2={x:-3388,z:14191};
+    var bY0=terrainH(p0.x,p0.z)+9, bY2=terrainH(p2.x,p2.z)+9;
     for(var i=0;i<16;i++){
       var f0=i/16, f1=(i+1)/16;
-      function bez(f){ return {x:(1-f)*(1-f)*p0.x+2*(1-f)*f*p1.x+f*f*p2.x, z:(1-f)*(1-f)*p0.z+2*(1-f)*f*p1.z+f*f*p2.z, y:-112+Math.sin(f*Math.PI)*46}; }
+      function bez(f){ return {x:(1-f)*(1-f)*p0.x+2*(1-f)*f*p1.x+f*f*p2.x, z:(1-f)*(1-f)*p0.z+2*(1-f)*f*p1.z+f*f*p2.z, y:bY0+(bY2-bY0)*f+Math.sin(f*Math.PI)*52}; }
       var a=bez(f0), b=bez(f1), mx=(a.x+b.x)/2, mz=(a.z+b.z)/2;
       var len=Math.sqrt((b.x-a.x)*(b.x-a.x)+(b.z-a.z)*(b.z-a.z));
       var seg=new THREE.Mesh(new THREE.BoxGeometry(17,2.2,len+3),new THREE.MeshStandardMaterial({color:0x7d99ad,roughness:0.55,metalness:0.2}));
@@ -1071,25 +1171,25 @@ setTimeout(function(){
       if(i%3===0){ var pier=new THREE.Mesh(new THREE.BoxGeometry(4,60,4),new THREE.MeshStandardMaterial({color:0x9aa4ac,roughness:0.8}));
         pier.position.set(mx,(a.y-30),mz); scene.add(pier); }
     }
-    // Mt. Soledad memorial cross
-    var soledadH=terrainH(-9800,-600);
+    // Mt. Soledad memorial cross — on the real summit
+    var soledadH=terrainH(-10443,-2777);
     var cv1=new THREE.Mesh(new THREE.BoxGeometry(0.9,10,0.9),new THREE.MeshStandardMaterial({color:0xf2f4f6,roughness:0.6}));
-    cv1.position.set(-9800,soledadH+5,-600); scene.add(cv1);
+    cv1.position.set(-10443,soledadH+5,-2777); scene.add(cv1);
     var cv2=new THREE.Mesh(new THREE.BoxGeometry(4.6,0.9,0.9),new THREE.MeshStandardMaterial({color:0xf2f4f6,roughness:0.6}));
-    cv2.position.set(-9800,soledadH+7.4,-600); scene.add(cv2);
-    // Mission Valley stadium — bowl ring + green bowl floor
-    var stX=-2600, stZ=6100, stH=terrainH(stX,stZ);
+    cv2.position.set(-10443,soledadH+7.4,-2777); scene.add(cv2);
+    // Mission Valley stadium (Snapdragon) — bowl ring + green bowl floor
+    var stX=1926, stZ=3434, stH=terrainH(stX,stZ);
     var bowl=new THREE.Mesh(new THREE.CylinderGeometry(105,92,24,22,1,true),new THREE.MeshStandardMaterial({color:0xb9bcbe,roughness:0.8,side:THREE.DoubleSide}));
     bowl.position.set(stX,stH+12,stZ); bowl.castShadow=true; scene.add(bowl);
     var pitch=new THREE.Mesh(new THREE.CircleGeometry(88,22),new THREE.MeshStandardMaterial({color:0x4e7d32,roughness:1}));
     pitch.rotation.x=-Math.PI/2; pitch.position.set(stX,stH+3,stZ); scene.add(pitch);
-    // golf courses — flat green discs (Balboa Park, Tecolote, Riverwalk)
-    [[-6800,8600,270],[-8300,2500,210],[-3300,5450,240],[12400,4900,300]].forEach(function(gc2){
+    // golf courses — flat green discs (Balboa Park, Tecolote, Riverwalk, Torrey Pines)
+    [[-39,10332,270],[-5540,-1279,210],[-4408,5441,240],[-9835,-9985,300]].forEach(function(gc2){
       var d=new THREE.Mesh(new THREE.CircleGeometry(gc2[2],20),new THREE.MeshStandardMaterial({color:0x54823a,roughness:1}));
       d.rotation.x=-Math.PI/2; d.position.set(gc2[0],terrainH(gc2[0],gc2[1])+0.35,gc2[1]); d.receiveShadow=true; scene.add(d);
     });
-    // comm towers on Cowles Mountain and the Miramar mesa, with beacon tips
-    [[12500,3500],[-1500,-6800]].forEach(function(tp){
+    // comm towers on Cowles Mountain summit and the Miramar mesa, with beacon tips
+    [[10103,16],[-1200,-6600]].forEach(function(tp){
       var th=terrainH(tp[0],tp[1]);
       var tw=new THREE.Mesh(new THREE.CylinderGeometry(0.5,1.6,52,6),new THREE.MeshStandardMaterial({color:0x8a9298,roughness:0.5,metalness:0.5}));
       tw.position.set(tp[0],th+26,tp[1]); scene.add(tw);
@@ -1104,21 +1204,41 @@ setTimeout(function(){
     for(var m3=0;m3<4;m3++) block(APT.KSEE.x+140+m3*120,APT.KSEE.z+180,80,10,44,0xb5aca0);
   })();
 
+  /* ---- airliners parked at Lindbergh's terminal gates ---- */
+  (function(){
+    var white2=new THREE.MeshStandardMaterial({color:0xeef1f4,roughness:0.35,metalness:0.1});
+    var tailC=[0x2f6fb4,0xc23a30,0x2f6fb4,0x3f7a52,0xe0a52e,0x2f6fb4];
+    function jet(x,z,hdgDeg,k){
+      var g=new THREE.Group();
+      var fus=new THREE.Mesh(new THREE.CylinderGeometry(2,2,34,12),white2); fus.rotation.x=Math.PI/2; fus.position.y=3.4; fus.castShadow=true; g.add(fus);
+      var nose=new THREE.Mesh(new THREE.SphereGeometry(2,12,8),white2); nose.position.set(0,3.4,17); nose.scale.z=1.6; g.add(nose);
+      var wing=new THREE.Mesh(new THREE.BoxGeometry(30,0.35,4.6),white2); wing.position.set(0,3.0,-0.5); wing.rotation.y=0.32; wing.castShadow=true; g.add(wing);
+      var fin=new THREE.Mesh(new THREE.BoxGeometry(0.35,6.4,4.2),new THREE.MeshStandardMaterial({color:tailC[k%6],roughness:0.45})); fin.position.set(0,7.6,-15.6); fin.rotation.x=-0.25; g.add(fin);
+      var stab=new THREE.Mesh(new THREE.BoxGeometry(10.5,0.3,2.6),white2); stab.position.set(0,5.4,-16.2); g.add(stab);
+      [-6.5,6.5].forEach(function(ex){ var eng=new THREE.Mesh(new THREE.CylinderGeometry(1.15,1.15,3.6,10),white2); eng.rotation.x=Math.PI/2; eng.position.set(ex,2.2,1.8); g.add(eng); });
+      g.position.set(x,terrainH(x,z)+0.1,z);
+      g.rotation.y=Math.PI-hdgDeg*Math.PI/180;
+      scene.add(g);
+    }
+    jet(-5300,8620,200,0); jet(-4850,8560,250,1); jet(-4400,8620,286,2); jet(-3950,8560,320,3); jet(-3500,8620,286,4);
+  })();
+
   /* ---- a second, denser tree pass: parks, canyons and garden suburbs ---- */
   (function(){
     var N=650;
     var trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.35,0.5,3,5),new THREE.MeshStandardMaterial({color:0x5a4230,roughness:1}),N);
-    var crown=new THREE.InstancedMesh(new THREE.ConeGeometry(3.0,8.6,7),new THREE.MeshStandardMaterial({color:0xffffff,roughness:1}),N);
-    var M=new THREE.Matrix4(), Q=new THREE.Quaternion(), S3=new THREE.Vector3(), P=new THREE.Vector3();
-    var cA=new THREE.Color(0x416b32), cB=new THREE.Color(0x5f843e), tc=new THREE.Color();
+    var crown=new THREE.InstancedMesh(canopyGeo(3.5),new THREE.MeshStandardMaterial({color:0xffffff,roughness:1,flatShading:true}),N);
+    var M=new THREE.Matrix4(), Q=new THREE.Quaternion(), S3=new THREE.Vector3(), P=new THREE.Vector3(), YAX=new THREE.Vector3(0,1,0);
+    var cA=new THREE.Color(0x46582e), cB=new THREE.Color(0x5c7038), tc=new THREE.Color();
     var placed=0, guard=0;
     while(placed<N && guard++<9000){
       var x=(Math.random()-0.5)*24000, z=(Math.random()-0.5)*24000;
       if(!clearOfField(x,z)) continue;
       var h=terrainH(x,z); if(h<-60||h>230) continue;
       var s=0.7+Math.random()*1.15;
+      Q.setFromAxisAngle(YAX, Math.random()*Math.PI*2);
       P.set(x,h+1.4*s,z); S3.set(s,s,s); M.compose(P,Q,S3); trunk.setMatrixAt(placed,M);
-      P.set(x,h+7.2*s,z); M.compose(P,Q,S3); crown.setMatrixAt(placed,M);
+      P.set(x,h+6.6*s,z); S3.set(s*(0.85+Math.random()*0.35), s*(0.9+Math.random()*0.45), s*(0.85+Math.random()*0.35)); M.compose(P,Q,S3); crown.setMatrixAt(placed,M);
       tc.copy(cA).lerp(cB,Math.random()); crown.setColorAt(placed,tc); placed++;
     }
     trunk.count=crown.count=placed;
@@ -1152,14 +1272,14 @@ setTimeout(function(){
   // the circuit: final → touchdown → climb-out → crosswind → downwind → base → final
   function wp(along,perp,alt){ return new THREE.Vector3(RWY_DIR.x*along + (-RWY_DIR.z)*perp, alt, RWY_DIR.z*along + RWY_DIR.x*perp); }
   var curve=new THREE.CatmullRomCurve3([
-    wp(-2500,0,300), wp(-1300,0,95), wp(-650,0,1.8), wp(450,0,55),
+    wp(-2500,0,300), wp(-1300,0,95), wp(-330,0,1.8), wp(450,0,55),
     wp(1750,0,320), wp(1900,-1050,345), wp(-1750,-1050,345), wp(-2250,-380,335)
   ], true, 'catmullrom', 0.35);
   var curveLen=curve.getLength(), tU=0.60, prevHdg=null;
   // animated freeway traffic on I-15 / I-805 / I-8
   var MAXC=64, dummy=new THREE.Object3D();
   var cinst=new THREE.InstancedMesh(new THREE.BoxGeometry(1.9,1.3,4.5),new THREE.MeshStandardMaterial({roughness:0.35,metalness:0.4}),MAXC);
-  var routes=[[3400,-15000,2900,15000],[-5400,-15000,-4900,15000],[-15000,7400,13000,6600]];
+  var routes=[[3480,-11660,2825,12739],[-4474,-11660,-4193,12739],[-9807,5308,14053,4975],[-9807,-2566,16860,-1679]];
   var carCols=[0xd8d8d8,0xb03a30,0x2f5f9e,0x22262b,0x7a7f85,0xe0a52e,0x3f7a52];
   var cars=[];
   for(var ci2=0; ci2<MAXC; ci2++){
@@ -1169,6 +1289,45 @@ setTimeout(function(){
   }
   if(cinst.instanceColor) cinst.instanceColor.needsUpdate=true;
   scene.add(cinst);
+  /* ---- moving boats & ships — Mission Bay, San Diego Bay, the coast ----
+     Small, correctly scaled, plausible speeds, each trailing a fading wake.
+     Bay boats loop their basin; bay and coastal ships run a lane and back. */
+  var wakeTex=(function(){ var cv=document.createElement('canvas'); cv.width=64; cv.height=128; var g2=cv.getContext('2d');
+    var gr=g2.createLinearGradient(0,128,0,0); gr.addColorStop(0,'rgba(255,255,255,0.38)'); gr.addColorStop(0.55,'rgba(255,255,255,0.13)'); gr.addColorStop(1,'rgba(255,255,255,0)');
+    g2.fillStyle=gr; g2.fillRect(0,0,64,128);
+    g2.fillStyle='rgba(255,255,255,0.20)'; g2.fillRect(28,60,8,68);
+    return new THREE.CanvasTexture(cv); })();
+  function makeBoat(kind){
+    var g=new THREE.Group();
+    var hullM=new THREE.MeshStandardMaterial({color:0xf0f3f5,roughness:0.5});
+    var wl, ww, stern;
+    if(kind==='ship'){
+      var hull=new THREE.Mesh(new THREE.BoxGeometry(11,4.5,64),new THREE.MeshStandardMaterial({color:0x3a4652,roughness:0.6})); hull.position.y=0.6; g.add(hull);
+      var sup=new THREE.Mesh(new THREE.BoxGeometry(8,7,9),hullM); sup.position.set(0,5.4,-24); g.add(sup);
+      var stk=new THREE.Mesh(new THREE.BoxGeometry(3,3.4,3),new THREE.MeshStandardMaterial({color:0x8a4a32,roughness:0.6})); stk.position.set(0,6.4,-28); g.add(stk);
+      wl=110; ww=13; stern=32;
+    } else {
+      var hull2=new THREE.Mesh(new THREE.BoxGeometry(1.9,1.0,6.2),hullM); hull2.position.y=0.25; hull2.castShadow=true; g.add(hull2);
+      var cab=new THREE.Mesh(new THREE.BoxGeometry(1.4,0.8,2.2),new THREE.MeshStandardMaterial({color:0xdfe6ea,roughness:0.5})); cab.position.set(0,0.95,-0.4); g.add(cab);
+      if(kind==='sail'){ var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,7.5,5),new THREE.MeshStandardMaterial({color:0xb9c2c9,roughness:0.4,metalness:0.5})); mast.position.set(0,4.4,0.6); g.add(mast); }
+      wl=30; ww=3.4; stern=3.1;
+    }
+    var wake=new THREE.Mesh(new THREE.PlaneGeometry(ww,wl),new THREE.MeshBasicMaterial({map:wakeTex,transparent:true,depthWrite:false}));
+    wake.rotation.x=-Math.PI/2; wake.position.set(0,0.14,-stern-wl/2+4); g.add(wake);
+    g.position.y=-128.6; scene.add(g); return g;
+  }
+  var boats=[];
+  function addBoat(kind, pts, closed, spd, phase){
+    var segs=[], total=0, n=closed? pts.length : pts.length-1;
+    for(var i=0;i<n;i++){ var a=pts[i], b=pts[(i+1)%pts.length]; var dx=b[0]-a[0], dz=b[1]-a[1]; var l=Math.sqrt(dx*dx+dz*dz); segs.push({a:a,dx:dx,dz:dz,l:l}); total+=l; }
+    boats.push({g:makeBoat(kind), segs:segs, total:total, d:phase*total, spd:spd, closed:closed});
+  }
+  addBoat('sail', [[-9500,3300],[-8300,3500],[-7950,4350],[-8750,4750],[-9550,4150]], true, 3.2, 0.15);
+  addBoat('power',[[-9550,4150],[-8750,4750],[-7950,4350],[-8300,3500],[-9500,3300]], true, 4.6, 0.55);
+  addBoat('sail', [[-9050,3050],[-8450,3950],[-9050,4600]], true, 2.8, 0.70);
+  addBoat('ship', [[-6900,14550],[-3900,13300]], false, 4.2, 0.30);
+  addBoat('power',[[-3700,13150],[-6600,14250]], false, 5.2, 0.60);
+  addBoat('ship', [[-14200,9800],[-14400,-2600]], false, 5.5, 0.45);
   window.__updateTraffic=function(dt){
     // pattern Skyhawk
     tU=(tU + dt*37/curveLen)%1;
@@ -1192,10 +1351,22 @@ setTimeout(function(){
       dummy.updateMatrix(); cinst.setMatrixAt(i3, dummy.matrix);
     }
     cinst.instanceMatrix.needsUpdate=true;
+    // boats & ships
+    for(var bi=0;bi<boats.length;bi++){ var bt=boats[bi];
+      bt.d+=bt.spd*dt;
+      var span=bt.closed? bt.total : bt.total*2;
+      var s=bt.d%span, back=false;
+      if(!bt.closed && s>bt.total){ s=bt.total*2-s; back=true; }
+      var acc=0, sg=null, f=0;
+      for(var si=0;si<bt.segs.length;si++){ var sgm=bt.segs[si];
+        if(s<=acc+sgm.l || si===bt.segs.length-1){ sg=sgm; f=sgm.l>0? Math.max(0,Math.min(1,(s-acc)/sgm.l)) : 0; break; } acc+=sgm.l; }
+      if(sg){ bt.g.position.x=sg.a[0]+sg.dx*f; bt.g.position.z=sg.a[1]+sg.dz*f;
+        bt.g.rotation.y=Math.atan2(sg.dx,sg.dz)+(back?Math.PI:0); }
+    }
   };
 },140);
 
-/* ================= AIRCRAFT MODEL — 1979 Cessna 172N ================= */
+/* ================= AIRCRAFT MODEL — 1979 Cessna 182Q Skylane ================= */
 var plane=new THREE.Group();
 (function(){
   var white=(THREE.MeshPhysicalMaterial? new THREE.MeshPhysicalMaterial({color:0xf4f6f8,roughness:0.30,metalness:0.06,clearcoat:0.55,clearcoatRoughness:0.32}) : new THREE.MeshStandardMaterial({color:0xf2f4f6,roughness:0.35,metalness:0.08}));
@@ -1244,7 +1415,7 @@ var plane=new THREE.Group();
   // pitot + fuel vents + exhaust stub for silhouette honesty
   part(new THREE.CylinderGeometry(0.02,0.02,0.42),grey,-1.9,0.82,0.95,0.5,0,0);
   part(new THREE.CylinderGeometry(0.06,0.07,0.34),dark,0.42,-0.78,3.55,0.7,0,0);
-  function wheel(x,y,z,r){ // FIXED gear — 172N, always down
+  function wheel(x,y,z,r){ // FIXED gear — 182Q, always down
     var w=new THREE.Group(); w.position.set(x,y,z);
     var leg=new THREE.Mesh(new THREE.CylinderGeometry(0.055,0.055,0.95),grey); leg.position.y=0.5; w.add(leg);
     var fair=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.5,0.62),white); fair.position.set(0,0.05,0.02); w.add(fair);
@@ -1276,36 +1447,34 @@ var flightTime=0, maxAlt=0, touchDown=null, hobbs=0, engFail=false;
 var dto=null; // direct-to airport key
 var audioCtx=null, engOsc=null, engOsc2=null, engGain=null, windGain=null, stallOsc=null, stallGain=null;
 /* autopilot — two-axis (HDG / ALT hold), captures on engage, yoke always wins */
-var apHdg=false, apAlt=false, apHdgTgt=280, apAltTgt=427;
+var apHdg=false, apAlt=false, apHdgTgt=295, apAltTgt=427;
 /* session logbook + landing grades (in-memory, like the Hobbs) */
-var logbook={takeoffs:0, landings:0, lastSink:null, lastScore:null, bestScore:null, bestSink:null};
+var logbook={takeoffs:0, landings:0, lastSink:null};
 function densityAltFt(){ if(!S) return FIELD_ELEV_FT; var th=Math.pow(Math.max(0.55,S.rhoRatio||1),1/4.2561); return Math.round((1-th)/2.25577e-5*FT); }
 function updateLogbookUI(){
   var el;
   el=document.getElementById('lgTO'); if(el) el.textContent=logbook.takeoffs;
   el=document.getElementById('lgLD'); if(el) el.textContent=logbook.landings;
   el=document.getElementById('lgLast'); if(el) el.textContent= logbook.lastSink===null?'—':Math.round(logbook.lastSink)+' fpm';
-  el=document.getElementById('lgScore'); if(el) el.textContent= logbook.lastScore===null?'—':logbook.lastScore+' / 100';
-  el=document.getElementById('lgBest'); if(el) el.textContent= logbook.bestScore===null?'—':logbook.bestScore+' / 100';
-  el=document.getElementById('lgSmooth'); if(el) el.textContent= logbook.bestSink===null?'—':Math.round(logbook.bestSink)+' fpm';
+
 }
 
 function yawQuatForHeading(hdgDeg){ return new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0), Math.PI - hdgDeg*Math.PI/180); }
 function resetState(airborne){
   // Start: lined up on the centreline of Runway 28L at Montgomery-Gibbs Executive
-  // Airport (KMYF), San Diego — 427 ft MSL, heading 280°, just past the threshold
-  // piano keys with the full 3,401 ft (visual strip ~1,700 m here) ahead of you.
-  S={ pos:new THREE.Vector3(RWY_DIR.x*-795, 1.15, RWY_DIR.z*-795),
+  // Airport (KMYF), San Diego — 427 ft MSL, heading 295° true, just past the
+  // threshold piano keys with the full, real 3,401 ft of 28L ahead of you.
+  S={ pos:new THREE.Vector3(RWY_DIR.x*-470, 1.15, RWY_DIR.z*-470),
       vel:new THREE.Vector3(0,0,0), quat:yawQuatForHeading(RWY_HDG),
       throttle:0, rpm:0, flaps:0, mixture:1, carbHeat:false, carbIce:0,
       brake:false, trim:0.35, onGround:true, stalled:false,
       fuelL:20, fuelR:20, heading:RWY_HDG, pitchAng:0, rollAng:0,
       ias:0, vs:0, agl:0, altMSL:FIELD_ELEV_FT, trk:RWY_HDG, gs:0, aoaDeg:0,
       betaDeg:0, tas:0, loadFactor:1, angP:0, angQ:0, angR:0, rhoRatio:1, buffet:0 };
-  if(airborne){ // downwind for 28L: east of field heading 100 at 1,900 ft MSL
+  if(airborne){ // downwind for 28L: south-east of the field heading 113 at 1,900 ft MSL
     S.pos.set(1500, (1900-FIELD_ELEV_FT)/FT, 1500);
-    S.quat=yawQuatForHeading(100);
-    S.vel.set(Math.sin(100*Math.PI/180)*42, 0, -Math.cos(100*Math.PI/180)*42);
+    S.quat=yawQuatForHeading(113);
+    S.vel.set(Math.sin(113*Math.PI/180)*42, 0, -Math.cos(113*Math.PI/180)*42);
     S.throttle=0.55; S.onGround=false;
     if(engineOn){ S.rpm=2050; }
   }
@@ -1325,8 +1494,8 @@ function syncSurfaces(){
   var fd=S.flaps*Math.PI/180*0.85; u.flapL.rotation.x=fd; u.flapR.rotation.x=fd;
 }
 
-/* ================= PHYSICS — C172N point-mass + stability model =================
-   A proper step up from an arcade model, tuned to the 172N POH:
+/* ================= PHYSICS — C182Q point-mass + stability model =================
+   A proper step up from an arcade model, tuned to the 182Q POH:
    · ISA atmosphere — IAS is density-corrected TAS, the engine lapses with altitude
    · Lift/drag from a real CL(alpha, flaps) / CD polar: CD0 + k·CL² (Oswald),
      sideslip drag, and a post-stall CL break with buffet and a wing drop
@@ -1384,7 +1553,7 @@ function stepPhysics(dt){
 
   /* ---- mass: empty 767 kg + occupants/fuel — stall speeds breathe with it ---- */
   var fuelGal=S.fuelL+S.fuelR;
-  var mass=898 + fuelGal*2.72; // ~2,050 lb light, ~2,300 lb at full tanks
+  var mass=1040 + fuelGal*2.72; // ~2,290 lb light, ~2,530 lb at full tanks (182Q gross 2,950)
   var weight=mass*9.81;
 
   /* ---- aerodynamics: CL / CD / CY ---- */
@@ -1394,30 +1563,31 @@ function stepPhysics(dt){
   var hOverB=Math.max(0.06,(aglRaw+1.05)/span);
   var gePhi=(16*hOverB*hOverB)/(1+16*hOverB*hOverB); gePhi=Math.max(0.22,Math.min(1,gePhi));
   var inGE = aglRaw<11 && aglRaw>-1;
-  var stallAoADeg=15.6 - S.flaps*0.05;         // flaps buy CLmax, cost a little alpha
-  var CLmax=1.58 + S.flaps*0.0115;
+  var stallAoADeg=17.3 - S.flaps*0.045;        // flaps buy CLmax, cost a little alpha
+  var CLmax=1.64 + S.flaps*0.0115;
   var CLlin=0.30 + 4.85*aoa + S.flaps*0.0165 + (inGE? (1-gePhi)*0.22*Math.max(0,0.30+4.85*aoa):0);
   var stalled=false, CL=CLlin;
   if(aoaDeg>stallAoADeg){ stalled=true; var over=(aoaDeg-stallAoADeg);
-    CL=CLmax - over*0.055 - over*over*0.0022;   // the break: lift bleeds, doesn't vanish
-    CL=Math.max(0.55,CL);
+    CL=CLmax - over*0.030 - over*over*0.0011;   // a mushy Skylane break: lift bleeds off
+    CL=Math.max(0.88,CL);                      // slowly — she mushes and sinks, not drops
   }
   if(aoaDeg<-13){ CL=Math.max(CLlin,-0.85); }
   CL=Math.max(-1.05, Math.min(1.95, CL));
-  // buffet ramps in ~2.5° before the break — the airframe talks before it lets go
-  var buffet=Math.max(0, Math.min(1, (aoaDeg-(stallAoADeg-2.6))/2.6));
+  // buffet ramps in a good 4° before the break — the airframe talks, at length,
+  // before it lets go, so the stall never arrives unannounced
+  var buffet=Math.max(0, Math.min(1, (aoaDeg-(stallAoADeg-4.2))/4.2));
   if(S.onGround) buffet=0;
   S.buffet=buffet; S.stalled=stalled && vAir>4 && !S.onGround;
   var q=0.5*rho*vAir*vAir;
-  var CD0=0.037; // fixed gear + struts — a 172 is not a clean aeroplane
+  var CD0=0.035; // fixed gear + struts — a Skylane is not a clean aeroplane either, just a stronger one
   var CD=CD0 + kInd*CL*CL*(inGE?gePhi:1) + S.flaps*0.00095 + S.flaps*S.flaps*0.000016 + 1.9*beta*beta + (S.brake&&S.onGround?0.22:0);
-  if(stalled) CD+=0.11 + (aoaDeg-stallAoADeg)*0.006; // separated flow is a barn door
+  if(stalled) CD+=0.055 + (aoaDeg-stallAoADeg)*0.003; // separated flow drags, but she keeps flying
   var CY=-0.34*beta + 0.16*controls.rudder + 0.05*controls.roll; // fuselage sideforce + rudder
   var liftMag=q*wingArea*CL, dragMag=q*wingArea*CD, sideMag=q*wingArea*CY;
   var loadFactor=vAir>3 ? liftMag/weight : 1;
   S.loadFactor=loadFactor; S.betaDeg=betaDeg; S.rhoRatio=rhoRatio; S.tas=vAir*KT;
 
-  /* ---- engine: O-360, mixture, carb ice, density lapse, prop efficiency ---- */
+  /* ---- engine: O-470, mixture, carb ice, density lapse, prop efficiency ---- */
   if(engFail){ S.rpm += (0-S.rpm)*Math.min(1,dt*0.7); }
   else if(engineOn){
     // leaning: full rich is safe but leaves ~4% on the table at altitude; peak
@@ -1435,14 +1605,14 @@ function stepPhysics(dt){
     var targetRpm=(620 + S.throttle*1980)*mixFactor*iceFactor*carbFactor;
     if(S.throttle<=0.02) targetRpm=620*mixFactor;
     if(mixFactor===0) targetRpm=0;
-    // the O-360 spools with inertia — throttle slams take ~¾ s to become RPM
+    // the O-470 spools with inertia — throttle slams take ~¾ s to become RPM
     S.rpm += (targetRpm-S.rpm)*Math.min(1,dt*1.45);
   } else { S.rpm += (0-S.rpm)*Math.min(1,dt*2); }
   var powerFrac = engFail?0:Math.max(0,(S.rpm-500)/2100);
   // shaft power lapses with density (≈ Gagg–Farrar); thrust = P·eta(V)/V, capped
   // at the static figure so low-speed pull stays honest (~1,050 lbf static)
-  var shaftW=134000*powerFrac*Math.pow(rhoRatio,0.88); // 180 hp at sea level
-  var etaP=0.30+0.52*Math.min(1, Math.max(0,(vAir-4)/34))*(1-Math.max(0,(vAir-62)/110));
+  var shaftW=171500*powerFrac*Math.pow(rhoRatio,0.88); // 230 hp at sea level (O-470)
+  var etaP=0.30+0.52*Math.min(1, Math.max(0,(vAir-4)/34))*(1-Math.max(0,(vAir-72)/120));
   var thrust=0;
   if(engineOn && !engFail && powerFrac>0.01){
     thrust=shaftW*etaP/Math.max(vAir,6.5);
@@ -1483,14 +1653,14 @@ function stepPhysics(dt){
     // yaw (around up axis): rudder + weathercock + adverse yaw from the ailerons
     tgtR=(-controls.rudder*0.26 + beta*0.85 + controls.roll*0.13)*auth;
     // P-factor: at high alpha the descending blade pulls the nose left; torque
-    // rolls left at high power / low speed. Both classic 172N, both modelled.
+    // rolls left at high power / low speed. Both classic Skylane, both modelled.
     var pf=powerFrac*Math.max(0,aoa)*1.05*Math.max(0.25,1-vAir/70);
     tgtR+=pf*auth*0.9;
     tgtP+=-powerFrac*0.14*Math.max(0,1-vAir/48)*auth; // torque roll (left)
     if(S.stalled){
-      tgtQ+=0.52*auth+0.12;                              // the nose drops at the break
-      tgtP+=Math.sin(t*6.3)*0.30*auth*(buffet);          // wing drop / rock
-      if(Math.abs(controls.rudder)>0.55 && Math.abs(betaDeg)>6) tgtP+= -Math.sign(controls.rudder)*0.35*auth; // pro-spin nudge
+      tgtQ+=0.28*auth+0.05;                              // a gentle nose-lowering at the break, not a drop
+      tgtP+=Math.sin(t*6.3)*0.15*auth*(buffet);          // a mild wing rock, easily caught
+      if(Math.abs(controls.rudder)>0.55 && Math.abs(betaDeg)>6) tgtP+= -Math.sign(controls.rudder)*0.26*auth; // pro-spin nudge
     } else if(buffet>0.25){
       tgtQ+=(Math.sin(t*23.0)*0.045+Math.sin(t*31.7)*0.03)*buffet; // pre-stall buffet shake
       tgtP+=(Math.sin(t*27.3+1.1)*0.05)*buffet;
@@ -1518,7 +1688,7 @@ function stepPhysics(dt){
 
   /* ---- ground contact: gear, friction, braking, crosswind drift ---- */
   var rl0=rwyLocal(S.pos.x,S.pos.z);
-  var onRunway=Math.abs(rl0.along)<860 && Math.abs(rl0.perp)<23;
+  var onRunway=Math.abs(rl0.along)<520 && Math.abs(rl0.perp)<9.5;
   var groundY=terrainH(S.pos.x,S.pos.z)+1.15;
   if(Math.abs(rl0.along)<1150 && Math.abs(rl0.perp)<70) groundY=1.15;
   var canFly=liftMag>weight*0.995 && fwdSpeed>16;
@@ -1546,7 +1716,7 @@ function stepPhysics(dt){
     if(fwdSpeed>23 && controls.pitch>0.22) _e.x=-(controls.pitch)*0.15;
     S.quat.setFromEuler(_e);
     S.angP*=0.6; S.angQ*=0.6;
-  } else { if(wasGround && vAir>12 && !ended){ logbook.takeoffs++; updateLogbookUI(); if(logbook.takeoffs===1) towerSay('Skyhawk 75F, Montgomery Tower — airborne, fly heading 280, pattern altitude 1,900. The Mooney-sized hole in the pattern is yours.'); } S.onGround=false; }
+  } else { if(wasGround && vAir>12 && !ended){ logbook.takeoffs++; updateLogbookUI(); if(logbook.takeoffs===1) towerSay('Skylane 75F, Montgomery Tower — airborne, fly heading 295, pattern altitude 1,900. The Mooney-sized hole in the pattern is yours.'); } S.onGround=false; }
   S.pos.addScaledVector(S.vel, dt);
   var th=terrainH(S.pos.x,S.pos.z);
   if(S.pos.y < th+0.4){
@@ -1556,7 +1726,7 @@ function stepPhysics(dt){
   if(S.pos.y>4600){ S.pos.y=4600; if(S.vel.y>0)S.vel.y=0; }
 
   flightTime+=dt;
-  if(engineOn && S.rpm>500){ hobbs+=dt/3600; var burn=(0.85+S.throttle*4.9)/3600*dt; S.fuelL=Math.max(0,S.fuelL-burn); S.fuelR=Math.max(0,S.fuelR-burn); if(S.fuelL+S.fuelR<=0 && !engFail){ engFail=true; logJJ('sys','The tanks are dry. Forty gallons, gone. This is now a glider checkride.'); } }
+  if(engineOn && S.rpm>500){ hobbs+=dt/3600; var burn=(1.15+S.throttle*5.6)/3600*dt; S.fuelL=Math.max(0,S.fuelL-burn); S.fuelR=Math.max(0,S.fuelR-burn); if(S.fuelL+S.fuelR<=0 && !engFail){ engFail=true; logJJ('sys','The tanks are dry. Forty gallons, gone. This is now a glider checkride.'); } }
   maxAlt=Math.max(maxAlt, FIELD_ELEV_FT+S.pos.y*FT);
   _e.setFromQuaternion(S.quat,'YXZ');
   S.pitchAng=_e.x; S.rollAng=_e.z;
@@ -1577,7 +1747,7 @@ function stepPhysics(dt){
   if(window.__waterTex) window.__waterTex.offset.x+=dt*0.004;
   // PAPI for 28L: compare the actual glide angle to the 3° path
   if(window.__papi && window.__papi.length===4){
-    var ahead=(-850)-rl0.along, lat=Math.abs(rl0.perp);
+    var ahead=(-518)-rl0.along, lat=Math.abs(rl0.perp);
     var whites=2;
     if(ahead>250 && ahead<7000 && lat<700 && !S.onGround && aglRaw>4 && aglRaw<620){
       var ga=Math.atan2(Math.max(aglRaw,0.5), ahead)*57.2958;
@@ -1603,28 +1773,17 @@ function handleTouchdown(){
   if(td.vs<-950){ crash('Impact at '+Math.round(td.vs)+' fpm. The gear — fixed though it is — has left the chat. Flare earlier, carry a whisper of power.'); return; }
   if(!td.onRunway && terrainH(td.x,td.z)>4){ crash('Off-field landing in rough terrain east of the field. The paved strip at KMYF was right there.'); return; }
   var rating= td.vs>-180 ? 'GREASED IT. Jean-Jacques almost smiled.' : td.vs>-420 ? 'Firm but safe.' : td.vs>-700 ? 'Hard. The tower winced. She will fly again.' : 'Very hard. Inspect everything.';
-  /* ---- landing grade: sink, centreline, touchdown zone, speed, bank ---- */
+  /* ---- touchdown debrief: the facts, instructor-style. No score and no
+     grade — this is a flight simulator, not an arcade cabinet. ---- */
   var rlT=rwyLocal(td.x,td.z);
   var on28 = Math.abs(((S.heading-RWY_HDG)%360+360)%360)<90 || Math.abs(((S.heading-RWY_HDG)%360+360)%360)>270;
-  var distFt = on28 ? (rlT.along+850)*FT : (850-rlT.along)*FT;   // past the landing threshold
+  var distFt = on28 ? (rlT.along+518)*FT : (518-rlT.along)*FT;   // past the landing threshold
   var offM=Math.abs(rlT.perp);
-  var score=100, sinkAbs=Math.abs(td.vs);
-  if(sinkAbs>120) score-=Math.min(38,(sinkAbs-120)*0.075);
-  if(offM>3) score-=Math.min(30,(offM-3)*1.1);
-  if(Math.abs(td.speed-62)>5) score-=Math.min(20,(Math.abs(td.speed-62)-5)*0.8);
-  if(distFt<0) score-=25; else if(distFt>1200) score-=Math.min(25,(distFt-1200)/100*2);
-  score-=Math.min(15, td.bank*0.8);
-  if(!td.onRunway) score=Math.min(score,40);
-  score=Math.max(5,Math.round(score));
-  var grade= score>=92?'A+':score>=85?'A':score>=76?'B':score>=66?'C':score>=55?'D':'F';
-  logbook.landings++; logbook.lastSink=td.vs; logbook.lastScore=score;
-  if(td.onRunway){ if(logbook.bestScore===null||score>logbook.bestScore) logbook.bestScore=score;
-    if(logbook.bestSink===null||sinkAbs<Math.abs(logbook.bestSink)) logbook.bestSink=td.vs; }
+  logbook.landings++; logbook.lastSink=td.vs;
   updateLogbookUI();
-  logJJ('sys','Landing grade '+score+'/100 ('+grade+') — sink '+Math.round(td.vs)+' fpm · centreline '+offM.toFixed(0)+' m · touched '+Math.max(0,Math.round(distFt))+' ft past the threshold at '+Math.round(td.speed)+' kt.');
-  if(score>=92) logJJ('jj','Jean-Jacques: "Ninety-two plus. I am writing this one down. In the good logbook. With the good pen."');
-  if(td.onRunway) showToast('Touchdown RWY '+(on28?'28L':'10R')+' — '+Math.round(td.vs)+' fpm · '+rating+' Score '+score+'/100 ('+grade+'). Roll out, or full power for a touch-and-go.', 7500);
-  else showToast('Off-runway touchdown — '+Math.round(td.vs)+' fpm · '+rating+' Score capped at '+score+'/100 — the pavement was right there.', 7500);
+  logJJ('sys','Touchdown debrief — sink '+Math.round(td.vs)+' fpm · centreline '+offM.toFixed(0)+' m · touched '+Math.max(0,Math.round(distFt))+' ft past the threshold at '+Math.round(td.speed)+' kt.');
+  if(td.onRunway) showToast('Touchdown RWY '+(on28?'28L':'10R')+' — '+Math.round(td.vs)+' fpm · '+rating+' Roll out, or full power for a touch-and-go.', 7500);
+  else showToast('Off-runway touchdown — '+Math.round(td.vs)+' fpm · '+rating+' The pavement was right there.', 7500);
 }
 function crash(msg){
   if(ended) return; ended=true; onCrashEvent();
@@ -1679,7 +1838,7 @@ function toggleEngine(){
   if(engineOn){ engineOn=false; showToast('Engine shut down. Mixture to idle cutoff in a real one — here, it is just sad and quiet.'); }
   else{
     if(S.mixture<0.5){ showToast('It cranks and coughs — mixture is not rich. Push the red knob full forward, then start.'); logJJ('jj','Jean-Jacques: "Mixture rich before start. The engine cannot burn intentions."'); return; }
-    engineOn=true; ensureAudio(); showToast('Engine running — O-360 idling at 650 RPM. Mixture rich, carb heat cold, brakes held.');
+    engineOn=true; ensureAudio(); showToast('Engine running — O-470 idling at 620 RPM. Mixture rich, carb heat cold, brakes held.');
     document.getElementById('engStartBtn').style.display='none';
   }
   updateConfigUI();
@@ -1740,8 +1899,8 @@ function pollKeys(dt){
       var desVS=Math.max(-600,Math.min(700, aErr*4));
       var apPitch=Math.max(-0.55,Math.min(0.78,(desVS-(S.vs||0))*0.0012));
       controls.pitch+=(apPitch-controls.pitch)*Math.min(1,dt*5);
-      // auto-throttle: ~80 kt in level flight, works harder to climb, eases off to descend
-      var thrT=0.60 + Math.max(-0.30,Math.min(0.38, aErr*0.0006)) + (80-(S.ias||0))*0.004;
+      // auto-throttle: ~105 kt in level flight, works harder to climb, eases off to descend
+      var thrT=0.60 + Math.max(-0.30,Math.min(0.38, aErr*0.0006)) + (105-(S.ias||0))*0.004;
       thrT=Math.max(0.12,Math.min(1,thrT));
       S.throttle+=Math.max(-dt*0.35,Math.min(dt*0.35, thrT-S.throttle));
     }
@@ -1888,7 +2047,7 @@ function updateConfigUI(){
   var pf;
   pf=document.getElementById('pfDA'); if(pf) pf.textContent=densityAltFt().toLocaleString()+' ft';
   pf=document.getElementById('pfTAS'); if(pf) pf.textContent=Math.round(S.tas||0)+' kt';
-  var ff=(engineOn&&S.rpm>400&&!engFail)?(1.7+S.throttle*9.8):0;
+  var ff=(engineOn&&S.rpm>400&&!engFail)?(2.3+S.throttle*11.2):0;
   pf=document.getElementById('pfFF'); if(pf) pf.textContent=ff>0?ff.toFixed(1)+' gph':'0.0 gph';
   var pwF=Math.max(0,(S.rpm-500)/2100);
   var egtF=(engineOn&&S.rpm>400&&!engFail)? Math.round(1150+300*Math.exp(-Math.pow(S.mixture-0.78,2)/0.065)*(0.35+0.65*pwF)) : 0;
@@ -1902,7 +2061,7 @@ function doReset(air){
   document.getElementById('endOverlay').classList.remove('on');
   resetState(air); paused=false; ended=false;
   if(air && !engineOn){ engineOn=true; S.rpm=2050; document.getElementById('engStartBtn').style.display='none'; }
-  showToast(air?'Airborne: downwind for 28L at 1,900 ft. Abeam the numbers, carb heat on, flaps 10, turn base and final at 65 kt.':'Lined up on Runway 28L at KMYF. '+(engineOn?'Full throttle (W), rotate at 55, climb Vy 76.':'Start the engine first (E or the amber button), mixture rich.'));
+  showToast(air?'Airborne: downwind for 28L at 1,900 ft. Abeam the numbers, carb heat on, flaps 10, turn base and final at 70 kt.':'Lined up on Runway 28L at KMYF. '+(engineOn?'Full throttle (W), rotate at 55, climb Vy 84.':'Start the engine first (E or the amber button), mixture rich.'));
 }
 /* ================= SCENARIOS ================= */
 function placeFinal(distM, altFt, flaps){
@@ -1914,7 +2073,7 @@ function placeFinal(distM, altFt, flaps){
 }
 function scenarioDownwind(){
   doReset(true);
-  showToast('Downwind entry: left downwind for 28L at 1,900 ft. Abeam the numbers — carb heat ON, flaps 10°, slow to 85. Base, final at 65, land it in the zone. The pattern traffic is ahead of you.', 9000);
+  showToast('Downwind entry: left downwind for 28L at 1,900 ft. Abeam the numbers — carb heat ON, flaps 10°, slow to 90. Base, final at 70, land it in the zone. The pattern traffic is ahead of you.', 9000);
 }
 function scenarioDead(){
   doReset(true);
@@ -1923,21 +2082,21 @@ function scenarioDead(){
   S.quat=yawQuatForHeading(RWY_HDG);
   S.vel.set(RWY_DIR.x*34, 0, RWY_DIR.z*34);
   S.onGround=false;
-  towerSay('Skyhawk 75F — simulated failure acknowledged. Runway 28L is yours, any part of it. Make the field; nothing else matters.');
-  showToast('✦ DEAD-STICK: the engine is done at 3,500 ft over KMYF. Pitch for 65 kt best glide NOW, point at the first third of 28L, and manage energy — slip if high, never stretch a glide. The scorer is watching.', 10000);
+  towerSay('Skylane 75F — simulated failure acknowledged. Runway 28L is yours, any part of it. Make the field; nothing else matters.');
+  showToast('✦ DEAD-STICK PRACTICE: the engine is done at 3,500 ft over KMYF. Pitch for 70 kt best glide NOW, point at the first third of 28L, and manage energy — slip if high, never stretch a glide.', 10000);
 }
 function scenarioXwind(){
   windMode=2;
   document.querySelectorAll('[data-windset]').forEach(function(x){ x.classList.toggle('on', +x.dataset.windset===2); });
   document.getElementById('hWind').textContent='300/14';
   doReset(true); placeFinal(3800, 1350, 20);
-  towerSay('Skyhawk 75F, wind 300 at 14, gusting 19, Runway 28L, cleared to land. Caution: the sock is doing gymnastics.');
+  towerSay('Skylane 75F, wind 300 at 14, gusting 19, Runway 28L, cleared to land. Caution: the sock is doing gymnastics.');
   showToast('≋ Gusty crosswind final: crab into it on final, kick it straight in the flare, aileron into the wind through the rollout. ~12 kt crosswind component — near the demonstrated limit, deliberately.', 9000);
 }
 function scenarioNight(){
   setTOD(4); doReset(true); placeFinal(3400, 1250, 10);
-  towerSay('Skyhawk 75F, Montgomery Tower, wind 270 at 6, Runway 28L, cleared to land. The rabbit is running for you.');
-  showToast('☾ Night final for 28L. Chase the sequenced flashers to the threshold, hold the PAPI at two-white-two-red, and put it in the touchdown zone. The landing scorer does not sleep.', 9000);
+  towerSay('Skylane 75F, Montgomery Tower, wind 270 at 6, Runway 28L, cleared to land. The rabbit is running for you.');
+  showToast('☾ Night final for 28L. Chase the sequenced flashers to the threshold, hold the PAPI at two-white-two-red, and put it in the touchdown zone.', 9000);
 }
 /* ================= AUDIO ================= */
 function ensureAudio(){
@@ -1957,7 +2116,7 @@ function ensureAudio(){
     var bp=audioCtx.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=700; bp.Q.value=0.6;
     windGain=audioCtx.createGain(); windGain.gain.value=0;
     src.connect(bp); bp.connect(windGain); windGain.connect(audioCtx.destination); src.start();
-    // stall warning horn — the 172's vane-and-horn, beeping with the buffet
+    // stall warning horn — the Skylane's vane-and-horn, beeping with the buffet
     stallOsc=audioCtx.createOscillator(); stallOsc.type='square'; stallOsc.frequency.value=430;
     var sf=audioCtx.createBiquadFilter(); sf.type='lowpass'; sf.frequency.value=1500;
     stallGain=audioCtx.createGain(); stallGain.gain.value=0;
@@ -1989,11 +2148,11 @@ var JJ_LINES=[
 ];
 var TOWER_LINES=[
  'Mooney 2TJ, turn right at Charlie, contact Ground 118.225. Nice landing.',
- 'Skyhawk 75F, Montgomery Tower, wind 270 at 8, Runway 28L, cleared for takeoff.',
+ 'Skylane 75F, Montgomery Tower, wind 270 at 8, Runway 28L, cleared for takeoff.',
  'Citation 7QS, Montgomery Tower, Runway 28L, line up and wait, traffic is a Skyhawk in the pattern.',
- 'Skyhawk 75F, extend downwind, I will call your base, traffic is a Mooney on a two-mile final.',
- 'Bonanza 44K, Montgomery Tower, caution wake turbulence, departing Skyhawk. Yes, really.',
- 'Skyhawk 75F, Runway 28L, cleared for the option. Make it a good one, your instructor is watching.',
+ 'Skylane 75F, extend downwind, I will call your base, traffic is a Mooney on a two-mile final.',
+ 'Bonanza 44K, Montgomery Tower, caution wake turbulence, departing Skylane. Yes, really.',
+ 'Skylane 75F, Runway 28L, cleared for the option. Make it a good one, your instructor is watching.',
  'Archer 3MA, enter left downwind Runway 28L, number three, following a Skyhawk on base.'
 ];
 var logEl=document.getElementById('log'), radioLogEl=document.getElementById('radioLog');
@@ -2048,7 +2207,14 @@ function drawG5(){ var g=gG5, W=150, H=124;
   g.fillStyle='#05080c'; g.fillRect(0,0,W,H);
   g.save(); g.beginPath(); g.rect(6,6,W-12,H-34); g.clip();
   var pitchPx=Math.max(-26,Math.min(26,-(S.pitchAng||0)*57.3*1.15));
-  g.translate(W/2, 52+pitchPx); g.rotate((S.rollAng||0));
+  // Gyro horizon: it stays world-level while the case (and the fixed aircraft
+  // symbol) roll with the aeroplane, so on the face it must counter-rotate
+  // AGAINST the bank — rollAng positive is a right bank, so the disc turns by
+  // -rollAng. (It previously rotated with the bank, which read as inverted:
+  // bank right and the horizon tilted right with you.) Pitch was already
+  // right: pitchAng negative is nose-up, pitchPx positive moves the horizon
+  // down the face, leaving the symbol in the blue.
+  g.translate(W/2, 52+pitchPx); g.rotate(-(S.rollAng||0));
   g.fillStyle='#2f6db3'; g.fillRect(-W,-H*2,W*2,H*2);
   g.fillStyle='#6e5133'; g.fillRect(-W,0,W*2,H*2);
   g.strokeStyle='#fff'; g.lineWidth=2; g.beginPath(); g.moveTo(-W,0); g.lineTo(W,0); g.stroke();
@@ -2060,7 +2226,7 @@ function drawG5(){ var g=gG5, W=150, H=124;
   g.strokeStyle='#ffd23e'; g.lineWidth=3; g.beginPath(); g.moveTo(38,52); g.lineTo(64,52); g.lineTo(75,58); g.lineTo(86,52); g.lineTo(112,52); g.stroke();
   g.beginPath(); g.arc(75,52,2.6,0,7); g.fillStyle='#ffd23e'; g.fill();
   // roll pointer
-  g.save(); g.translate(75,16); g.rotate((S.rollAng||0)); g.fillStyle='#ffd23e'; g.beginPath(); g.moveTo(0,7); g.lineTo(-4,0); g.lineTo(4,0); g.closePath(); g.fill(); g.restore();
+  g.save(); g.translate(75,16); g.rotate(-(S.rollAng||0)); g.fillStyle='#ffd23e'; g.beginPath(); g.moveTo(0,7); g.lineTo(-4,0); g.lineTo(4,0); g.closePath(); g.fill(); g.restore();
   g.strokeStyle='#9fb4c2'; g.lineWidth=1; for(var b=-30;b<=30;b+=15){ var a=b*Math.PI/180; g.beginPath(); g.moveTo(75+Math.sin(a)*13,16-Math.cos(a)*0+ (1-Math.cos(a))*0 ); g.lineTo(75+Math.sin(a)*17,14); g.stroke(); }
   // speed tape (left) + alt tape (right)
   function tape(x,val,step,fmt){ g.fillStyle='rgba(5,10,16,0.85)'; g.fillRect(x,10,27,76);
@@ -2221,13 +2387,13 @@ function drawMap(){
     g.beginPath(); g.arc(px(ax),py(az), rNm/nmPerPx, 0, 7); g.stroke(); g.setLineDash([]); }
   ring(APT.KSAN.x,APT.KSAN.z,10,'rgba(87,199,255,0.8)');
   ring(APT.KSAN.x,APT.KSAN.z,6,'rgba(87,199,255,0.55)');
-  ring(0,0,4.3,'rgba(87,199,255,0.8)',[5,4]);
+  ring(APT.KMYF.x,APT.KMYF.z,4.3,'rgba(87,199,255,0.8)',[5,4]);
   ring(APT.KSEE.x,APT.KSEE.z,4,'rgba(87,199,255,0.5)',[5,4]);
   ring(APT.KNKX.x,APT.KNKX.z,4,'rgba(255,79,216,0.45)',[5,4]);
   // terrain hints: Cowles + Soledad elevation tags
   g.fillStyle='#8a7a4a'; g.font='8px sans-serif'; g.textAlign='left';
-  g.fillText('▲1,592', px(12500)-8, py(3500));
-  g.fillText('▲ 872', px(-9800)-8, py(-600));
+  g.fillText('▲1,593', px(10103)-8, py(16));
+  g.fillText('▲ 822', px(-10443)-8, py(-2777));
   // route line
   if(dto){ var a=APT[dto]; g.strokeStyle='#ff4fd8'; g.lineWidth=1.8; g.beginPath(); g.moveTo(px(S.pos.x),py(S.pos.z)); g.lineTo(px(a.x),py(a.z)); g.stroke(); }
   // airports
@@ -2375,7 +2541,7 @@ function nextStage(){
     CR.active=false; CR.done=true; CR.passedAll=true;
     CR.finalMsg='CHECKRIDE PASSED. Jean-Jacques signs your logbook — and, rumors say, smiled.';
     logJJ('jj','Jean-Jacques: "Passed. All of it. I will write in your logbook with the good pen."');
-    towerSay('Skyhawk 75F, Montgomery Tower — congratulations from the cab, that was a checkride pass.');
+    towerSay('Skylane 75F, Montgomery Tower — congratulations from the cab, that was a checkride pass.');
     showEnd('🎓 Checkride passed','All maneuvers within ACS tolerances. Jean-Jacques signs the logbook, orders an espresso, and says the Air France examiners are "about to be very impressed."');
     renderCR(); return;
   }
@@ -2408,12 +2574,12 @@ function airborneAt(minAltFtAGL){
 }
 function mockStages(){
   return [
-   { name:'Slow flight', brief:'Configure for slow flight: 50–58 kt, flaps 20°, hold altitude ±100 ft for 15 seconds.',
-     setup:function(){ showToast('Climb to at least 2,500 ft MSL first if you are low, then slow to 50–58 kt.'); },
+   { name:'Slow flight', brief:'Configure for slow flight: 58–65 kt, flaps 20°, hold altitude ±100 ft for 15 seconds.',
+     setup:function(){ showToast('Climb to at least 2,500 ft MSL first if you are low, then slow to 58–65 kt.'); },
      check:function(dt,d){ if(S.onGround) return null;
        if(S.stalled) return 'fail:You let it break in slow flight. The horn is a warning, not an invitation.';
-       if(d.entryAlt===undefined && S.ias<62) d.entryAlt=S.altMSL;
-       if(S.ias>=48&&S.ias<=60&&d.entryAlt!==undefined&&Math.abs(S.altMSL-d.entryAlt)<110){ CR.hold+=dt; if(CR.hold>15) return 'pass'; }
+       if(d.entryAlt===undefined && S.ias<70) d.entryAlt=S.altMSL;
+       if(S.ias>=56&&S.ias<=68&&d.entryAlt!==undefined&&Math.abs(S.altMSL-d.entryAlt)<110){ CR.hold+=dt; if(CR.hold>15) return 'pass'; }
        else CR.hold=Math.max(0,CR.hold-dt*0.5);
        if(d.entryAlt!==undefined&&Math.abs(S.altMSL-d.entryAlt)>260) return 'fail:Altitude wandered more than 250 ft in slow flight.';
        return null; }, note:'Smooth. The horn only whispered.' },
@@ -2421,14 +2587,14 @@ function mockStages(){
      check:function(dt,d){ if(S.onGround) return null;
        if(d.stallAlt===undefined && S.stalled){ d.stallAlt=S.altMSL; d.stalled=true; }
        if(d.stalled){ if(S.altMSL<d.stallAlt-420) return 'fail:More than 400 ft lost in the power-off stall recovery.';
-         if(S.ias>62 && S.vs>-150 && S.throttle<0.3) return 'pass';
-         if(S.ias>62 && S.vs>-150) return 'pass'; }
+         if(S.ias>70 && S.vs>-150 && S.throttle<0.3) return 'pass';
+         if(S.ias>70 && S.vs>-150) return 'pass'; }
        return null; }, note:'Recovery by the book: power, pitch, clean up in stages.' },
    { name:'Power-on stall', brief:'Full power, climb attitude, slow it until it breaks. Recover promptly.',
      check:function(dt,d){ if(S.onGround) return null;
        if(d.stallAlt===undefined && S.stalled && S.throttle>0.6){ d.stallAlt=S.altMSL; d.stalled=true; }
        if(d.stalled){ if(S.altMSL<d.stallAlt-420) return 'fail:More than 400 ft lost in the power-on stall recovery.';
-         if(S.ias>62 && S.vs>-150) return 'pass'; }
+         if(S.ias>70 && S.vs>-150) return 'pass'; }
        return null; }, note:'Departure stall, tamed.' },
    { name:'Steep turn', brief:'Roll into 45° of bank (±5°), hold altitude ±100 ft, complete a full 360°.',
      check:function(dt,d){ if(S.onGround) return null;
@@ -2451,8 +2617,8 @@ function mockStages(){
          if(d.acc>345 && bank<20) return 'pass';
        }
        return null; }, note:'Ground reference, referenced.' },
-   { name:'Emergency — engine failure', brief:'The engine is about to quit. Best glide 65 kt, pick a field, troubleshoot. Survive to 600 ft AGL under control.',
-     setup:function(){ setTimeout(function(){ if(CR.active&&CR.idx===5){ engFail=true; logJJ('jj','Jean-Jacques pulls the throttle: "Your engine has failed. It is very quiet now, non? Fly the airplane."'); showToast('⚠ ENGINE FAILURE — glide at 65 kt. Find a field. I will "restart" it at 600 ft AGL if you fly it well.',9000); } }, 3500); },
+   { name:'Emergency — engine failure', brief:'The engine is about to quit. Best glide 70 kt, pick a field, troubleshoot. Survive to 600 ft AGL under control.',
+     setup:function(){ setTimeout(function(){ if(CR.active&&CR.idx===5){ engFail=true; logJJ('jj','Jean-Jacques pulls the throttle: "Your engine has failed. It is very quiet now, non? Fly the airplane."'); showToast('⚠ ENGINE FAILURE — glide at 70 kt. Find a field. I will "restart" it at 600 ft AGL if you fly it well.',9000); } }, 3500); },
      check:function(dt,d){ if(S.onGround){ return 'fail:You landed out during the emergency — the DPE wanted a go-around demo at 600 ft AGL, not a forced landing. (Bold, though.)'; }
        if(engFail && S.stalled) return 'fail:You stalled the glider. Airspeed is life.';
        if(engFail && S.agl*FT<650){ engFail=false; S.rpm=1400; return 'pass'; }
@@ -2464,16 +2630,16 @@ function mockStages(){
 function tlStages(){
   function resetGround(flaps){ doReset(false); if(flaps!==undefined) setFlaps(flaps); }
   return [
-   { name:'Normal takeoff & climb', brief:'Full power, rotate at 55, climb at Vy 76 (±5) to 500 ft AGL.',
+   { name:'Normal takeoff & climb', brief:'Full power, rotate at 55, climb at Vy 84 (±5) to 500 ft AGL.',
      setup:function(){ resetGround(0); },
      check:function(dt,d){ if(d.airborne===undefined && !S.onGround){ d.airborne=true; d.rotSpd=S.ias; if(S.ias<46||S.ias>68) return 'fail:Rotation at '+Math.round(S.ias)+' kt — Vr is 55, not a suggestion.'; }
-       if(d.airborne && S.agl*FT>500){ if(S.ias<62||S.ias>94) return 'fail:Climb speed off Vy by more than the tolerance at 500 ft.'; return 'pass'; }
+       if(d.airborne && S.agl*FT>500){ if(S.ias<70||S.ias>98) return 'fail:Climb speed off Vy by more than the tolerance at 500 ft.'; return 'pass'; }
        return null; }, note:'Vy, nailed.' },
    { name:'Crosswind takeoff', brief:'Wind now 300° at 14 gusting — aileron into the wind, rotate 55, crab into it and climb to 300 ft AGL.',
      setup:function(){ windMode=2; document.querySelectorAll('[data-windset]').forEach(function(x){ x.classList.toggle('on', +x.dataset.windset===2); }); onWindChanged(); resetGround(0); },
      check:function(dt,d){ if(d.airborne===undefined && !S.onGround) d.airborne=true;
        if(d.airborne && S.agl*FT>300) return 'pass'; return null; }, note:'Crabbed like a pro.' },
-   { name:'Short-field takeoff', brief:'Flaps 10°, hold the brakes, full power, release, rotate 55, climb Vx 59 over the obstacle — cross the far end at 50 ft or better.',
+   { name:'Short-field takeoff', brief:'Flaps 10°, hold the brakes, full power, release, rotate 55, climb Vx 58 over the obstacle — cross the far end at 50 ft or better.',
      setup:function(){ windMode=1; document.querySelectorAll('[data-windset]').forEach(function(x){ x.classList.toggle('on', +x.dataset.windset===1); }); onWindChanged(); resetGround(10); },
      check:function(dt,d){ if(S.onGround && S.throttle>0.9 && S.brake) d.usedBrakes=true;
        var rl=rwyLocal(S.pos.x,S.pos.z);
@@ -2484,15 +2650,15 @@ function tlStages(){
          return 'pass'; }
        if(S.onGround && rl.along>830 && S.ias<5) return 'fail:Ran out of runway negotiating.';
        return null; }, note:'Over the obstacle with room to spare.' },
-   { name:'Soft-field takeoff', brief:'Keep the nosewheel light: yoke back from the start, lift off as soon as she flies, stay in ground effect until 60 kt.',
+   { name:'Soft-field takeoff', brief:'Keep the nosewheel light: yoke back from the start, lift off as soon as she flies, stay in ground effect until 65 kt.',
      setup:function(){ resetGround(10); },
      check:function(dt,d){ if(S.onGround && S.ias>15 && (S.pitchAng*57.3)<-2.5) d.noseUp=true; // pitchAng negative = nose up in our convention... verified below
        if(d.noseUp===undefined && !S.onGround) { /* liftoff without technique */ }
        if(!S.onGround && d.liftoffSpd===undefined){ d.liftoffSpd=S.ias; if(!d.noseUp) return 'fail:You let the nosewheel plow the field. Yoke back, from brake release.'; }
-       if(d.liftoffSpd!==undefined && S.ias>63) return 'pass';
+       if(d.liftoffSpd!==undefined && S.ias>68) return 'pass';
        return null; }, note:'Floated out of ground effect like a DHC Beaver. Almost.' },
    { name:'Go-around', brief:'You are on final for 28L at 1,500 ft MSL. At my call — no, at YOUR judgment before touchdown: full power, flaps 20, climb away.',
-     setup:function(){ // place on 2.5 nm final, heading 280, 1500 MSL
+     setup:function(){ // place on 2.5 nm final, heading 295, 1500 MSL
        doReset(true);
        S.pos.set(-RWY_DIR.x*4600, (1500-FIELD_ELEV_FT)/FT, -RWY_DIR.z*4600);
        S.quat=yawQuatForHeading(RWY_HDG);
@@ -2509,7 +2675,7 @@ document.getElementById('scnDown').addEventListener('click',function(){ ensureAu
 document.getElementById('scnDead').addEventListener('click',function(){ ensureAudio(); scenarioDead(); });
 document.getElementById('scnXwind').addEventListener('click',function(){ ensureAudio(); scenarioXwind(); });
 document.getElementById('scnNight').addEventListener('click',function(){ ensureAudio(); scenarioNight(); });
-document.getElementById('crMockBtn').addEventListener('click',function(){ ensureAudio(); if(!engineOn){ showToast('Start the engine first — even a checkride begins with a running O-360.'); } startCheckride('mock'); });
+document.getElementById('crMockBtn').addEventListener('click',function(){ ensureAudio(); if(!engineOn){ showToast('Start the engine first — even a checkride begins with a running O-470.'); } startCheckride('mock'); });
 document.getElementById('crTlBtn').addEventListener('click',function(){ ensureAudio(); startCheckride('tl'); });
 
 /* touchdown / crash hooks from physics */
