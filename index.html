@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="color-scheme" content="dark"/>
 <link rel="icon" href="data:,"/>
-<title>Jean-Jacques' Skylane School — N4975F · Cessna 182Q · KMYF</title>
+<title>Flight Simulator — Cessna 182Q Skylane · KMYF San Diego</title>
 <style>
   :root{
     --ink:#e8edf1; --dim:#8fa1b0; --dim2:#647786;
@@ -182,6 +182,15 @@
   .freqBtn.on{border-color:var(--green);color:var(--green)}
   .pane{display:none}.pane.on{display:block}
 
+  /* ============ SETTINGS DRAWER (hidden by default) ============ */
+  #simDrawer{position:fixed;top:0;right:0;bottom:0;width:min(368px,94vw);background:#0c1117;border-left:1px solid var(--line2);z-index:50;transform:translateX(106%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-18px 0 40px rgba(0,0,0,.45)}
+  #simDrawer.on{transform:none}
+  #simDrawer .dHead{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 10px;border-bottom:1px solid var(--line)}
+  #simDrawer .dHead h2{margin:0;font-size:16px;letter-spacing:.02em}
+  #simDrawer .dBody{flex:1;overflow-y:auto;padding:12px 14px}
+  #drawerClose{background:#1d2631;border:1px solid var(--line2);color:var(--ink);border-radius:8px;padding:7px 12px;font-weight:800;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){#simDrawer{transition:none}}
+
   /* end overlay */
   .overlay{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(3,6,9,.62);padding:14px}
   .overlay.on{display:flex}
@@ -214,12 +223,11 @@
 <body>
 <header>
   <div>
-    <h1>JEAN-JACQUES' <span class="gold">SKYLANE SCHOOL</span> <span class="ver">v1.54.0</span></h1>
+    <h1>FLIGHT <span class="gold">SIMULATOR</span> <span class="ver">v1.55.0</span></h1>
     <div class="spec">N4975F &nbsp;·&nbsp; 1979 Cessna 182Q Skylane &nbsp;·&nbsp; 320 hp Continental O-470 [carb] &nbsp;·&nbsp; G5s &nbsp;·&nbsp; GNS 430W &nbsp;·&nbsp; Montgomery-Gibbs Executive (KMYF) · San Diego</div>
   </div>
   <div class="badge">N4975F &nbsp;·&nbsp; 182Q &nbsp;<b>320 hp</b></div>
   <div class="chip2">C182</div>
-  <div class="cfi"><div class="av">JJ</div><div><div class="n">CFI Jean-Jacques</div><div class="s">1,487.3 hrs &nbsp;·&nbsp; Air France-bound</div></div></div>
 </header>
 
 <main>
@@ -340,255 +348,112 @@
   </div>
 </div>
 
-<!-- SIDEBAR -->
-<aside>
-  <div id="tabs">
-    <button class="tab on" data-tab="fly">✈ FLY</button>
-    <button class="tab" data-tab="plan">🗺 PLAN</button>
-    <button class="tab" data-tab="study">📚 STUDY</button>
-    <button class="tab" data-tab="radio">📻 RADIO</button>
-    <button class="tab" data-tab="help">? HELP</button>
+<!-- SETTINGS DRAWER — simulator setup only; hidden until SETTINGS is pressed -->
+<div id="simDrawer" aria-hidden="true">
+  <div class="dHead"><h2>Simulator settings</h2><button id="drawerClose">✕ CLOSE</button></div>
+  <div class="dBody">
+    <div class="card plain">
+      <h3>Flight data — live</h3>
+      <div class="kv"><span>IAS</span><b><span id="sbSpd">0</span> kt</b></div>
+      <div class="kv"><span>Altitude</span><b><span id="sbAlt">427</span> ft</b></div>
+      <div class="kv"><span>Heading</span><b><span id="sbHdg">295</span>°</b></div>
+      <div class="kv"><span>Takeoffs</span><b id="lgTO">0</b></div>
+      <div class="kv"><span>Landings</span><b id="lgLD">0</b></div>
+      <div class="kv"><span>Last touchdown sink</span><b id="lgLast">—</b></div>
+    </div>
+    <div class="card plain">
+      <h3>Scenarios</h3>
+      <button class="freqBtn" id="scnDown">↻ Downwind entry<small>Airborne on the downwind for 28L at 1,900 ft — fly the pattern and land</small></button>
+      <button class="freqBtn" id="scnDead">✦ Engine-out practice<small>Engine out at 3,500 ft over the field. Best glide 70 kt. Make the runway.</small></button>
+      <button class="freqBtn" id="scnXwind">≋ Gusty crosswind final<small>300° at 14 gusting, on a 2 nm final. Crab it, slip it, land it.</small></button>
+      <button class="freqBtn" id="scnNight">☾ Night final<small>Runway lights, sequenced flashers and the PAPI on a dark arrival.</small></button>
+    </div>
+    <div class="card plain">
+      <h3>Environment</h3>
+      <div class="kv"><span>Wind</span><b>
+        <button class="fdet" data-windset="0">CALM</button>
+        <button class="fdet on" data-windset="1">270/08</button>
+        <button class="fdet" data-windset="2">GUSTY 300/14</button></b></div>
+      <div class="kv"><span>Time of day</span><b>
+        <button class="fdet" data-todset="0">MORNING</button>
+        <button class="fdet on" data-todset="1">MIDDAY</button>
+        <button class="fdet" data-todset="2">GOLDEN</button>
+        <button class="fdet" data-todset="3">DUSK</button>
+        <button class="fdet" data-todset="4">NIGHT</button></b></div>
+      <div class="kv"><span>Visibility</span><b>
+        <button class="fdet on" data-visset="0">CLEAR</button>
+        <button class="fdet" data-visset="1">HAZE</button>
+        <button class="fdet" data-visset="2">MARINE LAYER</button></b></div>
+      <div class="kv"><span>Head movement</span><b>
+        <button class="fdet" data-shakeset="0">OFF</button>
+        <button class="fdet" data-shakeset="1">LOW</button>
+        <button class="fdet on" data-shakeset="2">FULL</button></b></div>
+      <div class="kv"><span>Altimeter QNH (inHg)</span><b><button class="fdet" id="qnhDn">&minus;</button> <span id="qnhVal">29.92</span> <button class="fdet" id="qnhUp">+</button></b></div>
+      <p class="dim" style="margin-top:6px">Head movement is cockpit view only: engine tremble, turbulence wander, buffet shudder, ground-roll rumble and the touchdown jolt.</p>
+    </div>
+    <div class="card plain">
+      <h3>Engine — Continental O-470 · 320 hp</h3>
+      <div class="kv"><span>RPM</span><b id="engRpm">0</b></div>
+      <div class="kv"><span>Mixture</span><b id="engMix">RICH</b></div>
+      <div class="kv"><span>Carb heat</span><b id="engCarb">COLD</b></div>
+      <div class="kv"><span>Carb ice</span><b id="engIce">none</b></div>
+      <div class="kv"><span>Fuel total</span><b id="engFuel">40.0 gal</b></div>
+      <div class="kv"><span>Density altitude</span><b id="pfDA">—</b></div>
+      <div class="kv"><span>True airspeed</span><b id="pfTAS">—</b></div>
+      <div class="kv"><span>Fuel flow</span><b id="pfFF">—</b></div>
+      <div class="kv"><span>Manifold pressure</span><b id="pfMP">—</b></div>
+      <div class="kv"><span>Outside air temp</span><b id="pfOAT">—</b></div>
+      <div class="kv"><span>EGT (est.)</span><b id="pfEGT">—</b></div>
+      <div class="kv"><span>Endurance remaining</span><b id="pfEnd">—</b></div>
+      <div class="kv"><span>RWY 28L headwind</span><b id="pfHW">—</b></div>
+      <div class="kv"><span>RWY 28L crosswind</span><b id="pfXW">—</b></div>
+    </div>
+    <div class="card plain">
+      <h3>Engine start sequence</h3>
+      <p>Battery → avionics → fuel pump → starter. Or use the amber START ENGINE button / E key for an instant start.</p>
+      <div class="kv"><span>Battery master</span><b><button class="fdet" id="seqBatt">OFF</button></b></div>
+      <div class="kv"><span>Avionics</span><b><button class="fdet" id="seqAv">OFF</button></b></div>
+      <div class="kv"><span>Fuel pump</span><b><button class="fdet" id="seqPump">OFF</button></b></div>
+      <div class="kv"><span>Starter</span><b><button class="fdet" id="seqStart">ENGAGE</button></b></div>
+    </div>
+    <div class="card plain">
+      <h3>Navigation — GNS 430W Direct-To</h3>
+      <div id="dtoBtns"></div>
+      <button class="freqBtn" id="dtoClear">✕ &nbsp;Cancel Direct-To</button>
+      <div class="kv"><span>COM1 active</span><b>119.20 MYF TWR</b></div>
+      <div class="kv"><span>NAV1</span><b>117.80 MZB VOR</b></div>
+      <div class="kv"><span>Transponder</span><b>1200 · ALT</b></div>
+    </div>
+    <div class="card plain"><h3>Local airports — live</h3><div id="planList"></div></div>
+    <div class="card plain">
+      <h3>KMYF frequencies</h3>
+      <div class="kv"><span>ATIS</span><b>126.90</b></div>
+      <div class="kv"><span>Ground</span><b>118.225</b></div>
+      <div class="kv"><span>Tower</span><b>119.20</b></div>
+      <div class="kv"><span>SoCal Approach</span><b>124.35</b></div>
+      <div class="kv"><span>MZB VOR</span><b>117.80</b></div>
+    </div>
+    <div class="card plain"><h3>Controls</h3><table class="vsp">
+      <tr><td>Pitch / roll</td><td>Arrow keys · on-screen yoke</td></tr>
+      <tr><td>Throttle</td><td>W / S · Shift / Ctrl · lever</td></tr>
+      <tr><td>Rudder</td><td>A / D · Q / E</td></tr>
+      <tr><td>Flaps</td><td>F · detents</td></tr>
+      <tr><td>Landing gear</td><td>G</td></tr>
+      <tr><td>Brakes / airbrake</td><td>B (hold)</td></tr>
+      <tr><td>Trim</td><td>, / . · Home / End · Z / X rudder</td></tr>
+      <tr><td>Mixture</td><td>[ ] · red lever</td></tr>
+      <tr><td>Carb heat</td><td>H</td></tr>
+      <tr><td>Engine start / stop</td><td>E</td></tr>
+      <tr><td>Autopilot HDG / ALT</td><td>V / N</td></tr>
+      <tr><td>Camera</td><td>C — cockpit / chase / wing / orbit (drag)</td></tr>
+      <tr><td>Time of day</td><td>T</td></tr>
+      <tr><td>Reset — runway / cruise</td><td>R / Shift+R</td></tr>
+      <tr><td>Pause</td><td>P</td></tr>
+    </table></div>
+    <div class="card plain"><h3>Event log</h3><div id="log" style="font-size:12.5px;line-height:1.55"></div></div>
+    <div class="card plain"><h3>Radio — 119.20</h3><div id="radioLog" style="font-size:12.5px;line-height:1.55"></div></div>
   </div>
-  <div id="subtabs">
-    <button class="stab on" data-sub="lessons">LESSONS</button>
-    <button class="stab" data-sub="checklists">CHECKLISTS</button>
-    <button class="stab" data-sub="vspeeds">V-SPEEDS</button>
-    <button class="stab" data-sub="engine">ENGINE</button>
-    <button class="stab" data-sub="avionics">AVIONICS</button>
-  </div>
-  <div id="sideBody">
-
-    <!-- FLY / LESSONS -->
-    <div class="pane on" data-pane="fly-lessons">
-      <div class="card">
-        <h3>Free flight — Montgomery Field (KMYF)</h3>
-        <p>You start lined up on Runway 28L at Montgomery-Gibbs Executive Airport, San Diego (427 ft MSL). Fly wherever. Landmarks: MCAS Miramar 3 nm north, Lindbergh Field (SAN, Class B) and downtown southwest, Mission Bay and Mt. Soledad west, Gillespie east, Cowles Mountain just east of the field. Try GPS Direct-To on the Avionics tab.</p>
-        <div class="kv"><span>IAS</span><b><span id="sbSpd">0</span> kt</b></div>
-        <div class="kv"><span>Altitude</span><b><span id="sbAlt">427</span> ft</b></div>
-        <div class="kv"><span>Heading</span><b><span id="sbHdg">295</span>°</b></div>
-      </div>
-      <div class="card plain">
-        <h3>Scenarios — one click, instant trouble</h3>
-        <p>Jump straight into the interesting part. A Mooney (well, a Skyhawk) flies the live pattern as traffic — tower calls included in the price.</p>
-        <button class="freqBtn" id="scnDown">↻ Downwind entry<small>Airborne on the downwind for 28L at 1,900 ft — fly the pattern and land</small></button>
-        <button class="freqBtn" id="scnDead">✦ Dead-stick practice<small>Engine out at 3,500 ft over the field. Best glide 70 kt. Make the runway — the classic engine-out exercise.</small></button>
-        <button class="freqBtn" id="scnXwind">≋ Gusty crosswind final<small>300° at 14 gusting, on a 2 nm final. Crab it, slip it, land it.</small></button>
-        <button class="freqBtn" id="scnNight">☾ Night final<small>Dusk-to-dark arrival: runway lights, the sequenced flashers and the PAPI are your world.</small></button>
-      </div>
-      <div class="card plain">
-        <h3>Logbook — this session</h3>
-        <div class="kv"><span>Takeoffs</span><b id="lgTO">0</b></div>
-        <div class="kv"><span>Landings</span><b id="lgLD">0</b></div>
-        <div class="kv"><span>Last touchdown sink</span><b id="lgLast">—</b></div>
-        <p class="dim" style="margin-top:6px">Every runway touchdown gets an instructor debrief in the log below: sink rate, centreline, touchdown point and approach speed. No points, no grades — just the facts, like a real debrief.</p>
-      </div>
-      <div class="card">
-        <button class="startBtn" id="crMockBtn">Start</button>
-        <h3>Mock checkride</h3>
-        <p>Seven ACS maneuvers back to back, graded like the real thing. One unsatisfactory ends it.</p>
-        <div id="crMockBody"></div>
-      </div>
-      <div class="card">
-        <button class="startBtn" id="crTlBtn">Start</button>
-        <h3>Takeoff &amp; landing checkride</h3>
-        <p>ACS Area IV, back to back: normal takeoff and pattern, crosswind, short field, soft field, go-around. Same tolerances as the real ride.</p>
-        <div id="crTlBody"></div>
-      </div>
-      <div id="logCard">
-        <h4>▼ 💬 JEAN-JACQUES' LOG</h4>
-        <div id="log"></div>
-      </div>
-    </div>
-
-    <!-- FLY / CHECKLISTS -->
-    <div class="pane" data-pane="fly-checklists">
-      <div class="card plain"><h3>Before takeoff — RWY 28L</h3><ul class="chk">
-        <li><b>Mixture</b> — RICH (full forward)</li>
-        <li><b>Carb heat</b> — COLD for takeoff</li>
-        <li><b>Flaps</b> — UP (10° short field)</li>
-        <li><b>Trim</b> — set for takeoff</li>
-        <li><b>Controls</b> — free and correct</li>
-        <li><b>Runup</b> — 1,700 RPM, mags, carb heat check</li>
-        <li><b>Transponder</b> — ALT, 1200</li>
-        <li><b>Doors &amp; belts</b> — secured</li>
-      </ul></div>
-      <div class="card plain"><h3>Approach &amp; landing</h3><ul class="chk">
-        <li><b>Mixture</b> — RICH</li>
-        <li><b>Carb heat</b> — ON before throttle reduction</li>
-        <li><b>Gear</b> — DOWN, three greens on the HUD (G)</li>
-        <li><b>Downwind</b> — 100 kt, flaps 10° abeam</li>
-        <li><b>Base</b> — 85 kt, flaps 20°</li>
-        <li><b>Final</b> — 70 kt, flaps 30–40°</li>
-        <li><b>GUMPS</b> — gas, undercarriage DOWN (G), mixture, prop (full forward), seatbelts</li>
-      </ul></div>
-      <div class="card plain"><h3>Go-around</h3><ul class="chk">
-        <li><b>Power</b> — FULL, carb heat COLD</li>
-        <li><b>Flaps</b> — retract to 20° immediately</li>
-        <li><b>Climb</b> — Vy 92 kt, flaps up when clear</li>
-        <li><b>Call</b> — "75F going around"</li>
-      </ul></div>
-    </div>
-
-    <!-- FLY / V-SPEEDS -->
-    <div class="pane" data-pane="fly-vspeeds">
-      <div class="card plain"><h3>V-speeds — 182Q, 2,950 lb</h3><table class="vsp">
-        <tr><td>Vr — rotation</td><td>55</td></tr>
-        <tr><td>Vx — best angle</td><td>64</td></tr>
-        <tr><td>Vy — best rate</td><td>92</td></tr>
-        <tr><td>Best glide</td><td>70</td></tr>
-        <tr><td>Vs — stall, clean</td><td>54</td></tr>
-        <tr><td>Vs0 — stall, flaps 40°</td><td>49</td></tr>
-        <tr><td>Vfe — max flap extended</td><td>95</td></tr>
-        <tr><td>Va — maneuvering</td><td>110</td></tr>
-        <tr><td>Vno — max structural cruise</td><td>165</td></tr>
-        <tr><td>Vne — never exceed</td><td>195</td></tr>
-        <tr><td>Final approach (full flap)</td><td>65–70</td></tr>
-        <tr><td>Short-field approach</td><td>65</td></tr>
-      </table><p class="dim" style="margin-top:8px">All speeds KIAS at gross weight, from the 182Q POH — except Vy, Vx, Vno and Vne, which reflect the 320 hp conversion and speed kit fitted to 75F. The sim flies light — roughly 2,530 lb at full tanks — so the actual break arrives a few knots below the book Vs / Vs0.</p></div>
-    </div>
-
-    <!-- FLY / ENGINE -->
-    <div class="pane" data-pane="fly-engine">
-      <div class="card plain"><h3>Continental O-470 — 320 hp performance build</h3>
-        <p>Six cylinders, carbureted, constant-speed prop — rebuilt to a 320 hp performance specification (high-compression pistons, ported heads, tuned exhaust), turning a cruise-pitched prop, with a speed kit (gap seals, flush fairings) cleaning up the airframe. Redline still 2,600 RPM. She now cruises around 155 kt and tops out near 170 — and burns about 17 gph doing it. Speed is never free. The v1.52 conversion also retracts the gear (G) — down and locked for every takeoff and landing, three greens on the HUD. (Sim simplification: there is no separate prop lever — the governor is folded into the throttle, so RPM still follows the black knob like the old 172.)</p>
-        <div class="kv"><span>RPM</span><b id="engRpm">0</b></div>
-        <div class="kv"><span>Mixture</span><b id="engMix">RICH</b></div>
-        <div class="kv"><span>Carb heat</span><b id="engCarb">COLD</b></div>
-        <div class="kv"><span>Carb ice</span><b id="engIce">none</b></div>
-        <div class="kv"><span>Fuel total</span><b id="engFuel">40.0 gal</b></div>
-      </div>
-      <div class="card plain"><h3>Start sequence — the authentic path</h3>
-        <p>Battery &rarr; avionics &rarr; fuel pump &rarr; starter. Or skip the ceremony: the amber button / E key stays the "ready for takeoff" instant start.</p>
-        <div class="kv"><span>Battery master</span><b><button class="fdet" id="seqBatt">OFF</button></b></div>
-        <div class="kv"><span>Avionics</span><b><button class="fdet" id="seqAv">OFF</button></b></div>
-        <div class="kv"><span>Fuel pump</span><b><button class="fdet" id="seqPump">OFF</button></b></div>
-        <div class="kv"><span>Starter</span><b><button class="fdet" id="seqStart">ENGAGE</button></b></div>
-      </div>
-      <div class="card plain"><h3>Performance — live</h3>
-        <div class="kv"><span>Density altitude</span><b id="pfDA">—</b></div>
-        <div class="kv"><span>True airspeed</span><b id="pfTAS">—</b></div>
-        <div class="kv"><span>Fuel flow</span><b id="pfFF">—</b></div>
-        <div class="kv"><span>Manifold pressure</span><b id="pfMP">—</b></div>
-        <div class="kv"><span>Outside air temp</span><b id="pfOAT">—</b></div>
-        <div class="kv"><span>EGT (est.)</span><b id="pfEGT">—</b></div>
-        <div class="kv"><span>Endurance remaining</span><b id="pfEnd">—</b></div>
-        <div class="kv"><span>RWY 28L headwind</span><b id="pfHW">—</b></div>
-        <div class="kv"><span>RWY 28L crosswind</span><b id="pfXW">—</b></div>
-        <p class="dim" style="margin-top:6px">Watch density altitude on a warm climb-out: the ASI lies politely, the engine tells the truth, and the runway gets shorter in every way that matters.</p>
-      </div>
-      <div class="card plain"><h3>Jean-Jacques on the red knob</h3>
-        <p>"Full rich for takeoff, always — San Diego is sea level, we are not mountain poets. Lean above 3,000 ft if you must. And carb heat: on <i>before</i> you pull the throttle back, or one day the engine will clear its throat on short final. Tragique."</p>
-        <p>Carb ice builds slowly at low power on humid days (today: 72°F, dewpoint 61 — classic icing weather). Watch for an unexplained RPM sag. Carb heat clears it, at the cost of ~75 RPM.</p>
-      </div>
-    </div>
-
-    <!-- FLY / AVIONICS -->
-    <div class="pane" data-pane="fly-avionics">
-      <div class="card plain"><h3>GNS 430W — Direct-To</h3>
-        <p>Pick a destination. The moving map and GPS unit draw the magenta line; DTK / DIS / ETE update live.</p>
-        <div id="dtoBtns"></div>
-        <button class="freqBtn" id="dtoClear">✕ &nbsp;Cancel Direct-To</button>
-      </div>
-      <div class="card plain"><h3>Radios</h3>
-        <div class="kv"><span>COM1 active</span><b>119.20 MYF TWR</b></div>
-        <div class="kv"><span>COM1 standby</span><b>126.90 MYF ATIS</b></div>
-        <div class="kv"><span>NAV1</span><b>117.80 MZB VOR</b></div>
-        <div class="kv"><span>Transponder</span><b>1200 · ALT</b></div>
-      </div>
-    </div>
-
-    <!-- PLAN -->
-    <div class="pane" data-pane="plan">
-      <div class="card plain"><h3>Local airports — live from N4975F</h3><div id="planList"></div></div>
-      <div class="card plain"><h3>Today's flying</h3>
-        <p>Wind <b>270° at 8 kt</b>, gusting in the GUSTY setting. Sky clear over the coast, marine layer burned off by 10:00. Class B (SAN) floor steps down southwest — get a clearance or stay out. Miramar's Class D… pardon, their airspace is <i>active</i> — stay clear north unless talking to them.</p>
-        <p class="dim">Settings below let you change wind and reset the flight.</p>
-        <div class="kv"><span>Wind</span><b>
-          <button class="fdet" data-windset="0">CALM</button>
-          <button class="fdet on" data-windset="1">270/08</button>
-          <button class="fdet" data-windset="2">GUSTY 300/14</button></b></div>
-        <div class="kv"><span>Time of day</span><b>
-          <button class="fdet" data-todset="0">MORNING</button>
-          <button class="fdet on" data-todset="1">MIDDAY</button>
-          <button class="fdet" data-todset="2">GOLDEN</button>
-          <button class="fdet" data-todset="3">DUSK</button>
-          <button class="fdet" data-todset="4">NIGHT</button></b></div>
-        <div class="kv"><span>Visibility</span><b>
-          <button class="fdet on" data-visset="0">CLEAR</button>
-          <button class="fdet" data-visset="1">HAZE</button>
-          <button class="fdet" data-visset="2">MARINE LAYER</button></b></div>
-        <div class="kv"><span>Head movement</span><b>
-          <button class="fdet" data-shakeset="0">OFF</button>
-          <button class="fdet" data-shakeset="1">LOW</button>
-          <button class="fdet on" data-shakeset="2">FULL</button></b></div>
-        <p class="dim" style="margin-top:6px">Head movement is cockpit view only: engine tremble, turbulence wander, buffet shudder, ground-roll rumble and the touchdown jolt. LOW softens it; OFF locks the camera.</p>
-        <div class="kv"><span>Altimeter QNH (inHg)</span><b><button class="fdet" id="qnhDn">&minus;</button> <span id="qnhVal">29.92</span> <button class="fdet" id="qnhUp">+</button></b></div>
-        <p class="dim" style="margin-top:6px">Night and dusk bring out the runway edge lights, the sequenced approach flashers (the "rabbit") and the tower beacon. The marine layer drops a fog deck over the coast — the field stays VFR, barely, and Jean-Jacques has opinions.</p>
-      </div>
-    </div>
-
-    <!-- STUDY -->
-    <div class="pane" data-pane="study">
-      <div class="card plain"><h3>ACS notes — Jean-Jacques' margin scribbles</h3>
-        <p><b>Slow flight:</b> 1.2 Vs, gear… fixed. Flaps as specified, ±100 ft, ±10 kt. The horn is music; the break is failure.</p>
-        <p><b>Stalls:</b> recover at the first indication on a checkride if the DPE briefs it — here, we fly to the break and recover with minimum altitude loss. Power, pitch, level the wings, in that order.</p>
-        <p><b>Steep turns:</b> 45° bank, ±100 ft, rollout within 10° of entry heading. Look outside! The G5 is not a television.</p>
-        <p><b>Emergencies:</b> aviate, navigate, communicate. Best glide 70, pick a field, <i>then</i> troubleshoot. The engine in the mock ride will quit once. Probably once.</p>
-      </div>
-    </div>
-
-    <!-- RADIO -->
-    <div class="pane" data-pane="radio">
-      <div class="card plain"><h3>KMYF frequencies</h3>
-        <div class="kv"><span>ATIS</span><b>126.90</b></div>
-        <div class="kv"><span>Ground</span><b>118.225</b></div>
-        <div class="kv"><span>Tower</span><b>119.20</b></div>
-        <div class="kv"><span>SoCal Approach</span><b>124.35</b></div>
-        <div class="kv"><span>MZB VOR</span><b>117.80</b></div>
-      </div>
-      <div class="card plain"><h3>Say it like Jean-Jacques</h3>
-        <p>"Montgomery Tower, Skylane 4975F, holding short Runway 28L at Bravo, ready for departure, westbound."</p>
-        <p>Short, who-where-what. The tower is busy; your life story can wait until the debrief, where it will be charged by the hour.</p>
-      </div>
-      <div class="card plain"><h3>Live frequency — 119.20</h3><div id="radioLog" style="font-size:12.5px;line-height:1.55"></div></div>
-    </div>
-
-    <!-- HELP -->
-    <div class="pane" data-pane="help">
-      <div class="card plain"><h3>Controls</h3><table class="vsp">
-        <tr><td>Pitch (yoke)</td><td>↑ ↓ / drag yoke</td></tr>
-        <tr><td>Roll (yoke)</td><td>← → / drag yoke</td></tr>
-        <tr><td>Throttle</td><td>W / S · Shift / Ctrl · lever · slider</td></tr>
-        <tr><td>Rudder</td><td>A / D · Q (left)</td></tr>
-        <tr><td>Flaps</td><td>F / Shift+F · detents</td></tr>
-        <tr><td>Mixture</td><td>[ ] keys · red lever</td></tr>
-        <tr><td>Carb heat</td><td>H · knob</td></tr>
-        <tr><td>Brakes / airbrake</td><td>Hold B (airbrake in flight) · BRAKES button</td></tr>
-        <tr><td>Trim</td><td>, / . keys</td></tr>
-        <tr><td>Engine start / stop</td><td>E</td></tr>
-        <tr><td>Autopilot — heading hold</td><td>V · AP·HDG button</td></tr>
-        <tr><td>Autopilot — altitude hold</td><td>N · AP·ALT button</td></tr>
-        <tr><td>Time of day</td><td>T · TIME button · PLAN tab</td></tr>
-        <tr><td>Camera</td><td>C</td></tr>
-        <tr><td>Head movement</td><td>PLAN tab — FULL / LOW / OFF</td></tr>
-        <tr><td>Landing gear</td><td>G (retract / extend)</td></tr>
-        <tr><td>Reset — runway / cruise</td><td>R / Shift+R (2,000 ft)</td></tr>
-        <tr><td>Orbit camera</td><td>C to ORBIT, then drag mouse · wheel zooms</td></tr>
-        <tr><td>Pause</td><td>P</td></tr>
-        <tr><td>Reset to runway</td><td>RESET button</td></tr>
-      </table>
-      <p style="margin-top:8px">Takeoff: mixture rich, carb heat cold, full throttle (W), rotate at 55 kt (↑ or pull the yoke), climb at Vy 92. Land: carb heat on, 70 kt on final, flaps 30–40°, flare gently — Jean-Jacques is watching the VSI.</p><p style="margin-top:8px"><b>Flight model v1.51:</b> ISA density (IAS sags vs TAS as you climb, and the O-470 loses power with it), a real lift/drag polar with ground effect — expect the float in the flare — plus pitch stability, dihedral, adverse yaw, prop torque and P-factor (feed in right rudder in the climb), a long buffet warning before a gentle, mushy break (the Skylane talks to you well before it lets go, and mushes rather than drops), and an accelerated stall if you haul G in a steep turn. The PAPI left of the 28L threshold is live: two white, two red and you are on the 3° path.</p>
-      <p style="margin-top:8px"><b>New in v1.54:</b> Esri is now the ONLY scenery. Every piece of hand-drawn ground is gone — the painted terrain colours and grain, the procedural suburbs and commercial parks, both tree passes, the downtown blocks, the Coronado Bridge / stadium / golf-disc landmarks, the marina models, the parked airliners and trainers, the extra hangar rows and the painted highway ribbons. The terrain mesh now carries elevation only, and the single ground texture draped over it is Esri World Imagery — sharpened to zoom 14 stitched at 4096 px (twice the previous linear resolution) with full anisotropic filtering, so streets, taxiways and rooftops stay legible down low. If the tiles can't load you get plain matte relief, never an invented landscape. The runways, PAPI, edge lights, rabbit, beacon and windsock stay — they're working airport aids, not scenery. And the ground is busier: 190 moving cars (four lanes each way on I-15, I-805, I-8, SR-52 and SR-163, plus surface traffic on Balboa Ave, Friars Rd, Clairemont Mesa Blvd, Aero Drive and Kearny Villa Rd), 36 trucks and buses on the freeways, a four-car commuter train on the coastal rail line, and eleven boats and ships working Mission Bay, San Diego Bay, La Jolla and the coast — all driving on the roads and water that are already in the photography.</p>
-      <p style="margin-top:8px"><b>New in v1.53:</b> the study-level rebuild. The whole-body lift/drag polar is gone — FlightPhysics now runs blade-element theory over nine surfaces (inner/outer wings, Fowler flaps, stabilizer, fin, fuselage), each with its own position, area, polar and local wind including propwash, so asymmetric stall in a skid, slipstream on the tail and ground effect are emergent, and the telemetry drawer (TELEMETRY button) shows every surface's alpha, CL and stall state live. Weather grows up too: Dryden filtered-noise turbulence with rotational gusts, wind shear aloft and thermals over the hills. The gear struts are non-linear oleos with velocity-squared damping, the tyres follow a Pacejka-style slip curve (hard braking skids), and arrivals past 3.5 G collapse the gear. Avionics: the G5 gains a flight-path vector, slip ball and V-speed bugs, the altimeters take an adjustable QNH (PLAN tab), manifold pressure and ISA temperature join the engine page alongside an authentic battery/avionics/pump/starter sequence, the HUD draws ILS diamonds for 28L, and GPWS-style voice callouts count you down on approach. Rudder trim (Z/X), Home/End elevator trim and gamepad sticks join the controls.</p>
-      <p style="margin-top:8px"><b>New in v1.52:</b> the rebuild to the full spec, in the same single file. The flight model is restructured into classes — FlightPhysics owns the lift curve and drag polar (the wing now breaks at about 16&deg; alpha with a real nose-drop; unload and add power to recover), the retractable gear (G) rides on a spring-damper suspension you can feel through the seat and the head movement, and gear-up genuinely cleans up the drag. A green/cyan military HUD overlays the view — pitch ladder, IAS and altitude tapes, heading compass, throttle / flap / gear / AoA status and a flashing STALL warning past 15&deg; — and a SoundSynthesizer flies the stall and gear warnings. Cameras gain a fourth mode, ORBIT (C): drag the mouse to inspect the aeroplane and its moving surfaces, rudder included. New keys: Q rudder, Shift/Ctrl throttle, B as airbrake in flight, R back to the threshold, Shift+R straight to a 2,000 ft cruise. Everything else — the panel, the lessons, the checkrides, KMYF itself — is untouched.</p>
-      <p style="margin-top:8px"><b>New in v1.51:</b> 75F went to the shop and came back faster. The O-470 is rebuilt to 320 hp, the prop is re-pitched for cruise and a speed kit cleans up the airframe — she cruises around 155 kt, tops out near 170, climbs at Vy 92, and Vno / Vne rise to 165 / 195. Stall, glide and final-approach speeds are unchanged — same wing, same weight, same honest break — though downwind and base are flown faster now, at 100 and 85 kt. And the cockpit view now moves like a head instead of a tripod — a faint tremble with engine RPM, a slow wander in turbulence, a shudder in the pre-stall buffet, rumble on the ground roll and a soft jolt at touchdown, each source smoothed and capped so it stays subtle. Too much? PLAN tab → Head movement: FULL, LOW or OFF.</p>
-      <p style="margin-top:8px"><b>New in v1.50:</b> the flight model grows up. The stall was too easy because the elevator commanded a pitch <i>rate</i> against weak stability — hold a moderate pull for a few seconds and the alpha wound straight past the break. Now the yoke works against a stick-force gradient that stiffens as alpha climbs, the elevator loses bite in the buffet, the wing's lift curve is re-sloped at the weight the sim actually flies (about 2,530 lb, well under the 2,950 lb gross behind the book V-speeds — so the break comes a few knots slower than the table), buffet starts a full 6° early with the horn joining sooner, and the break itself is a mush with a gentle nose-lowering and a mild wing rock, not a drop. Deliberate stalls still break — full pull, hold it, let the speed bleed — exactly as the checkride requires. Also: the propeller and spinner no longer show in cockpit view, a landing light comes on with the engine after dark, the airframe trembles faintly with RPM, buffet and the ground roll, control surfaces chase their deflections and the flaps travel at motor speed instead of snapping, the boats ride a small swell, and the satellite ground stays sharper at grazing angles.</p>
-      <p style="margin-top:8px"><b>New in v1.49:</b> the school aeroplane is now a Cessna 182Q Skylane — 230 hp Continental O-470 in place of the Skyhawk's 180, so she climbs harder, cruises around 135–140 kt instead of 115, and carries Skylane speeds everywhere (Vy 84, best glide 70, final at 70, stall up at 54 clean). Same carb heat, same fixed gear, same KMYF. And the G5 attitude indicator is fixed: its horizon disc was rotating <i>with</i> your bank instead of counter-rotating against it like a real gyro horizon, so a right bank tilted the horizon the wrong way. Bank right now and the horizon stays world-level, exactly as it does out the windscreen.</p>
-      <p style="margin-top:8px"><b>New in v1.48:</b> the ground is real — Esri World Imagery satellite photography draped over the terrain and georeferenced to the FAA-surveyed runway ends, so every strip (all three at KMYF, Miramar, Lindbergh, North Island, Gillespie), the coastline, Mission Bay and the road network sit exactly where they should; the painted terrain remains underneath as an offline fallback. Also: a more forgiving stall, leafier trees, denser suburbs on their real streets, airliners at Lindbergh's gates, boats and ships with wakes working Mission Bay, San Diego Bay and the coast — and the landing scorer is gone. Touchdowns get an instructor debrief, not points. (v1.47 added the two-axis autopilot, time-of-day lighting, the marine layer, scenarios, live traffic and the stall horn.)</p></div>
-    </div>
-
-  </div>
-</aside>
+</div>
 </main>
 
 <!-- END OVERLAY -->
@@ -892,7 +757,7 @@ function addRunway(cx,cz,hdgDeg,len,wid,n1,n2,yOff){
 }
 /* every strip at its surveyed centre, true heading, length and width —
    each one lies exactly on the same pavement in the satellite imagery */
-addRunway(0,0,RWY_HDG,1036,18,'28','10');               // KMYF 28L/10R — the school runway
+addRunway(0,0,RWY_HDG,1036,18,'28','10');               // KMYF 28L/10R — primary runway
 addRunway(230,-61,295,1401,46,'28','10',0.15);          // KMYF 28R/10L
 addRunway(-60,-209,245,1036,23,'23','05',0.18);         // KMYF 23/05
 addRunway(-523,-5964,255.4,3657,61,'24','06');          // Miramar 24R/06L
@@ -1389,7 +1254,7 @@ function stepPhysics(dt){
   var inGE = aglRaw<11 && aglRaw>-1;
   // lift curve lives in FlightPhysics (spec architecture): linear CL(alpha)
   // to a break at ~16.5°, buffet from ~11°, then CL falls away and the nose
-  // drops — deliberate stalls still break for the checkride, and recovery is
+  // drops — deliberate stalls still break, and recovery is
   // the classic unload + power, which the 320 hp build makes brisk
   // BLADE ELEMENT THEORY: no whole-body polar. FlightPhysics resolves nine
   // surfaces — each with its own position, area, polar and local relative
@@ -1567,7 +1432,7 @@ function stepPhysics(dt){
   if(S.pos.y>4600){ S.pos.y=4600; if(S.vel.y>0)S.vel.y=0; }
 
   flightTime+=dt;
-  if(engineOn && S.rpm>500){ hobbs+=dt/3600; var burn=(1.4+S.throttle*7.2)/3600*dt; S.fuelL=Math.max(0,S.fuelL-burn); S.fuelR=Math.max(0,S.fuelR-burn); if(S.fuelL+S.fuelR<=0 && !engFail){ engFail=true; logJJ('sys','The tanks are dry. Forty gallons, gone. This is now a glider checkride.'); } }
+  if(engineOn && S.rpm>500){ hobbs+=dt/3600; var burn=(1.4+S.throttle*7.2)/3600*dt; S.fuelL=Math.max(0,S.fuelL-burn); S.fuelR=Math.max(0,S.fuelR-burn); if(S.fuelL+S.fuelR<=0 && !engFail){ engFail=true; logJJ('sys','Fuel exhausted — tanks dry. You are now gliding.'); } }
   maxAlt=Math.max(maxAlt, FIELD_ELEV_FT+S.pos.y*FT);
   _e.setFromQuaternion(S.quat,'YXZ');
   S.pitchAng=_e.x; S.rollAng=_e.z;
@@ -1623,16 +1488,15 @@ function handleTouchdown(){
   if(td.bank>28){ crash('You touched down with '+Math.round(td.bank)+'° of bank and cartwheeled. Wings level in the flare — always.'); return; }
   if(td.vs<-950){ if(td.vs<-1250){ crash('Impact at '+Math.round(td.vs)+' fpm — beyond what any gear survives. Flare earlier, carry a whisper of power.'); } else { crash('Touchdown at '+Math.round(td.vs)+' fpm collapsed the gear — over 3.5 G on the struts. The Skylane settles onto her belly. Flare, always.'); } return; }
   if(!td.onRunway && terrainH(td.x,td.z)>4){ crash('Off-field landing in rough terrain east of the field. The paved strip at KMYF was right there.'); return; }
-  var rating= td.vs>-180 ? 'GREASED IT. Jean-Jacques almost smiled.' : td.vs>-420 ? 'Firm but safe.' : td.vs>-700 ? 'Hard. The tower winced. She will fly again.' : 'Very hard. Inspect everything.';
-  /* ---- touchdown debrief: the facts, instructor-style. No score and no
-     grade — this is a flight simulator, not an arcade cabinet. ---- */
+  var rating= td.vs>-180 ? 'GREASED IT.' : td.vs>-420 ? 'Firm but safe.' : td.vs>-700 ? 'Hard landing — she will fly again.' : 'Very hard. Inspect the gear.';
+  /* ---- touchdown summary: sink, centreline, touchdown point, speed ---- */
   var rlT=rwyLocal(td.x,td.z);
   var on28 = Math.abs(((S.heading-RWY_HDG)%360+360)%360)<90 || Math.abs(((S.heading-RWY_HDG)%360+360)%360)>270;
   var distFt = on28 ? (rlT.along+518)*FT : (518-rlT.along)*FT;   // past the landing threshold
   var offM=Math.abs(rlT.perp);
   logbook.landings++; logbook.lastSink=td.vs;
   updateLogbookUI();
-  logJJ('sys','Touchdown debrief — sink '+Math.round(td.vs)+' fpm · centreline '+offM.toFixed(0)+' m · touched '+Math.max(0,Math.round(distFt))+' ft past the threshold at '+Math.round(td.speed)+' kt.');
+  logJJ('sys','Touchdown — sink '+Math.round(td.vs)+' fpm · centreline '+offM.toFixed(0)+' m · touched '+Math.max(0,Math.round(distFt))+' ft past the threshold at '+Math.round(td.speed)+' kt.');
   if(td.onRunway) showToast('Touchdown RWY '+(on28?'28L':'10R')+' — '+Math.round(td.vs)+' fpm · '+rating+' Roll out, or full power for a touch-and-go.', 7500);
   else showToast('Off-runway touchdown — '+Math.round(td.vs)+' fpm · '+rating+' The pavement was right there.', 7500);
 }
@@ -1640,7 +1504,7 @@ function crash(msg){
   if(ended) return; ended=true; onCrashEvent();
   showEnd('💥 Flight ended', msg);
   if(engGain) engGain.gain.value=0;
-  logJJ('jj','Jean-Jacques: "We will discuss this in the debrief. Bring coffee. And perhaps a new airplane."');
+  logJJ('sys','Flight ended. Reset (R) to fly again.');
 }
 function showEnd(title,msg){
   document.getElementById('endTitle').textContent=title;
@@ -1694,7 +1558,7 @@ function setCarbHeat(on){ if(!S)return; S.carbHeat=on; updateLeverUI(); updateCo
 function toggleEngine(){
   if(engineOn){ engineOn=false; showToast('Engine shut down. Mixture to idle cutoff in a real one — here, it is just sad and quiet.'); }
   else{
-    if(S.mixture<0.5){ showToast('It cranks and coughs — mixture is not rich. Push the red knob full forward, then start.'); logJJ('jj','Jean-Jacques: "Mixture rich before start. The engine cannot burn intentions."'); return; }
+    if(S.mixture<0.5){ showToast('It cranks and coughs — mixture is not rich. Push the red knob full forward, then start.'); return; }
     engineOn=true; ensureAudio(); showToast('Engine running — O-470 idling at 620 RPM. Mixture rich, carb heat cold, brakes held.');
     document.getElementById('engStartBtn').style.display='none';
   }
@@ -1860,12 +1724,12 @@ document.getElementById('seqPump').addEventListener('click',function(){ if(!seqS
 document.getElementById('seqStart').addEventListener('click',function(){ if(engineOn){ showToast('She is already running.'); return; }
   if(!seqState.batt||!seqState.pump){ showToast('The starter turns, but without battery and pump she will not light. Sequence: battery, pump, starter.'); return; }
   if(S.mixture<0.5){ showToast('She cranks and coughs — mixture rich before start.'); return; }
-  engineOn=true; ensureAudio(); showToast('Started by the book — battery, avionics, pump, starter. Jean-Jacques approves of the ceremony.'); document.getElementById('engStartBtn').style.display='none'; updateConfigUI(); });
+  engineOn=true; ensureAudio(); showToast('Started by the book — battery, avionics, pump, starter.'); document.getElementById('engStartBtn').style.display='none'; updateConfigUI(); });
 document.getElementById('pauseBtn').addEventListener('click',togglePause);
 document.getElementById('yokeBtn').addEventListener('click',function(){ document.body.classList.toggle('yoke-off'); this.classList.toggle('on', !document.body.classList.contains('yoke-off')); });
 document.getElementById('sndBtn').addEventListener('click',function(){ soundOn=!soundOn; this.classList.toggle('on',soundOn); if(engGain&&!soundOn) engGain.gain.value=0; });
 document.getElementById('engStartBtn').addEventListener('click',function(){ toggleEngine(); });
-document.getElementById('setBtn').addEventListener('click',function(){ switchTab('plan'); showToast('Settings live on the PLAN tab — wind and head-movement options are there. Sound and yoke are toggles below the panel.'); });
+document.getElementById('setBtn').addEventListener('click',function(){ openDrawer(); });
 document.querySelectorAll('[data-windset]').forEach(function(b){ b.addEventListener('click',function(){
   document.querySelectorAll('[data-windset]').forEach(function(x){x.classList.remove('on');}); b.classList.add('on');
   windMode=+b.dataset.windset; onWindChanged(); }); });
@@ -1881,7 +1745,7 @@ document.getElementById('btnAPHdg').addEventListener('click',function(){ ensureA
 document.getElementById('btnAPAlt').addEventListener('click',function(){ ensureAudio(); setAPAlt(!apAlt); });
 function onWindChanged(){
   document.getElementById('hWind').textContent= windMode===0?'CALM':(WIND[windMode].dir+'/'+String(WIND[windMode].spd).padStart(2,'0'));
-  showToast(windMode===0?'Wind calm.':windMode===1?'Wind 270 at 8 — down Runway 28L\'s throat, perfect.':'Gusty: 300 at 14, gusting. Crosswind component ~12 kt. Jean-Jacques approves of your suffering.');
+  showToast(windMode===0?'Wind calm.':windMode===1?'Wind 270 at 8 — down Runway 28L\'s throat, perfect.':'Gusty: 300 at 14, gusting. Crosswind component ~12 kt.');
 }
 /* ================= TIME OF DAY + VISIBILITY ================= */
 var TODN=['MORNING','MIDDAY','GOLDEN','DUSK','NIGHT'];
@@ -1892,7 +1756,7 @@ var TODP=[
  {sunDir:[-0.90,0.03,0.28], sunCol:0xff8f4d, sunI:1.05, off:[-540,40,170], zen:[0.05,0.10,0.27], mid:[0.21,0.27,0.47], hor:[0.84,0.44,0.29], sunC:[1.0,0.50,0.24], glow:1.1, fog:0x8d8095, hemi:0.44, hemiSky:0x8d9cc0, amb:0.09, exp:1.02, dark:0.7, stars:0.4, cloud:0x9a8fa5, water:0x8d99ad},
  {sunDir:[-0.38,0.55,-0.32], sunCol:0x9fb6dd, sunI:0.55, off:[-230,330,-190], zen:[0.008,0.025,0.075], mid:[0.03,0.06,0.135], hor:[0.075,0.105,0.175], sunC:[0.72,0.82,1.0], glow:0.5, fog:0x39434f, hemi:0.20, hemiSky:0x51638a, amb:0.05, exp:0.96, dark:1, stars:0.95, cloud:0x39424e, water:0x2e4256}
 ];
-var TODMSG=['Morning. Long shadows, cool dense air — she climbs like she means it. Best flying of the day, Jean-Jacques insists, mostly because lunch is still ahead.',
+var TODMSG=['Morning. Long shadows, cool dense air — she climbs like she means it.',
  'Midday over San Diego. Thermals later; for now, honest light and honest airspeeds.',
  'Golden hour. The city turns the colour of good decisions. Mind the sun in your eyes on final for 28L — it is exactly where you do not want it.',
  'Dusk. The rabbit is running, the beacon is on, and the field lights are doing their quiet magic. Land before it gets properly dark, or commit to it.',
@@ -2042,40 +1906,32 @@ function updateAudio(){
 }
 
 /* ================= LOG + TOWER CHATTER ================= */
-var JJ_LINES=[
- 'In France, lunch is two hours. In aviation, it is a granola bar over Miramar. Tragique.',
- 'Alors. Zat is Class Bravo down to ze ground around Miramar. No clearance, no entry. Not even a little bit.',
- 'You fly ze airplane, ze airplane does not fly you. Unless it is on autopilot, which we do not have.',
- 'My grandfather flew a Stampe over Provence. He said: any landing you walk away from is good; any you use again, excellent.',
- 'Check the windsock with your eyes, not the ATIS alone. The sock never lies. The sock cannot lie. It is a sock.',
- 'Air France will want precision. Also pressed uniforms. I practice both.',
- 'If Jean-Jacques is quiet, it is good. If Jean-Jacques is loud, also it is instructive.',
- 'Sacré bleu is reserved for special occasions. I have used it twice this week. Both were with the previous student.'
-];
+var JJ_LINES=[];
 var TOWER_LINES=[
  'Mooney 2TJ, turn right at Charlie, contact Ground 118.225. Nice landing.',
  'Skylane 75F, Montgomery Tower, wind 270 at 8, Runway 28L, cleared for takeoff.',
  'Citation 7QS, Montgomery Tower, Runway 28L, line up and wait, traffic is a Skyhawk in the pattern.',
  'Skylane 75F, extend downwind, I will call your base, traffic is a Mooney on a two-mile final.',
  'Bonanza 44K, Montgomery Tower, caution wake turbulence, departing Skylane. Yes, really.',
- 'Skylane 75F, Runway 28L, cleared for the option. Make it a good one, your instructor is watching.',
+ 'Skylane 75F, Runway 28L, cleared for the option.',
  'Archer 3MA, enter left downwind Runway 28L, number three, following a Skyhawk on base.'
 ];
 var logEl=document.getElementById('log'), radioLogEl=document.getElementById('radioLog');
 function fmtClock(){ var s=Math.floor(flightTime); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
 function logJJ(kind,msg){
+  if(kind==='jj') return; // pure simulator: no instructor commentary
+  if(!logEl) return;
   var d=document.createElement('div');
   if(kind==='tower'){ d.innerHTML='<span class="tower">📻 '+msg+'</span>'; }
   else if(kind==='sys'){ d.innerHTML='<span class="sys">▸ '+msg+'</span>'; }
   else { d.innerHTML='<span style="color:var(--dim)">'+fmtClock()+'</span> <span class="jj">'+msg+'</span>'; }
   logEl.prepend(d); while(logEl.children.length>34) logEl.removeChild(logEl.lastChild);
-  if(kind==='tower'){ var r=d.cloneNode(true); radioLogEl.prepend(r); while(radioLogEl.children.length>16) radioLogEl.removeChild(radioLogEl.lastChild); }
+  if(kind==='tower' && radioLogEl){ var r=d.cloneNode(true); radioLogEl.prepend(r); while(radioLogEl.children.length>16) radioLogEl.removeChild(radioLogEl.lastChild); }
 }
 var ambTimer=26;
 function ambientTick(dt){
   ambTimer-=dt; if(ambTimer>0) return; ambTimer=24+Math.random()*22;
-  if(Math.random()<0.55){ var m=TOWER_LINES[Math.floor(Math.random()*TOWER_LINES.length)]; towerSay(m); }
-  else logJJ('jj','Jean-Jacques: "'+JJ_LINES[Math.floor(Math.random()*JJ_LINES.length)]+'"');
+  var m=TOWER_LINES[Math.floor(Math.random()*TOWER_LINES.length)]; towerSay(m);
 }
 
 /* ================= GAUGES ================= */
@@ -2392,20 +2248,11 @@ function refreshUI(){
   }
 }
 
-/* ================= TABS ================= */
-var curTab='fly', curSub='lessons';
-function switchTab(t){ curTab=t;
-  document.querySelectorAll('.tab').forEach(function(b){ b.classList.toggle('on', b.dataset.tab===t); });
-  document.getElementById('subtabs').style.display= t==='fly'?'flex':'none';
-  showPane();
-}
-function showPane(){
-  var key= curTab==='fly'? 'fly-'+curSub : curTab;
-  document.querySelectorAll('.pane').forEach(function(p){ p.classList.toggle('on', p.dataset.pane===key); });
-}
-document.querySelectorAll('.tab').forEach(function(b){ b.addEventListener('click',function(){ switchTab(b.dataset.tab); }); });
-document.querySelectorAll('.stab').forEach(function(b){ b.addEventListener('click',function(){ curSub=b.dataset.sub;
-  document.querySelectorAll('.stab').forEach(function(x){ x.classList.toggle('on', x===b); }); showPane(); }); });
+/* ================= SETTINGS DRAWER ================= */
+function openDrawer(){ var d=document.getElementById('simDrawer'); if(d){ d.classList.add('on'); d.setAttribute('aria-hidden','false'); } }
+function closeDrawer(){ var d=document.getElementById('simDrawer'); if(d){ d.classList.remove('on'); d.setAttribute('aria-hidden','true'); } }
+function switchTab(){ openDrawer(); }
+document.getElementById('drawerClose').addEventListener('click', closeDrawer);
 /* Direct-To buttons */
 (function(){
   var wrap=document.getElementById('dtoBtns');
@@ -2421,194 +2268,14 @@ document.querySelectorAll('.stab').forEach(function(b){ b.addEventListener('clic
     document.querySelectorAll('[data-dto]').forEach(function(x){ x.classList.remove('on'); }); });
 })();
 
-/* ================= CHECKRIDES ================= */
+/* ================= FLIGHT SESSION (no grading system) ================= */
 var CR={active:false, mode:null, idx:-1, stages:[], hold:0, data:{}, done:false};
-function stageListHTML(){
-  if(!CR.active && !CR.done) return '';
-  var h='<ul class="stageList">';
-  CR.stages.forEach(function(s,i){
-    var cls= i<CR.idx?'pass':(i===CR.idx?(CR.failed?'fail':'cur'):'');
-    var st= i<CR.idx?'✓ PASS':(i===CR.idx?(CR.failed?'✗ UNSAT':'● FLYING'):'—');
-    h+='<li class="'+cls+'"><span>'+(i+1)+'. '+s.name+'</span><span class="st">'+st+'</span></li>';
-  });
-  return h+'</ul>';
-}
-function renderCR(){
-  var body= CR.mode==='mock'? document.getElementById('crMockBody') : document.getElementById('crTlBody');
-  if(!body) return;
-  if(CR.active && CR.idx>=0 && CR.idx<CR.stages.length){
-    body.innerHTML='<p style="color:var(--amber2);font-weight:700">'+CR.stages[CR.idx].brief+'</p>'+stageListHTML();
-  } else if(CR.done){
-    body.innerHTML='<p style="font-weight:700;color:'+(CR.passedAll?'var(--green)':'var(--red)')+'">'+CR.finalMsg+'</p>'+stageListHTML();
-  } else body.innerHTML='';
-  document.getElementById('crMockBtn').textContent= (CR.active&&CR.mode==='mock')?'Abort':'Start';
-  document.getElementById('crMockBtn').classList.toggle('stop', CR.active&&CR.mode==='mock');
-  document.getElementById('crTlBtn').textContent= (CR.active&&CR.mode==='tl')?'Abort':'Start';
-  document.getElementById('crTlBtn').classList.toggle('stop', CR.active&&CR.mode==='tl');
-}
-function startCheckride(mode){
-  if(CR.active){ CR.active=false; CR.done=false; logJJ('jj','Jean-Jacques: "Aborted. Even the DPE cannot grade what does not happen."'); renderCR(); return; }
-  CR={active:true, mode:mode, idx:-1, stages: mode==='mock'? mockStages(): tlStages(), hold:0, data:{}, done:false, failed:false, passedAll:false, finalMsg:''};
-  logJJ('sys', mode==='mock' ? 'MOCK CHECKRIDE started. Seven maneuvers. One unsat ends it. Bonne chance.' : 'TAKEOFF & LANDING CHECKRIDE started. ACS Area IV. Show me smooth.');
-  nextStage();
-}
-function nextStage(){
-  CR.idx++; CR.hold=0; CR.data={};
-  if(CR.idx>=CR.stages.length){
-    CR.active=false; CR.done=true; CR.passedAll=true;
-    CR.finalMsg='CHECKRIDE PASSED. Jean-Jacques signs your logbook — and, rumors say, smiled.';
-    logJJ('jj','Jean-Jacques: "Passed. All of it. I will write in your logbook with the good pen."');
-    towerSay('Skylane 75F, Montgomery Tower — congratulations from the cab, that was a checkride pass.');
-    showEnd('🎓 Checkride passed','All maneuvers within ACS tolerances. Jean-Jacques signs the logbook, orders an espresso, and says the Air France examiners are "about to be very impressed."');
-    renderCR(); return;
-  }
-  var s=CR.stages[CR.idx];
-  if(s.setup) s.setup();
-  logJJ('jj','Jean-Jacques: "Maneuver '+(CR.idx+1)+': '+s.name+'. '+s.brief+'"');
-  showToast('Maneuver '+(CR.idx+1)+' of '+CR.stages.length+': '+s.name+' — '+s.brief, 6500);
-  renderCR();
-}
-function failStage(reason){
-  CR.failed=true; CR.active=false; CR.done=true; CR.passedAll=false;
-  CR.finalMsg='UNSATISFACTORY — '+reason;
-  logJJ('jj','Jean-Jacques: "Stop. That is unsatisfactory. '+reason+' We debrief, we practice, we fly again. This is how pilots are made — even in France."');
-  showToast('✗ UNSATISFACTORY — '+reason, 8000);
-  renderCR();
-}
-function passStage(note){
-  logJJ('sys','✓ '+CR.stages[CR.idx].name+' — within standards. '+(note||''));
-  nextStage();
-}
-function crTick(dt){
-  if(!CR.active||ended||paused) return;
-  var s=CR.stages[CR.idx]; if(!s) return;
-  var r=s.check(dt, CR.data);
-  if(r==='pass') passStage(s.note);
-  else if(r && r.indexOf('fail:')===0) failStage(r.slice(5));
-}
-function airborneAt(minAltFtAGL){
-  return !S.onGround && (S.agl*FT)>minAltFtAGL;
-}
-function mockStages(){
-  return [
-   { name:'Slow flight', brief:'Configure for slow flight: 58–65 kt, flaps 20°, hold altitude ±100 ft for 15 seconds.',
-     setup:function(){ showToast('Climb to at least 2,500 ft MSL first if you are low, then slow to 58–65 kt.'); },
-     check:function(dt,d){ if(S.onGround) return null;
-       if(S.stalled) return 'fail:You let it break in slow flight. The horn is a warning, not an invitation.';
-       if(d.entryAlt===undefined && S.ias<70) d.entryAlt=S.altMSL;
-       if(S.ias>=56&&S.ias<=68&&d.entryAlt!==undefined&&Math.abs(S.altMSL-d.entryAlt)<110){ CR.hold+=dt; if(CR.hold>15) return 'pass'; }
-       else CR.hold=Math.max(0,CR.hold-dt*0.5);
-       if(d.entryAlt!==undefined&&Math.abs(S.altMSL-d.entryAlt)>260) return 'fail:Altitude wandered more than 250 ft in slow flight.';
-       return null; }, note:'Smooth. The horn only whispered.' },
-   { name:'Power-off stall', brief:'Throttle idle, flaps going to 40°, pitch to a landing-descent attitude and stall it. Recover with minimum altitude loss.',
-     check:function(dt,d){ if(S.onGround) return null;
-       if(d.stallAlt===undefined && S.stalled){ d.stallAlt=S.altMSL; d.stalled=true; }
-       if(d.stalled){ if(S.altMSL<d.stallAlt-420) return 'fail:More than 400 ft lost in the power-off stall recovery.';
-         if(S.ias>70 && S.vs>-150 && S.throttle<0.3) return 'pass';
-         if(S.ias>70 && S.vs>-150) return 'pass'; }
-       return null; }, note:'Recovery by the book: power, pitch, clean up in stages.' },
-   { name:'Power-on stall', brief:'Full power, climb attitude, slow it until it breaks. Recover promptly.',
-     check:function(dt,d){ if(S.onGround) return null;
-       if(d.stallAlt===undefined && S.stalled && S.throttle>0.6){ d.stallAlt=S.altMSL; d.stalled=true; }
-       if(d.stalled){ if(S.altMSL<d.stallAlt-420) return 'fail:More than 400 ft lost in the power-on stall recovery.';
-         if(S.ias>70 && S.vs>-150) return 'pass'; }
-       return null; }, note:'Departure stall, tamed.' },
-   { name:'Steep turn', brief:'Roll into 45° of bank (±5°), hold altitude ±100 ft, complete a full 360°.',
-     check:function(dt,d){ if(S.onGround) return null;
-       var bank=Math.abs(S.rollAng)*57.3;
-       if(d.startHdg===undefined && bank>38){ d.startHdg=S.heading; d.entryAlt=S.altMSL; d.acc=0; d.lastHdg=S.heading; }
-       if(d.startHdg!==undefined){
-         if(bank>62) return 'fail:Bank exceeded 60° in the steep turn.';
-         if(Math.abs(S.altMSL-d.entryAlt)>240) return 'fail:Altitude left the ±100 ft standard and kept going.';
-         var dh=S.heading-d.lastHdg; if(dh>180)dh-=360; if(dh<-180)dh+=360; d.acc+=Math.abs(dh); d.lastHdg=S.heading;
-         if(d.acc>345 && bank<28) return 'pass';
-       }
-       return null; }, note:'Rollout on heading. Très bien.' },
-   { name:'Turns around a point', brief:'At 800–1,000 ft AGL, fly a full 360° circle around the point below you, bank 25–45°, holding your radius.',
-     check:function(dt,d){ if(S.onGround) return null;
-       var bank=Math.abs(S.rollAng)*57.3, aglFt=S.agl*FT;
-       if(d.startHdg===undefined && bank>22){ d.startHdg=S.heading; d.acc=0; d.lastHdg=S.heading; }
-       if(d.startHdg!==undefined){
-         if(aglFt<550||aglFt>1300) return 'fail:Altitude for ground-reference work is 600–1,000 ft AGL around here.';
-         var dh=S.heading-d.lastHdg; if(dh>180)dh-=360; if(dh<-180)dh+=360; d.acc+=Math.abs(dh); d.lastHdg=S.heading;
-         if(d.acc>345 && bank<20) return 'pass';
-       }
-       return null; }, note:'Ground reference, referenced.' },
-   { name:'Emergency — engine failure', brief:'The engine is about to quit. Best glide 70 kt, pick a field, troubleshoot. Survive to 600 ft AGL under control.',
-     setup:function(){ setTimeout(function(){ if(CR.active&&CR.idx===5){ engFail=true; logJJ('jj','Jean-Jacques pulls the throttle: "Your engine has failed. It is very quiet now, non? Fly the airplane."'); showToast('⚠ ENGINE FAILURE — glide at 70 kt. Find a field. I will "restart" it at 600 ft AGL if you fly it well.',9000); } }, 3500); },
-     check:function(dt,d){ if(S.onGround){ return 'fail:You landed out during the emergency — the DPE wanted a go-around demo at 600 ft AGL, not a forced landing. (Bold, though.)'; }
-       if(engFail && S.stalled) return 'fail:You stalled the glider. Airspeed is life.';
-       if(engFail && S.agl*FT<650){ engFail=false; S.rpm=1400; return 'pass'; }
-       return null; }, note:'Aviate, navigate, communicate — in that order.' },
-   { name:'Normal landing — KMYF', brief:'Full-stop landing on Runway 28L or 10R at KMYF, on centerline, no float festival, sink under 700 fpm.',
-     check:function(dt,d){ return null; }, note:'' }
-  ];
-}
-function tlStages(){
-  function resetGround(flaps){ doReset(false); if(flaps!==undefined) setFlaps(flaps); }
-  return [
-   { name:'Normal takeoff & climb', brief:'Full power, rotate at 55, climb at Vy 92 (±5) to 500 ft AGL.',
-     setup:function(){ resetGround(0); },
-     check:function(dt,d){ if(d.airborne===undefined && !S.onGround){ d.airborne=true; d.rotSpd=S.ias; if(S.ias<46||S.ias>68) return 'fail:Rotation at '+Math.round(S.ias)+' kt — Vr is 55, not a suggestion.'; }
-       if(d.airborne && S.agl*FT>500){ if(S.ias<78||S.ias>106) return 'fail:Climb speed off Vy by more than the tolerance at 500 ft.'; return 'pass'; }
-       return null; }, note:'Vy, nailed.' },
-   { name:'Crosswind takeoff', brief:'Wind now 300° at 14 gusting — aileron into the wind, rotate 55, crab into it and climb to 300 ft AGL.',
-     setup:function(){ windMode=2; document.querySelectorAll('[data-windset]').forEach(function(x){ x.classList.toggle('on', +x.dataset.windset===2); }); onWindChanged(); resetGround(0); },
-     check:function(dt,d){ if(d.airborne===undefined && !S.onGround) d.airborne=true;
-       if(d.airborne && S.agl*FT>300) return 'pass'; return null; }, note:'Crabbed like a pro.' },
-   { name:'Short-field takeoff', brief:'Flaps 10°, hold the brakes, full power, release, rotate 55, climb Vx 64 over the obstacle — cross the far end at 50 ft or better.',
-     setup:function(){ windMode=1; document.querySelectorAll('[data-windset]').forEach(function(x){ x.classList.toggle('on', +x.dataset.windset===1); }); onWindChanged(); resetGround(10); },
-     check:function(dt,d){ if(S.onGround && S.throttle>0.9 && S.brake) d.usedBrakes=true;
-       var rl=rwyLocal(S.pos.x,S.pos.z);
-       if(!S.onGround && d.checked===undefined && rl.along>830){ d.checked=true;
-         if(S.pos.y<13) return 'fail:The 50-ft obstacle at the departure end sends its regards.';
-         if(!d.usedBrakes) return 'fail:Short field means brakes held at full power. Every foot counts.';
-         if(S.flaps!==10) return 'fail:Short-field flap setting is 10°, not '+S.flaps+'°.';
-         return 'pass'; }
-       if(S.onGround && rl.along>830 && S.ias<5) return 'fail:Ran out of runway negotiating.';
-       return null; }, note:'Over the obstacle with room to spare.' },
-   { name:'Soft-field takeoff', brief:'Keep the nosewheel light: yoke back from the start, lift off as soon as she flies, stay in ground effect until 65 kt.',
-     setup:function(){ resetGround(10); },
-     check:function(dt,d){ if(S.onGround && S.ias>15 && (S.pitchAng*57.3)<-2.5) d.noseUp=true; // pitchAng negative = nose up in our convention... verified below
-       if(d.noseUp===undefined && !S.onGround) { /* liftoff without technique */ }
-       if(!S.onGround && d.liftoffSpd===undefined){ d.liftoffSpd=S.ias; if(!d.noseUp) return 'fail:You let the nosewheel plow the field. Yoke back, from brake release.'; }
-       if(d.liftoffSpd!==undefined && S.ias>68) return 'pass';
-       return null; }, note:'Floated out of ground effect like a DHC Beaver. Almost.' },
-   { name:'Go-around', brief:'You are on final for 28L at 1,500 ft MSL. At my call — no, at YOUR judgment before touchdown: full power, flaps 20, climb away.',
-     setup:function(){ // place on 2.5 nm final, heading 295, 1500 MSL
-       doReset(true);
-       S.pos.set(-RWY_DIR.x*4600, (1500-FIELD_ELEV_FT)/FT, -RWY_DIR.z*4600);
-       S.quat=yawQuatForHeading(RWY_HDG);
-       S.vel.set(RWY_DIR.x*33, -1.5, RWY_DIR.z*33);
-       S.throttle=0.32; setFlaps(30); setCarbHeat(true);
-     },
-     check:function(dt,d){ if(!S.onGround && S.agl*FT<380 && d.gaAlt===undefined){ d.armed=true; }
-       if(d.armed && S.throttle>0.92 && d.gaAlt===undefined) d.gaAlt=S.altMSL;
-       if(d.gaAlt!==undefined && S.altMSL>d.gaAlt+140 && S.vs>0) return 'pass';
-       return null; }, note:'Go-around: decisive. The Mooney on the ground thanks you.' }
-  ];
-}
-document.getElementById('scnDown').addEventListener('click',function(){ ensureAudio(); scenarioDownwind(); });
-document.getElementById('scnDead').addEventListener('click',function(){ ensureAudio(); scenarioDead(); });
-document.getElementById('scnXwind').addEventListener('click',function(){ ensureAudio(); scenarioXwind(); });
-document.getElementById('scnNight').addEventListener('click',function(){ ensureAudio(); scenarioNight(); });
-document.getElementById('crMockBtn').addEventListener('click',function(){ ensureAudio(); if(!engineOn){ showToast('Start the engine first — even a checkride begins with a running O-470.'); } startCheckride('mock'); });
-document.getElementById('crTlBtn').addEventListener('click',function(){ ensureAudio(); startCheckride('tl'); });
+function crTick(dt){}
 
 /* touchdown / crash hooks from physics */
 var lastTouchWasGround=false;
-function onTouchdownEvent(td){
-  if(!CR.active) return;
-  if(CR.mode==='mock' && CR.idx===6){
-    if(!td.onRunway){ failStage('The checkride landing must be at KMYF, on the runway.'); return; }
-    if(td.vs<-700){ failStage('Checkride landing sink rate '+Math.round(td.vs)+' fpm — beyond ACS tolerance.'); return; }
-    passStage('Full stop, centerline, examiner breathing again.');
-  }
-  if(CR.mode==='tl' && CR.idx===4){
-    failStage('You touched down instead of going around. Commitment is for marriages, not final approach.');
-  }
-}
-function onCrashEvent(){ if(CR.active){ CR.failed=true; CR.active=false; CR.done=true; CR.passedAll=false; CR.finalMsg='UNSATISFACTORY — the flight ended in terrain/airframe damage.'; renderCR(); } }
+function onTouchdownEvent(td){}
+function onCrashEvent(){}
 
 
 /* ================= SPEC ARCHITECTURE =================
@@ -3080,8 +2747,6 @@ document.getElementById('againBtn').addEventListener('click',function(){ doReset
 document.getElementById('endAirBtn').addEventListener('click',function(){ doReset(true); });
 renderer.domElement.addEventListener('pointerdown',function(){ ensureAudio(); });
 logJJ('tower','Tower: Mooney 2TJ, turn right at Charlie, contact Ground 118.225. Nice landing.');
-logJJ('jj','Jean-Jacques: "Bonjour. I am Jean-Jacques, 1,487.3 hours, Air France-bound, and today — your examiner, your instructor, your conscience. Start the engine. Mixture rich. We fly."');
-logJJ('jj','2.9m In France, lunch is two hours. In aviation, it is a granola bar over Miramar. Tragique.');
 showToast('Welcome to KMYF. Start the engine (amber button or E), then full throttle and rotate at 55 kt. Wind 270 at 8 — Runway 28L is yours.', 9000);
 requestAnimationFrame(loop);
 })();

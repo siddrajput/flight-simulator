@@ -1,6 +1,6 @@
-# Jean-Jacques' Skyhawk School — Flight Simulator
+# Flight Simulator
 
-Browser-based Cessna 182Q Skylane (N4975F, 320 hp) flight simulator at KMYF Montgomery-Gibbs, San Diego. v1.54.0.
+Browser-based Cessna 182Q Skylane (N4975F, 320 hp) flight simulator at KMYF Montgomery-Gibbs, San Diego. v1.55.0.
 
 ## Run it
 
@@ -16,10 +16,9 @@ No build step, no install. Single self-contained HTML file. Needs internet for E
 - Full instrument panel + military HUD: pitch ladder, IAS/ALT tapes, compass, throttle/flap/gear/AoA, flashing STALL, flight-path vector, slip ball, V-speed bugs, adjustable QNH, ILS diamonds for 28L
 - Engine start sequence (battery/avionics/pump/starter) + instant start, fuel burn shifting CG, manifold pressure and ISA readouts
 - Retractable gear on spring-damper suspension with Pacejka-style tires, Dryden turbulence, wind shear and thermals
-- Lessons, checklists, V-speeds, engine and avionics tabs, Jean-Jacques' log
-- Graded checkrides: 7-maneuver mock checkride and ACS Area IV takeoff & landing ride
 - Ground artifacts: 190 moving cars on five freeways + surface streets, 36 trucks/buses, four-car commuter train, 11 boats/ships with wakes
 - Camera shake / headshake (FULL/LOW/OFF), keyboard / mouse / on-screen yoke, gamepad support, trim, telemetry drawer, GPWS callouts
+- Settings drawer (hidden until SETTINGS): scenarios, wind/time/visibility, engine data, Direct-To, airports, frequencies, controls reference
 - Keyboard / mouse / on-screen yoke controls, sound, pause
 
 Built with Muse.
