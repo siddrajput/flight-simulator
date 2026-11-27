@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="color-scheme" content="dark"/>
 <link rel="icon" href="data:,"/>
-<title>Flight Simulator — Cessna 182Q Skylane · KMYF San Diego</title>
+<title>Flight Simulator — Cessna 172N Skyhawk · KMYF San Diego</title>
 <style>
   :root{
     --ink:#e8edf1; --dim:#8fa1b0; --dim2:#647786;
@@ -45,15 +45,9 @@
   #viewWrap::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background:radial-gradient(ellipse at 50% 42%,transparent 58%,rgba(4,12,22,.28) 100%);box-shadow:inset 0 0 120px rgba(10,25,45,.18)}
   #scene{position:absolute;inset:0}
   #scene canvas{display:block}
-  #hudChips{position:absolute;top:8px;left:10px;display:flex;gap:5px;z-index:4;flex-wrap:wrap;max-width:62%}
-  #milHud{position:absolute;inset:0;z-index:3;pointer-events:none}
   #cheatSheet{position:absolute;left:10px;bottom:52px;z-index:4;pointer-events:none;background:rgba(4,16,10,.55);border:1px solid rgba(61,255,142,.30);color:#c2ffdd;font:10.5px/1.55 ui-monospace,monospace;padding:6px 9px;border-radius:6px;max-width:47%}
   #cheatSheet b{color:#3dff8e}
   @media (max-width:760px){ #cheatSheet{font-size:9px;max-width:60%} }
-  .hchip{background:rgba(8,14,22,.78);backdrop-filter:blur(6px);border:1px solid rgba(150,195,235,.42);border-radius:6px;padding:3px 8px;font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.25)}
-  .hchip span{color:var(--dim);font-size:10px;letter-spacing:.08em;margin-right:4px}
-  #compassWrap{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:4;background:rgba(8,12,17,.88);border:1px solid rgba(120,160,190,.35);border-radius:8px;padding:2px 6px 0;text-align:center}
-  #compassWrap .clab{font-size:8px;letter-spacing:.3em;color:var(--dim);font-weight:700}
   #towerBar{position:absolute;left:10px;right:10px;bottom:14px;z-index:4;background:rgba(6,26,14,.88);border:1px solid rgba(46,224,111,.35);border-left:4px solid var(--green);
     color:var(--green);font-family:ui-monospace,Menlo,monospace;font-size:13.5px;font-weight:600;padding:7px 12px;border-radius:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #glare{position:absolute;left:0;right:0;bottom:0;height:9px;background:linear-gradient(180deg,#3a3f45,#14171b);border-top:2px solid #8c2f26;z-index:3}
@@ -223,11 +217,11 @@
 <body>
 <header>
   <div>
-    <h1>FLIGHT <span class="gold">SIMULATOR</span> <span class="ver">v1.55.0</span></h1>
-    <div class="spec">N4975F &nbsp;·&nbsp; 1979 Cessna 182Q Skylane &nbsp;·&nbsp; 320 hp Continental O-470 [carb] &nbsp;·&nbsp; G5s &nbsp;·&nbsp; GNS 430W &nbsp;·&nbsp; Montgomery-Gibbs Executive (KMYF) · San Diego</div>
+    <h1>FLIGHT <span class="gold">SIMULATOR</span> <span class="ver">v1.56.0</span></h1>
+    <div class="spec">N4975F &nbsp;·&nbsp; 1979 Cessna 172N Skyhawk &nbsp;·&nbsp; 160 hp Lycoming O-320 [carb] &nbsp;·&nbsp; G5s &nbsp;·&nbsp; GNS 430W &nbsp;·&nbsp; Montgomery-Gibbs Executive (KMYF) · San Diego</div>
   </div>
-  <div class="badge">N4975F &nbsp;·&nbsp; 182Q &nbsp;<b>320 hp</b></div>
-  <div class="chip2">C182</div>
+  <div class="badge">N4975F &nbsp;·&nbsp; 172N &nbsp;<b>160 hp</b></div>
+  <div class="chip2">C172</div>
 </header>
 
 <main>
@@ -235,17 +229,6 @@
   <!-- 3D VIEW -->
   <div id="viewWrap">
     <div id="scene"></div>
-    <div id="hudChips">
-      <div class="hchip"><span>IAS</span><b id="hSpd">0</b></div>
-      <div class="hchip"><span>ALT</span><b id="hAlt">427</b></div>
-      <div class="hchip"><span>VS</span><b id="hVs">+0</b></div>
-      <div class="hchip"><span>HDG</span><b id="hHdg">295</b></div>
-      <div class="hchip"><span>AGL</span><b id="hAgl">0</b></div>
-      <div class="hchip"><span>WIND</span><b id="hWind">270/08</b></div>
-      <div class="hchip"><span>DA</span><b id="hDA">—</b></div>
-      <div class="hchip" id="hAP" style="display:none;border-color:var(--green);color:var(--green)"><span>AP</span><b id="hAPtxt">—</b></div>
-    </div>
-    <div id="compassWrap"><canvas id="compassCanvas" width="216" height="34"></canvas><div class="clab">COMPASS</div></div>
     <button id="engStartBtn">▶ START ENGINE</button>
     <div id="viewMsg">
       <div class="vwarn" id="stallWarn">⚠ STALL</div>
@@ -264,9 +247,9 @@
       </div>
       <div id="thrZone"><div class="slab">THROTTLE</div><div id="thrTrack"><div id="thrFill"></div><div id="thrNub">THR</div></div></div>
     </div>
-    <div id="cheatSheet"><b>FLY</b> &uarr;&darr; pitch &middot; &larr;&rarr; roll &middot; A/D rudder &middot; W/S throttle (+ Shift/Ctrl) &middot; <b>G</b> gear &middot; <b>F</b> flaps &middot; <b>B</b> brakes / airbrake &middot; <b>C</b> camera &middot; <b>R</b> reset runway &middot; <b>Shift+R</b> cruise 2,000 ft</div>
+    <div id="cheatSheet"><b>FLY</b> &uarr;&darr; pitch &middot; &larr;&rarr; roll &middot; A/D rudder &middot; W/S throttle (+ Shift/Ctrl) &middot; <b>F</b> flaps &middot; <b>B</b> brakes / airbrake &middot; <b>C</b> camera &middot; <b>R</b> reset runway &middot; <b>Shift+R</b> cruise 2,000 ft</div>
     <div id="telDrawer" style="position:absolute;right:10px;top:52px;z-index:4;display:none;background:rgba(3,12,8,.74);border:1px solid rgba(61,255,142,.30);color:#c2ffdd;font:10.5px/1.6 ui-monospace,monospace;padding:8px 10px;border-radius:6px;min-width:220px;pointer-events:none;white-space:pre"></div>
-    <div id="towerBar">📻 <span id="towerText">MYF TOWER: Skylane 75F, Montgomery Tower, wind 270 at 8, Runway 28L, cleared for takeoff.</span></div>
+    <div id="towerBar">📻 <span id="towerText">MYF TOWER: Skyhawk 75F, Montgomery Tower, wind 270 at 8, Runway 28L, cleared for takeoff.</span></div>
     <div id="glare"></div>
   </div>
 
@@ -364,7 +347,7 @@
     <div class="card plain">
       <h3>Scenarios</h3>
       <button class="freqBtn" id="scnDown">↻ Downwind entry<small>Airborne on the downwind for 28L at 1,900 ft — fly the pattern and land</small></button>
-      <button class="freqBtn" id="scnDead">✦ Engine-out practice<small>Engine out at 3,500 ft over the field. Best glide 70 kt. Make the runway.</small></button>
+      <button class="freqBtn" id="scnDead">✦ Engine-out practice<small>Engine out at 3,500 ft over the field. Best glide 65 kt. Make the runway.</small></button>
       <button class="freqBtn" id="scnXwind">≋ Gusty crosswind final<small>300° at 14 gusting, on a 2 nm final. Crab it, slip it, land it.</small></button>
       <button class="freqBtn" id="scnNight">☾ Night final<small>Runway lights, sequenced flashers and the PAPI on a dark arrival.</small></button>
     </div>
@@ -392,7 +375,7 @@
       <p class="dim" style="margin-top:6px">Head movement is cockpit view only: engine tremble, turbulence wander, buffet shudder, ground-roll rumble and the touchdown jolt.</p>
     </div>
     <div class="card plain">
-      <h3>Engine — Continental O-470 · 320 hp</h3>
+      <h3>Engine — Lycoming O-320 · 160 hp</h3>
       <div class="kv"><span>RPM</span><b id="engRpm">0</b></div>
       <div class="kv"><span>Mixture</span><b id="engMix">RICH</b></div>
       <div class="kv"><span>Carb heat</span><b id="engCarb">COLD</b></div>
@@ -438,7 +421,7 @@
       <tr><td>Throttle</td><td>W / S · Shift / Ctrl · lever</td></tr>
       <tr><td>Rudder</td><td>A / D · Q / E</td></tr>
       <tr><td>Flaps</td><td>F · detents</td></tr>
-      <tr><td>Landing gear</td><td>G</td></tr>
+      <tr><td>Landing gear</td><td>Fixed — always down</td></tr>
       <tr><td>Brakes / airbrake</td><td>B (hold)</td></tr>
       <tr><td>Trim</td><td>, / . · Home / End · Z / X rudder</td></tr>
       <tr><td>Mixture</td><td>[ ] · red lever</td></tr>
@@ -1019,7 +1002,7 @@ setTimeout(function(){
   };
 },140);
 
-/* ================= AIRCRAFT MODEL — 1979 Cessna 182Q Skylane ================= */
+/* ================= AIRCRAFT MODEL — 1979 Cessna 172N Skyhawk ================= */
 var plane=new THREE.Group();
 (function(){
   var white=(THREE.MeshPhysicalMaterial? new THREE.MeshPhysicalMaterial({color:0xf4f6f8,roughness:0.30,metalness:0.06,clearcoat:0.55,clearcoatRoughness:0.32}) : new THREE.MeshStandardMaterial({color:0xf2f4f6,roughness:0.35,metalness:0.08}));
@@ -1068,7 +1051,7 @@ var plane=new THREE.Group();
   // pitot + fuel vents + exhaust stub for silhouette honesty
   part(new THREE.CylinderGeometry(0.02,0.02,0.42),grey,-1.9,0.82,0.95,0.5,0,0);
   part(new THREE.CylinderGeometry(0.06,0.07,0.34),dark,0.42,-0.78,3.55,0.7,0,0);
-  function wheel(x,y,z,r){ // tricycle gear — retracts under FlightPhysics (G), spring-damper suspension in the physics
+  function wheel(x,y,z,r){ // fixed tricycle gear — always down on the 172; spring-damper suspension in the physics
     var w=new THREE.Group(); w.position.set(x,y,z);
     var leg=new THREE.Mesh(new THREE.CylinderGeometry(0.055,0.055,0.95),grey); leg.position.y=0.5; w.add(leg);
     var fair=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.5,0.62),white); fair.position.set(0,0.05,0.02); w.add(fair);
@@ -1169,8 +1152,8 @@ function syncSurfaces(){
   if(plane.userData.gearLegs && S.gearT!==undefined){ var gt=S.gearT; plane.userData.gearLegs.forEach(function(w){ w.position.y=w.userData.baseY+(1-gt)*0.78; w.rotation.x=-0.5*(1-gt); w.visible=gt>0.04; }); }
 }
 
-/* ================= PHYSICS — C182Q point-mass + stability model =================
-   A proper step up from an arcade model, tuned to the 182Q POH:
+/* ================= PHYSICS — C172N point-mass + stability model =================
+   A proper step up from an arcade model, tuned to the 172N POH:
    · ISA atmosphere — IAS is density-corrected TAS, the engine lapses with altitude
    · Lift/drag from a real CL(alpha, flaps) / CD polar: CD0 + k·CL² (Oswald),
      sideslip drag, and a post-stall CL break with buffet and a wing drop
@@ -1242,7 +1225,7 @@ function stepPhysics(dt){
 
   /* ---- mass: empty 767 kg + occupants/fuel — stall speeds breathe with it ---- */
   var fuelGal=S.fuelL+S.fuelR;
-  var mass=1040 + fuelGal*2.72; // ~2,290 lb light, ~2,530 lb at full tanks (182Q gross 2,950)
+  var mass=810 + fuelGal*2.72; // ~1,790 lb empty + crew, ~2,030 lb at full tanks (172N gross 2,300 lb)
   var weight=mass*9.81;
 
   /* ---- aerodynamics: CL / CD / CY ---- */
@@ -1255,7 +1238,7 @@ function stepPhysics(dt){
   // lift curve lives in FlightPhysics (spec architecture): linear CL(alpha)
   // to a break at ~16.5°, buffet from ~11°, then CL falls away and the nose
   // drops — deliberate stalls still break, and recovery is
-  // the classic unload + power, which the 320 hp build makes brisk
+  // the classic unload + power, which the 160 hp build makes brisk
   // BLADE ELEMENT THEORY: no whole-body polar. FlightPhysics resolves nine
   // surfaces — each with its own position, area, polar and local relative
   // wind (v_cg + omega x r, propwash over the inner wing, flaps and tail) —
@@ -1276,7 +1259,7 @@ function stepPhysics(dt){
   var loadFactor=vAir>3 ? liftMag/weight : 1;
   S.loadFactor=loadFactor; S.betaDeg=betaDeg; S.rhoRatio=rhoRatio; S.tas=vAir*KT;
 
-  /* ---- engine: O-470, mixture, carb ice, density lapse, prop efficiency ---- */
+  /* ---- engine: O-320, mixture, carb ice, density lapse, prop efficiency ---- */
   if(engFail){ S.rpm += (0-S.rpm)*Math.min(1,dt*0.7); }
   else if(engineOn){
     // leaning: full rich is safe but leaves ~4% on the table at altitude; peak
@@ -1294,18 +1277,18 @@ function stepPhysics(dt){
     var targetRpm=(620 + S.throttle*1980)*mixFactor*iceFactor*carbFactor;
     if(S.throttle<=0.02) targetRpm=620*mixFactor;
     if(mixFactor===0) targetRpm=0;
-    // the O-470 spools with inertia — throttle slams take ~¾ s to become RPM
+    // the O-320 spools with inertia — throttle slams take ~¾ s to become RPM
     S.rpm += (targetRpm-S.rpm)*Math.min(1,dt*1.45);
   } else { S.rpm += (0-S.rpm)*Math.min(1,dt*2); }
   var powerFrac = engFail?0:Math.max(0,(S.rpm-500)/2100); S.powerFrac=powerFrac;
   // shaft power lapses with density (≈ Gagg–Farrar); thrust = P·eta(V)/V, capped
-  // at the static figure so low-speed pull stays honest (~1,050 lbf static)
-  var shaftW=238700*powerFrac*Math.pow(rhoRatio,0.88); // 320 hp at sea level (O-470 performance build)
+  // at the static figure so low-speed pull stays honest (~560 lbf static)
+  var shaftW=119300*powerFrac*Math.pow(rhoRatio,0.88); // 160 hp at sea level (O-320 performance build)
   var etaP=0.30+0.52*Math.min(1, Math.max(0,(vAir-4)/34))*(1-Math.max(0,(vAir-90)/130));
   var thrust=0;
   if(engineOn && !engFail && powerFrac>0.01){
     thrust=shaftW*etaP/Math.max(vAir,6.5);
-    thrust=Math.min(thrust, 6000*powerFrac*Math.pow(rhoRatio,0.7));
+    thrust=Math.min(thrust, 3200*powerFrac*Math.pow(rhoRatio,0.7));
     thrust*=Math.max(0.30, 1-Math.max(0,vAir-104)/170); // prop runs out of pitch speed
   }
 
@@ -1344,7 +1327,7 @@ function stepPhysics(dt){
     // yaw (around up axis): rudder + weathercock + adverse yaw from the ailerons
     tgtR=(-controls.rudder*0.26 + beta*0.85 + controls.roll*0.13)*auth;
     // P-factor: at high alpha the descending blade pulls the nose left; torque
-    // rolls left at high power / low speed. Both classic Skylane, both modelled.
+    // rolls left at high power / low speed. Both classic Skyhawk, both modelled.
     var pf=powerFrac*Math.max(0,aoa)*1.05*Math.max(0.25,1-vAir/70);
     tgtR+=pf*auth*0.9;
     tgtP+=-powerFrac*0.14*Math.max(0,1-vAir/48)*auth; // torque roll (left)
@@ -1422,7 +1405,7 @@ function stepPhysics(dt){
     if(fwdSpeed>23 && controls.pitch>0.22) _e.x=-(controls.pitch)*0.15;
     S.quat.setFromEuler(_e);
     S.angP*=0.6; S.angQ*=0.6;
-  } else { if(wasGround && vAir>12 && !ended){ logbook.takeoffs++; updateLogbookUI(); if(logbook.takeoffs===1) towerSay('Skylane 75F, Montgomery Tower — airborne, fly heading 295, pattern altitude 1,900. The fast lane in the pattern is yours — she climbs like it now.'); } S.onGround=false; }
+  } else { if(wasGround && vAir>12 && !ended){ logbook.takeoffs++; updateLogbookUI(); if(logbook.takeoffs===1) towerSay('Skyhawk 75F, Montgomery Tower — airborne, fly heading 295, pattern altitude 1,900.'); } S.onGround=false; }
   S.pos.addScaledVector(S.vel, dt);
   var th=terrainH(S.pos.x,S.pos.z);
   if(S.pos.y < th+0.4){
@@ -1432,7 +1415,7 @@ function stepPhysics(dt){
   if(S.pos.y>4600){ S.pos.y=4600; if(S.vel.y>0)S.vel.y=0; }
 
   flightTime+=dt;
-  if(engineOn && S.rpm>500){ hobbs+=dt/3600; var burn=(1.4+S.throttle*7.2)/3600*dt; S.fuelL=Math.max(0,S.fuelL-burn); S.fuelR=Math.max(0,S.fuelR-burn); if(S.fuelL+S.fuelR<=0 && !engFail){ engFail=true; logJJ('sys','Fuel exhausted — tanks dry. You are now gliding.'); } }
+  if(engineOn && S.rpm>500){ hobbs+=dt/3600; var burn=(0.9+S.throttle*4.6)/3600*dt; S.fuelL=Math.max(0,S.fuelL-burn); S.fuelR=Math.max(0,S.fuelR-burn); if(S.fuelL+S.fuelR<=0 && !engFail){ engFail=true; logJJ('sys','Fuel exhausted — tanks dry. You are now gliding.'); } }
   maxAlt=Math.max(maxAlt, FIELD_ELEV_FT+S.pos.y*FT);
   _e.setFromQuaternion(S.quat,'YXZ');
   S.pitchAng=_e.x; S.rollAng=_e.z;
@@ -1486,7 +1469,7 @@ function handleTouchdown(){
   onTouchdownEvent(td);
   if(ended) return;
   if(td.bank>28){ crash('You touched down with '+Math.round(td.bank)+'° of bank and cartwheeled. Wings level in the flare — always.'); return; }
-  if(td.vs<-950){ if(td.vs<-1250){ crash('Impact at '+Math.round(td.vs)+' fpm — beyond what any gear survives. Flare earlier, carry a whisper of power.'); } else { crash('Touchdown at '+Math.round(td.vs)+' fpm collapsed the gear — over 3.5 G on the struts. The Skylane settles onto her belly. Flare, always.'); } return; }
+  if(td.vs<-950){ if(td.vs<-1250){ crash('Impact at '+Math.round(td.vs)+' fpm — beyond what any gear survives. Flare earlier, carry a whisper of power.'); } else { crash('Touchdown at '+Math.round(td.vs)+' fpm collapsed the gear — over 3.5 G on the struts. The Skyhawk settles onto her belly. Flare, always.'); } return; }
   if(!td.onRunway && terrainH(td.x,td.z)>4){ crash('Off-field landing in rough terrain east of the field. The paved strip at KMYF was right there.'); return; }
   var rating= td.vs>-180 ? 'GREASED IT.' : td.vs>-420 ? 'Firm but safe.' : td.vs>-700 ? 'Hard landing — she will fly again.' : 'Very hard. Inspect the gear.';
   /* ---- touchdown summary: sink, centreline, touchdown point, speed ---- */
@@ -1559,24 +1542,21 @@ function toggleEngine(){
   if(engineOn){ engineOn=false; showToast('Engine shut down. Mixture to idle cutoff in a real one — here, it is just sad and quiet.'); }
   else{
     if(S.mixture<0.5){ showToast('It cranks and coughs — mixture is not rich. Push the red knob full forward, then start.'); return; }
-    engineOn=true; ensureAudio(); showToast('Engine running — O-470 idling at 620 RPM. Mixture rich, carb heat cold, brakes held.');
+    engineOn=true; ensureAudio(); showToast('Engine running — O-320 idling at 620 RPM. Mixture rich, carb heat cold, brakes held.');
     document.getElementById('engStartBtn').style.display='none';
   }
   updateConfigUI();
 }
 function toggleGear(){
   if(!S) return;
-  if(S.onGround && S.gearTarget===1){ showToast('Squat switch: the gear will not retract with weight on the wheels. Get airborne first.'); return; }
-  S.gearTarget = S.gearTarget===1?0:1; clickSnd();
-  showToast(S.gearTarget===1?'Gear going DOWN — three greens on the HUD when the transit finishes.':'Gear coming UP — drag falls away and she accelerates. Remember it before landing (G).');
-  logJJ('sys', S.gearTarget===1?'Gear selected DOWN.':'Gear selected UP.');
+  showToast('Fixed gear on the Skyhawk — welded down, always. Nothing to retract, nothing to forget on final.');
 }
 function resetCruise(){
   doReset(true);
   S.pos.set(900,(2000-FIELD_ELEV_FT)/FT,-2600); S.quat=yawQuatForHeading(295);
-  S.vel.set(Math.sin(295*Math.PI/180)*62,0,-Math.cos(295*Math.PI/180)*62);
+  S.vel.set(Math.sin(295*Math.PI/180)*52,0,-Math.cos(295*Math.PI/180)*52);
   S.throttle=0.62; if(!engineOn){ engineOn=true; document.getElementById('engStartBtn').style.display='none'; } S.rpm=2100; S.onGround=false;
-  showToast('Airborne reset: 2,000 ft MSL, 120 kt, heading 295. Fly the airplane.', 6000);
+  showToast('Airborne reset: 2,000 ft MSL, 100 kt, heading 295. Fly the airplane.', 6000);
 }
 function cycleCam(){ camMode=(camMode+1)%4; document.getElementById('camBtn').textContent='CAMERA: '+CAMNAMES[camMode]; }
 function clickSnd(){ if(!audioCtx||!soundOn) return; try{ var o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type='square'; o.frequency.value=1150; g.gain.setValueAtTime(0.028,audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.0005, audioCtx.currentTime+0.06); o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime+0.07); }catch(e){} }
@@ -1649,8 +1629,8 @@ function pollKeys(dt){
       var desVS=Math.max(-600,Math.min(700, aErr*4));
       var apPitch=Math.max(-0.55,Math.min(0.78,(desVS-(S.vs||0))*0.0012));
       controls.pitch+=(apPitch-controls.pitch)*Math.min(1,dt*5);
-      // auto-throttle: ~105 kt in level flight, works harder to climb, eases off to descend
-      var thrT=0.60 + Math.max(-0.30,Math.min(0.38, aErr*0.0006)) + (105-(S.ias||0))*0.004;
+      // auto-throttle: ~95 kt in level flight, works harder to climb, eases off to descend
+      var thrT=0.60 + Math.max(-0.30,Math.min(0.38, aErr*0.0006)) + (95-(S.ias||0))*0.004;
       thrT=Math.max(0.12,Math.min(1,thrT));
       S.throttle+=Math.max(-dt*0.35,Math.min(dt*0.35, thrT-S.throttle));
     }
@@ -1744,7 +1724,6 @@ document.getElementById('todBtn').addEventListener('click',function(){ cycleTOD(
 document.getElementById('btnAPHdg').addEventListener('click',function(){ ensureAudio(); setAPHdg(!apHdg); });
 document.getElementById('btnAPAlt').addEventListener('click',function(){ ensureAudio(); setAPAlt(!apAlt); });
 function onWindChanged(){
-  document.getElementById('hWind').textContent= windMode===0?'CALM':(WIND[windMode].dir+'/'+String(WIND[windMode].spd).padStart(2,'0'));
   showToast(windMode===0?'Wind calm.':windMode===1?'Wind 270 at 8 — down Runway 28L\'s throat, perfect.':'Gusty: 300 at 14, gusting. Crosswind component ~12 kt.');
 }
 /* ================= TIME OF DAY + VISIBILITY ================= */
@@ -1812,7 +1791,7 @@ function updateConfigUI(){
   var pf;
   pf=document.getElementById('pfDA'); if(pf) pf.textContent=densityAltFt().toLocaleString()+' ft';
   pf=document.getElementById('pfTAS'); if(pf) pf.textContent=Math.round(S.tas||0)+' kt';
-  var ff=(engineOn&&S.rpm>400&&!engFail)?(2.8+S.throttle*14.5):0;
+  var ff=(engineOn&&S.rpm>400&&!engFail)?(1.6+S.throttle*9.4):0;
   pf=document.getElementById('pfFF'); if(pf) pf.textContent=ff>0?ff.toFixed(1)+' gph':'0.0 gph';
   var pAmb=29.92*Math.pow(Math.max(0.55,1-2.25577e-5*((S.altMSL||427)/FT)),5.2561);
   var mp=(engineOn&&S.rpm>400&&!engFail)? pAmb*(0.24+0.76*S.throttle)*(1-(S.carbIce||0)*0.25) : pAmb;
@@ -1831,7 +1810,7 @@ function doReset(air){
   if(typeof PHYSICS!=='undefined'){ PHYSICS.susp.c=0.055; PHYSICS.susp.v=0; }
   resetState(air); paused=false; ended=false;
   if(air && !engineOn){ engineOn=true; S.rpm=2050; document.getElementById('engStartBtn').style.display='none'; }
-  showToast(air?'Airborne: downwind for 28L at 1,900 ft. Abeam the numbers, carb heat on, flaps 10, turn base and final at 70 kt.':'Lined up on Runway 28L at KMYF. '+(engineOn?'Full throttle (W), rotate at 55, climb Vy 92.':'Start the engine first (E or the amber button), mixture rich.'));
+  showToast(air?'Airborne: downwind for 28L at 1,900 ft. Abeam the numbers, carb heat on, flaps 10, turn base and final at 65 kt.':'Lined up on Runway 28L at KMYF. '+(engineOn?'Full throttle (W), rotate at 55, climb Vy 76.':'Start the engine first (E or the amber button), mixture rich.'));
 }
 /* ================= SCENARIOS ================= */
 function placeFinal(distM, altFt, flaps){
@@ -1843,7 +1822,7 @@ function placeFinal(distM, altFt, flaps){
 }
 function scenarioDownwind(){
   doReset(true);
-  showToast('Downwind entry: left downwind for 28L at 1,900 ft. Abeam the numbers — carb heat ON, flaps 10°, slow to 90. Base, final at 70, land it in the zone. The pattern traffic is ahead of you.', 9000);
+  showToast('Downwind entry: left downwind for 28L at 1,900 ft. Abeam the numbers — carb heat ON, flaps 10°, slow to 80. Base, final at 65, land it in the zone. The pattern traffic is ahead of you.', 9000);
 }
 function scenarioDead(){
   doReset(true);
@@ -1852,20 +1831,19 @@ function scenarioDead(){
   S.quat=yawQuatForHeading(RWY_HDG);
   S.vel.set(RWY_DIR.x*34, 0, RWY_DIR.z*34);
   S.onGround=false;
-  towerSay('Skylane 75F — simulated failure acknowledged. Runway 28L is yours, any part of it. Make the field; nothing else matters.');
-  showToast('✦ DEAD-STICK PRACTICE: the engine is done at 3,500 ft over KMYF. Pitch for 70 kt best glide NOW, point at the first third of 28L, and manage energy — slip if high, never stretch a glide.', 10000);
+  towerSay('Skyhawk 75F — simulated failure acknowledged. Runway 28L is yours, any part of it. Make the field; nothing else matters.');
+  showToast('✦ DEAD-STICK PRACTICE: the engine is done at 3,500 ft over KMYF. Pitch for 65 kt best glide NOW, point at the first third of 28L, and manage energy — slip if high, never stretch a glide.', 10000);
 }
 function scenarioXwind(){
   windMode=2;
   document.querySelectorAll('[data-windset]').forEach(function(x){ x.classList.toggle('on', +x.dataset.windset===2); });
-  document.getElementById('hWind').textContent='300/14';
   doReset(true); placeFinal(3800, 1350, 20);
-  towerSay('Skylane 75F, wind 300 at 14, gusting 19, Runway 28L, cleared to land. Caution: the sock is doing gymnastics.');
+  towerSay('Skyhawk 75F, wind 300 at 14, gusting 19, Runway 28L, cleared to land. Caution: the sock is doing gymnastics.');
   showToast('≋ Gusty crosswind final: crab into it on final, kick it straight in the flare, aileron into the wind through the rollout. ~12 kt crosswind component — near the demonstrated limit, deliberately.', 9000);
 }
 function scenarioNight(){
   setTOD(4); doReset(true); placeFinal(3400, 1250, 10);
-  towerSay('Skylane 75F, Montgomery Tower, wind 270 at 6, Runway 28L, cleared to land. The rabbit is running for you.');
+  towerSay('Skyhawk 75F, Montgomery Tower, wind 270 at 6, Runway 28L, cleared to land. The rabbit is running for you.');
   showToast('☾ Night final for 28L. Chase the sequenced flashers to the threshold, hold the PAPI at two-white-two-red, and put it in the touchdown zone.', 9000);
 }
 /* ================= AUDIO ================= */
@@ -1886,7 +1864,7 @@ function ensureAudio(){
     var bp=audioCtx.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=700; bp.Q.value=0.6;
     windGain=audioCtx.createGain(); windGain.gain.value=0;
     src.connect(bp); bp.connect(windGain); windGain.connect(audioCtx.destination); src.start();
-    // stall warning horn — the Skylane's vane-and-horn, beeping with the buffet
+    // stall warning horn — the Skyhawk's vane-and-horn, beeping with the buffet
     stallOsc=audioCtx.createOscillator(); stallOsc.type='square'; stallOsc.frequency.value=430;
     var sf=audioCtx.createBiquadFilter(); sf.type='lowpass'; sf.frequency.value=1500;
     stallGain=audioCtx.createGain(); stallGain.gain.value=0;
@@ -1909,11 +1887,11 @@ function updateAudio(){
 var JJ_LINES=[];
 var TOWER_LINES=[
  'Mooney 2TJ, turn right at Charlie, contact Ground 118.225. Nice landing.',
- 'Skylane 75F, Montgomery Tower, wind 270 at 8, Runway 28L, cleared for takeoff.',
+ 'Skyhawk 75F, Montgomery Tower, wind 270 at 8, Runway 28L, cleared for takeoff.',
  'Citation 7QS, Montgomery Tower, Runway 28L, line up and wait, traffic is a Skyhawk in the pattern.',
- 'Skylane 75F, extend downwind, I will call your base, traffic is a Mooney on a two-mile final.',
- 'Bonanza 44K, Montgomery Tower, caution wake turbulence, departing Skylane. Yes, really.',
- 'Skylane 75F, Runway 28L, cleared for the option.',
+ 'Skyhawk 75F, extend downwind, I will call your base, traffic is a Mooney on a two-mile final.',
+ 'Bonanza 44K, Montgomery Tower, caution wake turbulence, departing Skyhawk. Yes, really.',
+ 'Skyhawk 75F, Runway 28L, cleared for the option.',
  'Archer 3MA, enter left downwind Runway 28L, number three, following a Skyhawk on base.'
 ];
 var logEl=document.getElementById('log'), radioLogEl=document.getElementById('radioLog');
@@ -1938,7 +1916,7 @@ function ambientTick(dt){
 function ctx2(id){ return document.getElementById(id).getContext('2d'); }
 var gASI=ctx2('cASI'), gG5=ctx2('cG5'), gALT=ctx2('cALT'), gDG=ctx2('cDG'), gTACH=ctx2('cTACH'),
     gTC=ctx2('cTC'), gGPS=ctx2('cGPS'), gVSI=ctx2('cVSI'), gENG=ctx2('cENG'),
-    gMAP=ctx2('mapCanvas'), gCMP=ctx2('compassCanvas');
+    gMAP=ctx2('mapCanvas');
 function dialFace(g,cx,cy,r){
   g.beginPath(); g.arc(cx,cy,r,0,7); g.fillStyle='#0b0f14'; g.fill();
   g.lineWidth=2.5; g.strokeStyle='#454f59'; g.stroke();
@@ -2000,7 +1978,7 @@ function drawG5(){ var g=gG5, W=150, H=124;
   tape(6, S.ias||0, 10, function(v){return v;});
   tape(117, baroAltFt(), 100, function(v){return v;});
   // PFD speed bugs: Vs (green), Vfe (white), Vno (amber), Vne (red)
-  (function(){ var bugs=[[54,'#2ee06f'],[95,'#f2f5f7'],[165,'#ffc44d'],[195,'#ff5147']];
+  (function(){ var bugs=[[50,'#2ee06f'],[85,'#f2f5f7'],[128,'#ffc44d'],[160,'#ff5147']];
     bugs.forEach(function(b){ var y=48-(b[0]-(S.ias||0))*1.5; if(y<12||y>84) return; g.fillStyle=b[1]; g.beginPath(); g.moveTo(33,y); g.lineTo(38,y-3.5); g.lineTo(38,y+3.5); g.closePath(); g.fill(); });
   })();
   // flight path vector — where the aeroplane is actually going
@@ -2127,18 +2105,6 @@ function drawENG(){ var g=gENG;
   mini(93,86,'AMPS', amps, false);
   g.fillStyle='#39434e'; g.fillRect(60,8,1.5,108); g.fillRect(8,60,108,1.5);
 }
-/* compass strip */
-function drawCompass(){ var g=gCMP, W=216, H=34, h=S.heading||0;
-  g.fillStyle='#0a0f14'; g.fillRect(0,0,W,H);
-  g.fillStyle='#f5a623'; g.fillRect(W/2-1,0,2,10);
-  g.fillStyle='#fff'; g.font='bold 15px monospace'; g.textAlign='center';
-  var pxPer=2.4;
-  for(var d=-60;d<=60;d+=5){ var hh=((Math.round(h/5)*5+d)%360+360)%360;
-    var x=W/2+(d-(h-Math.round(h/5)*5))*pxPer; if(x<8||x>W-8) continue;
-    if(hh%30===0){ g.fillText(hh===0?'36':String(hh/10).padStart(2,'0'), x, 27); g.fillRect(x-0.75,2,1.5,6); }
-    else if(hh%10===0){ g.fillRect(x-0.75,2,1.5,5); }
-    else { g.fillRect(x-0.5,2,1,3); } }
-}
 /* moving map */
 function drawMap(){
   var g=gMAP, W=308, H=196;
@@ -2202,22 +2168,12 @@ var gaugeTick=0;
 function drawAllGauges(){
   drawASI(); drawG5(); drawALT(); drawDG(); drawTACH(); drawTC(); drawGPS(); drawVSI();
   if((gaugeTick%2)===0){ drawENG(); drawMap(); }
-  drawCompass(); gaugeTick++;
+  gaugeTick++;
 }
 
-/* ================= HUD / STATUS ================= */
+/* ================= STATUS CHIPS / READOUTS ================= */
 var uiTick=0;
 function refreshUI(){
-  document.getElementById('hSpd').textContent=Math.round(S.ias||0);
-  document.getElementById('hAlt').textContent=Math.round(S.altMSL).toLocaleString();
-  var vs=Math.round((S.vs||0)/10)*10;
-  document.getElementById('hVs').textContent=(vs>0?'+':'')+vs;
-  document.getElementById('hHdg').textContent=String(Math.round(S.heading||0)).padStart(3,'0');
-  document.getElementById('hAgl').textContent=Math.round(S.agl*FT).toLocaleString();
-  document.getElementById('hDA').textContent=densityAltFt().toLocaleString();
-  var apEl=document.getElementById('hAP');
-  if(apEl){ var apOn=apHdg||apAlt; apEl.style.display=apOn?'':'none';
-    if(apOn) document.getElementById('hAPtxt').textContent=(apHdg?'HDG '+String(Math.round(apHdgTgt)).padStart(3,'0')+'° ':'')+(apAlt?'ALT '+Math.round(apAltTgt).toLocaleString():''); }
   document.getElementById('sbSpd').textContent=Math.round(S.ias||0);
   document.getElementById('sbAlt').textContent=Math.round(S.altMSL).toLocaleString();
   document.getElementById('sbHdg').textContent=Math.round(S.heading||0);
@@ -2282,8 +2238,8 @@ function onCrashEvent(){}
    The spec's modular structure, as classic-script classes in this one file
    (the published build cannot use ES-module scripts, and the local Three.js
    build stays for offline use): FlightPhysics owns the lift curve, the drag
-   polar, gear transit and the suspension; WorldBuilder adds spec landmarks;
-   HUDController draws the military HUD; SoundSynthesizer flies the aural
+   polar, fixed gear and the suspension; WorldBuilder adds spec landmarks;
+   SoundSynthesizer flies the aural
    warnings; GameLoop ties them into the fixed-step main loop. */
 class FlightPhysics {
   // CL(alpha, flaps): linear to a break at ~16.5 deg, buffet from ~11 deg,
@@ -2342,7 +2298,7 @@ class FlightPhysics {
       if(spd>0.6){
         var vx=wx/spd, vy=wy/spd, vz=wz/spd;
         if(sf.kind==='fuse'){
-          var mach=spd/343, cdM=1+Math.pow(Math.max(0,mach-0.72),2)*9; // drag divergence — academic at Skylane speeds, but in the polar
+          var mach=spd/343, cdM=1+Math.pow(Math.max(0,mach-0.72),2)*9; // drag divergence — academic at Skyhawk speeds, but in the polar
           var CDf=0.0105*cdM;
           sFx=-vx*qs*sf.A*CDf + qs*sf.A*(-0.30*Math.atan2(wx,Math.max(wz,0.001)));
           sFy=-vy*qs*sf.A*CDf; sFz=-vz*qs*sf.A*CDf;
@@ -2396,7 +2352,7 @@ class FlightPhysics {
     return res;
   }
   // drag polar: induced (CL^2) + parasitic + flap + sideslip + brakes,
-  // plus the retractable gear (up is cleaner — she is faster with it up)
+  // the fixed gear is already counted in the baseline drag
   // and B as an airbrake in flight
   static dragPolar(cd0, CL, kInd, inGE, gePhi, S, beta, keys){
     var CD=cd0 + kInd*CL*CL*(inGE?gePhi:1) + S.flaps*0.00095 + S.flaps*S.flaps*0.000016 + 1.9*beta*beta + (S.brake&&S.onGround?0.22:0);
@@ -2413,7 +2369,7 @@ class FlightPhysics {
   static updateGear(dt){
     if(!S || S.gearTarget===undefined) return;
     var d=S.gearTarget-S.gearT; if(d===0) return;
-    var step=dt/3.2; // a scale 182 gear swing takes about three seconds
+    var step=dt/3.2; // fixed gear on the 172 — gearT stays pinned at 1 (down)
     S.gearT += Math.abs(d)<step ? d : Math.sign(d)*step;
     S.gearT=Math.max(0, Math.min(1, S.gearT));
   }
@@ -2432,7 +2388,7 @@ class GearSuspension {
     if(this.c<0) this.c=0; if(this.c>0.32) this.c=0.32;
   }
 }
-/* Web Audio warning synth: two-tone beeper for the stall and gear alerts,
+/* Web Audio warning synth: two-tone beeper for the stall alert,
    layered over the existing engine/wind sound (which stays as it was) */
 class SoundSynthesizer {
   constructor(){ this.osc=null; this.gain=null; this.mode=null; }
@@ -2488,120 +2444,13 @@ class WorldBuilder {
   }
 }
 WorldBuilder.buildExtras();
-/* military HUD: green/cyan canvas overlay — pitch ladder & horizon, IAS
-   tape (left), altitude tape + VSI (right), heading compass (top), and
-   throttle / flap / gear / AoA status with a flashing STALL warning */
-class HUDController {
-  constructor(){
-    var w=document.getElementById('viewWrap');
-    this.cv=document.createElement('canvas'); this.cv.id='milHud';
-    w.appendChild(this.cv); this.g=this.cv.getContext('2d');
-  }
-  update(){
-    var wrap=document.getElementById('viewWrap'); if(!wrap) return;
-    var W=wrap.clientWidth, H=wrap.clientHeight; if(!W||!H) return;
-    if(this.cv.width!==W||this.cv.height!==H){ this.cv.width=W; this.cv.height=H; }
-    var g=this.g; g.clearRect(0,0,W,H);
-    if(!S || camMode>=2) return;
-    var GRN='#3dff8e', CYN='#43e8ff', AMB='#ffc44d', RED='#ff5147';
-    g.lineWidth=1.6; g.font='11px ui-monospace,monospace'; g.textBaseline='middle';
-    var cx=W/2, cy=H*0.46;
-    var pitchDeg=-(S.pitchAng||0)*57.2958, rollA=-(S.rollAng||0);
-    /* pitch ladder + horizon, counter-rotated against the bank */
-    g.save(); g.beginPath(); g.rect(cx-190,cy-120,380,240); g.clip();
-    g.translate(cx,cy); g.rotate(rollA);
-    for(var p=-20;p<=20;p+=5){ if(p===0) continue;
-      var y=(pitchDeg-p)*4.2; if(Math.abs(y)>118) continue;
-      var len=(p%10===0)?86:52;
-      g.strokeStyle=p>0?GRN:CYN; g.beginPath();
-      g.moveTo(-len,y); g.lineTo(-16,y); g.moveTo(16,y); g.lineTo(len,y); g.stroke();
-      if(p%10===0){ g.fillStyle=p>0?GRN:CYN; g.textAlign='left'; g.fillText(Math.abs(p),len+5,y); g.textAlign='right'; g.fillText(Math.abs(p),-len-5,y); }
-    }
-    var hy2=pitchDeg*4.2;
-    g.strokeStyle=GRN; g.lineWidth=2.2; g.beginPath(); g.moveTo(-170,hy2); g.lineTo(-24,hy2); g.moveTo(24,hy2); g.lineTo(170,hy2); g.stroke();
-    g.restore();
-    /* fixed aircraft symbol */
-    g.strokeStyle=GRN; g.lineWidth=2.4; g.beginPath();
-    g.moveTo(cx-46,cy); g.lineTo(cx-14,cy); g.lineTo(cx-6,cy+7); g.lineTo(cx+6,cy+7); g.lineTo(cx+14,cy); g.lineTo(cx+46,cy); g.stroke();
-    g.fillStyle=GRN; g.beginPath(); g.arc(cx,cy,2.4,0,7); g.fill();
-    /* tapes */
-    function tape(x, val, step, span, fmt){
-      g.fillStyle='rgba(3,12,8,0.45)'; g.fillRect(x-24,cy-84,48,168);
-      g.strokeStyle=GRN; g.lineWidth=1.2; g.strokeRect(x-24,cy-84,48,168);
-      g.fillStyle=GRN; g.textAlign='center';
-      var base=Math.round(val/step)*step;
-      for(var o=-3;o<=3;o++){ var v=base+o*step; if(v<0) continue; var yy=cy-(v-val)*(168/2)/span+o*0; yy=cy-(v-val)*(84/span); if(yy<cy-80||yy>cy+80) continue;
-        g.fillText(fmt(v), x, yy); g.beginPath(); g.moveTo(x+(x<cx?-24:14),yy); g.lineTo(x+(x<cx?-14:24),yy); g.stroke(); }
-      g.fillStyle='#04140a'; g.fillRect(x-24,cy-11,48,22); g.strokeStyle=CYN; g.strokeRect(x-24,cy-11,48,22);
-      g.fillStyle=CYN; g.font='bold 13px ui-monospace,monospace'; g.fillText(fmt(Math.round(val)),x,cy);
-      g.font='11px ui-monospace,monospace';
-    }
-    tape(40, S.ias||0, 10, 30, function(v){return v;});
-    tape(W-40, baroAltFt(), 100, 300, function(v){return v;});
-    g.fillStyle=CYN; g.textAlign='right'; g.fillText('VS '+(S.vs>=0?'+':'')+Math.round(S.vs||0), W-16, cy+102);
-    /* heading compass, top centre */
-    g.fillStyle='rgba(3,12,8,0.45)'; g.fillRect(cx-150,8,300,26);
-    g.strokeStyle=GRN; g.strokeRect(cx-150,8,300,26);
-    g.fillStyle=GRN; g.textAlign='center';
-    var hdg=S.heading||0;
-    for(var d=-45;d<=45;d+=5){ var hv=((Math.round(hdg/5)*5+d)%360+360)%360; var xx=cx+d*3.1; var yy2=30;
-      g.beginPath(); g.moveTo(xx,yy2); g.lineTo(xx,yy2-(hv%15===0?9:5)); g.stroke();
-      if(hv%30===0){ var lb={0:'N',90:'E',180:'S',270:'W'}[hv]; g.fillText(lb||String(hv/10).padStart(2,'0'), xx, 17); }
-    }
-    g.fillStyle=CYN; g.beginPath(); g.moveTo(cx,36); g.lineTo(cx-5,42); g.lineTo(cx+5,42); g.closePath(); g.fill();
-    g.font='bold 12px ui-monospace,monospace'; g.fillText(String(Math.round(hdg)).padStart(3,'0'), cx, 52); g.font='11px ui-monospace,monospace';
-    /* status block, bottom right */
-    var sx=W-16, sy=H-104; g.textAlign='right';
-    g.fillStyle=CYN; g.fillText('THR '+Math.round((S.throttle||0)*100)+'%', sx, sy);
-    g.fillStyle=GRN; g.fillText('FLAP '+(S.flaps||0)+'°', sx, sy+17);
-    var gearTxt=S.gearT>0.97?'GEAR DOWN':S.gearT<0.05?'GEAR UP':'GEAR TRANSIT';
-    g.fillStyle=S.gearT>0.97?GRN:(S.gearT<0.05?RED:AMB); g.fillText(gearTxt, sx, sy+34);
-    g.fillStyle=CYN; g.fillText('AOA '+(S.aoaDeg||0).toFixed(1)+'°', sx, sy+51);
-    g.fillStyle=CYN; g.fillText('G '+(S.loadFactor||1).toFixed(2), sx, sy+68);
-    g.fillStyle=CYN; g.fillText('RTRM '+((S.rudTrim||0)===0?'0':((S.rudTrim>0?'R':'L')+Math.abs(Math.round(S.rudTrim*10)))), sx, sy+85);
-    if(keys && keys['KeyB'] && !S.onGround){ g.fillStyle=AMB; g.fillText('AIRBRAKE', sx, sy+102); }
-    if(!S.onGround && S.gearT<0.9 && (S.agl||0)*FT<800){ if(((performance.now()%800)/800)<0.6){ g.fillStyle=AMB; g.textAlign='center'; g.font='bold 13px ui-monospace,monospace'; g.fillText('CHECK GEAR', cx, 74); g.font='11px ui-monospace,monospace'; } }
-    /* ILS 28L: localizer + glideslope diamonds inside the approach cone */
-    (function(){
-      if(S.onGround) return;
-      var txW=-518*RWY_DIR.x, tzW=-518*RWY_DIR.z;
-      var dxT=S.pos.x-txW, dzT=S.pos.z-tzW;
-      var along=-(dxT*RWY_DIR.x+dzT*RWY_DIR.z);
-      var perp=(dxT*RWY_DIR.z-dzT*RWY_DIR.x);
-      if(along<200||along>14000) return;
-      var locA=Math.atan2(perp, along)*57.2958;
-      if(Math.abs(locA)>6) return;
-      var gsA=Math.atan2(Math.max(S.agl||0,0.1), along)*57.2958;
-      var lx=cx+Math.max(-52,Math.min(52, locA/2.5*52)), gy=cy+Math.max(-40,Math.min(40,(3.0-gsA)/0.7*40));
-      g.strokeStyle=CYN; g.lineWidth=1.4;
-      g.beginPath(); g.moveTo(cx-58,cy+64); g.lineTo(cx+58,cy+64); g.stroke();
-      g.beginPath(); g.moveTo(cx+70,cy-46); g.lineTo(cx+70,cy+46); g.stroke();
-      g.fillStyle='#04140a'; g.strokeStyle=GRN;
-      g.beginPath(); g.moveTo(lx,cy+58); g.lineTo(lx+6,cy+64); g.lineTo(lx,cy+70); g.lineTo(lx-6,cy+64); g.closePath(); g.fill(); g.stroke();
-      g.beginPath(); g.moveTo(cx+70,gy-6); g.lineTo(cx+76,gy); g.lineTo(cx+70,gy+6); g.lineTo(cx+64,gy); g.closePath(); g.fill(); g.stroke();
-      g.fillStyle=CYN; g.textAlign='center'; g.fillText('ILS 28L', cx, cy+86);
-    })();
-    /* STALL warning — flashing past 15 deg alpha */
-    if(((S.aoaDeg||0)>15 || S.stalled) && ((performance.now()%700)/700)<0.62){
-      g.fillStyle='rgba(60,4,4,0.55)'; g.fillRect(cx-52,86,104,26);
-      g.strokeStyle=RED; g.lineWidth=1.8; g.strokeRect(cx-52,86,104,26);
-      g.fillStyle=RED; g.textAlign='center'; g.font='bold 14px ui-monospace,monospace'; g.fillText('STALL', cx, 100); g.font='11px ui-monospace,monospace';
-    }
-  }
-}
-/* per-frame tie-in: HUD, warning synth, gear-warning cadence, mast beacons */
+/* per-frame tie-in: warning synth, telemetry, GPWS callouts, mast beacons */
 class GameLoop {
   constructor(){ this.gearWarnAt=0; this.lastRA=9999; this.lastSink=0; this.telAt=0; }
   frame(dt){
-    if(window.__hud) window.__hud.update();
     var stallNow = S && (S.stalled || (S.aoaDeg||0)>15);
-    var gearWarn = S && !S.onGround && S.gearT<0.9 && (S.agl||0)*FT<700 && S.throttle<0.5 && !ended;
-    if(window.__synth) window.__synth.setMode(stallNow?'stall':(gearWarn?'gear':null));
+    if(window.__synth) window.__synth.setMode(stallNow?'stall':null);
     if(window.__synth) window.__synth.tick();
-    if(gearWarn && !stallNow){
-      var now=performance.now();
-      if(now-this.gearWarnAt>6000){ this.gearWarnAt=now; showToast('GEAR NOT DOWN — press G to lower the gear.', 4200); }
-    }
     var tel=document.getElementById('telDrawer');
     if(tel && tel.style.display!=='none' && S && performance.now()-this.telAt>120){ this.telAt=performance.now();
       var L=FlightPhysics.last, q2=0.5*1.225*Math.pow((S.tas||0)/1.94384,2)*(S.rhoRatio||1);
@@ -2628,7 +2477,6 @@ class GameLoop {
 }
 var PHYSICS={ susp:new GearSuspension() };
 window.__synth=new SoundSynthesizer();
-window.__hud=new HUDController();
 var GAME=new GameLoop();
 /* orbit camera state + drag (C cycles COCKPIT / CHASE / WING / ORBIT) */
 var orbit={az:0.6, el:0.28, dist:15};
